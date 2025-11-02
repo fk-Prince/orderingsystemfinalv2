@@ -69,7 +69,7 @@ namespace OrderingSystem.CashierApp.Layout
                     SessionStaffData.StaffData = loginStaff;
                     SessionStaffData.StaffId = loginStaff.StaffId;
                     SessionStaffData.FirstName = loginStaff.FirstName;
-                    SessionStaffData.LastName = loginStaff.FirstName;
+                    SessionStaffData.LastName = loginStaff.LastName;
                     SessionStaffData.Role = loginStaff.Role;
                     SessionStaffData.Image = loginStaff.Image;
 
