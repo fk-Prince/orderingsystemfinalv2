@@ -41,21 +41,13 @@ namespace OrderingSystem.CashierApp.Layout
                 {
                     double stars = (percent / 100) * 5;
                     rating.Value = (float)stars;
+                    rating.FillColor = Color.Gray;
                     if (stars >= 4)
-                    {
-                        rating.FillColor = Color.LimeGreen;
                         rating.RatingColor = Color.LimeGreen;
-                    }
                     else if (stars >= 2.5)
-                    {
-                        rating.FillColor = Color.Gold;
                         rating.RatingColor = Color.Gold;
-                    }
                     else
-                    {
-                        rating.FillColor = Color.Red;
                         rating.RatingColor = Color.Red;
-                    }
                 }
 
                 Tuple<string, string> totalOrder = ir.getTotalOrderByType(date.Value, "");
@@ -91,7 +83,6 @@ namespace OrderingSystem.CashierApp.Layout
             series.LabelPoint = point => point.Y.ToString("N0");
             return series;
         }
-
         private void loadChart()
         {
             try
@@ -213,8 +204,8 @@ namespace OrderingSystem.CashierApp.Layout
             else if (percent < 0)
             {
                 percentLabel.Text = $"{percent:N0}";
-                percentLabel.ForeColor = reverse ? Color.Red : Color.Green;
-                picture.Image = reverse ? Properties.Resources.decrease : Properties.Resources.increase;
+                percentLabel.ForeColor = !reverse ? Color.Red : Color.Green;
+                picture.Image = !reverse ? Properties.Resources.decrease : Properties.Resources.increase;
             }
             else
             {
