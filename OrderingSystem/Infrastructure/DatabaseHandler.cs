@@ -71,7 +71,7 @@ namespace OrderingSystem.DatabaseConnection
                 Server = "localhost",
                 UserID = "root",
                 Password = "root",
-                Database = "ordering_system_final",
+                Database = "final_ordering_system",
                 SslMode = MySqlSslMode.None,
                 AllowPublicKeyRetrieval = true,
                 AllowUserVariables = true

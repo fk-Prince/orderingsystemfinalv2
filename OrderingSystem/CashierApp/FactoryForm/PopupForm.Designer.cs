@@ -158,7 +158,7 @@
             this.b1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.b1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.b1.ForeColor = System.Drawing.Color.White;
-            this.b1.Location = new System.Drawing.Point(94, 405);
+            this.b1.Location = new System.Drawing.Point(90, 405);
             this.b1.Name = "b1";
             this.b1.Size = new System.Drawing.Size(247, 37);
             this.b1.TabIndex = 8;
@@ -210,10 +210,11 @@
             // c1
             // 
             this.c1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.c1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c1.FormattingEnabled = true;
             this.c1.Location = new System.Drawing.Point(64, 125);
             this.c1.Name = "c1";
-            this.c1.Size = new System.Drawing.Size(304, 21);
+            this.c1.Size = new System.Drawing.Size(304, 23);
             this.c1.TabIndex = 63;
             this.c1.Visible = false;
             this.c1.SelectedIndexChanged += new System.EventHandler(this.c1_SelectedIndexChanged);
@@ -221,29 +222,32 @@
             // c2
             // 
             this.c2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.c2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c2.FormattingEnabled = true;
             this.c2.Location = new System.Drawing.Point(64, 190);
             this.c2.Name = "c2";
-            this.c2.Size = new System.Drawing.Size(304, 21);
+            this.c2.Size = new System.Drawing.Size(304, 23);
             this.c2.TabIndex = 64;
             this.c2.Visible = false;
             // 
             // c3
             // 
             this.c3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.c3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c3.FormattingEnabled = true;
             this.c3.Location = new System.Drawing.Point(64, 258);
             this.c3.Name = "c3";
-            this.c3.Size = new System.Drawing.Size(304, 21);
+            this.c3.Size = new System.Drawing.Size(304, 23);
             this.c3.TabIndex = 65;
             this.c3.Visible = false;
             // 
             // c4
             // 
+            this.c4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c4.FormattingEnabled = true;
             this.c4.Location = new System.Drawing.Point(64, 320);
             this.c4.Name = "c4";
-            this.c4.Size = new System.Drawing.Size(304, 21);
+            this.c4.Size = new System.Drawing.Size(304, 23);
             this.c4.TabIndex = 66;
             this.c4.Visible = false;
             // 
@@ -337,10 +341,11 @@
             // 
             // c5
             // 
+            this.c5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c5.FormattingEnabled = true;
             this.c5.Location = new System.Drawing.Point(430, 125);
             this.c5.Name = "c5";
-            this.c5.Size = new System.Drawing.Size(304, 21);
+            this.c5.Size = new System.Drawing.Size(304, 23);
             this.c5.TabIndex = 72;
             this.c5.Visible = false;
             // 

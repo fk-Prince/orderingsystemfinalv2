@@ -171,7 +171,8 @@
             "Inventory Reports",
             "Ingredient Usage",
             "Menu Popular\'s",
-            "Invoice Record"});
+            "Invoice Record",
+            "Suppliers"});
             this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb.FormattingEnabled = true;
@@ -181,7 +182,8 @@
             "Inventory Reports",
             "Ingredient Usage",
             "Menu Popular\'s",
-            "Invoice Record"});
+            "Invoice Record",
+            "Suppliers"});
             this.cb.Location = new System.Drawing.Point(57, 142);
             this.cb.Name = "cb";
             this.cb.Size = new System.Drawing.Size(233, 29);

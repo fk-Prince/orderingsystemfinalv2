@@ -36,5 +36,10 @@ namespace OrderingSystem.Services
         {
             return inventoryReportsRepository.getInvoice();
         }
+
+        public DataView getSupplier()
+        {
+            return inventoryReportsRepository.getSupplier();
+        }
     }
 }

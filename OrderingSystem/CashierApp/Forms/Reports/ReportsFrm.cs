@@ -71,6 +71,11 @@ namespace OrderingSystem.CashierApp.Forms
                     title = "Invoice Report";
                     reportInvoice();
                     break;
+                case "Suppliers":
+                    typePdf = "Rotate";
+                    title = "Suppliers";
+                    reportSuppliers();
+                    break;
             }
             ;
 
@@ -78,6 +83,9 @@ namespace OrderingSystem.CashierApp.Forms
 
             dataGrid.Refresh();
         }
+
+
+
         private void cb_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb.SelectedIndex == -1) return;
@@ -112,6 +120,11 @@ namespace OrderingSystem.CashierApp.Forms
             {
                 txt.PlaceholderText = "Invoice Record";
                 view = inventoryServices.getInvoice();
+            }
+            else if (s == "Suppliers")
+            {
+                txt.PlaceholderText = "Supplier name";
+                view = inventoryServices.getSupplier();
             }
             dataGrid.DataSource = view;
             dataGrid.Refresh();
@@ -169,6 +182,66 @@ namespace OrderingSystem.CashierApp.Forms
 
         }
 
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            DataTable table = view.ToTable();
+            using (var save = new SaveFileDialog { Filter = "PDF File|*.pdf", FileName = $"{title + " - " + DateTime.Now.ToString("yyyy-MM-dd")}" })
+            {
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    using (var doc = new Document(typePdf == "Normal" ? PageSize.A4 : PageSize.A4.Rotate(), 10f, 10f, 20f, 20f))
+                    {
+                        PdfWriter.GetInstance(doc, new FileStream(save.FileName, FileMode.Create));
+                        doc.Open();
+
+                        Font headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14);
+                        Font normalFont = FontFactory.GetFont(FontFactory.HELVETICA, 12);
+
+                        doc.Add(new Paragraph("Report: " + title, headerFont));
+                        doc.Add(new Paragraph("Requested By: " + SessionStaffData.getFullName(), normalFont));
+                        doc.Add(new Paragraph("Date: " + DateTime.Now.ToString("yyyy-MM-dd"), normalFont));
+                        doc.Add(new Paragraph(" "));
+                        doc.Add(new Paragraph(" "));
+
+                        PdfPTable pdfTable = new PdfPTable(table.Columns.Count);
+                        pdfTable.WidthPercentage = 100;
+
+                        Font columnHeaderFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10);
+                        foreach (DataColumn column in table.Columns)
+                        {
+                            PdfPCell headerCell = new PdfPCell(new Phrase(column.ColumnName, columnHeaderFont));
+                            headerCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                            headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                            headerCell.Padding = 6f;
+                            headerCell.MinimumHeight = 20;
+                            headerCell.BackgroundColor = new BaseColor(220, 220, 220);
+                            headerCell.BorderWidth = 0.3f;
+                            headerCell.BorderColor = new BaseColor(180, 180, 180);
+                            pdfTable.AddCell(headerCell);
+                        }
+
+                        foreach (DataRow row in table.Rows)
+                        {
+                            foreach (var cell in row.ItemArray)
+                            {
+                                PdfPCell dataCell = new PdfPCell(new Phrase(cell?.ToString() ?? ""));
+                                dataCell.Padding = 5f;
+                                dataCell.MinimumHeight = 16f;
+                                dataCell.BackgroundColor = new BaseColor(245, 245, 245);
+                                dataCell.BorderWidth = 0.3f;
+                                dataCell.BorderColor = new BaseColor(200, 200, 200);
+                                pdfTable.AddCell(dataCell);
+                            }
+                        }
+
+                        doc.Add(pdfTable);
+                        doc.Close();
+                    }
+                    MessageBox.Show("Report saved to PDF", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
         // -- REPORTS
         private void reportTrackQuantity()
         {
@@ -243,64 +316,17 @@ namespace OrderingSystem.CashierApp.Forms
             view.RowFilter = finalFilter;
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void reportSuppliers()
         {
-            DataTable table = view.ToTable();
-            using (var save = new SaveFileDialog { Filter = "PDF File|*.pdf", FileName = $"{title + " - " + DateTime.Now.ToString("yyyy-MM-dd")}" })
-            {
-                if (save.ShowDialog() == DialogResult.OK)
-                {
-                    using (var doc = new Document(typePdf == "Normal" ? PageSize.A4 : PageSize.A4.Rotate(), 10f, 10f, 20f, 20f))
-                    {
-                        PdfWriter.GetInstance(doc, new FileStream(save.FileName, FileMode.Create));
-                        doc.Open();
+            p1.Visible = true;
+            p2.Visible = false;
+            dtTo.Value = DateTime.Now;
 
-                        Font headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14);
-                        Font normalFont = FontFactory.GetFont(FontFactory.HELVETICA, 12);
-
-                        doc.Add(new Paragraph("Report: " + title, headerFont));
-                        doc.Add(new Paragraph("Requested By: " + SessionStaffData.getFullName(), normalFont));
-                        doc.Add(new Paragraph("Date: " + DateTime.Now.ToString("yyyy-MM-dd"), normalFont));
-                        doc.Add(new Paragraph(" "));
-                        doc.Add(new Paragraph(" "));
-
-                        PdfPTable pdfTable = new PdfPTable(table.Columns.Count);
-                        pdfTable.WidthPercentage = 100;
-
-                        Font columnHeaderFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10);
-                        foreach (DataColumn column in table.Columns)
-                        {
-                            PdfPCell headerCell = new PdfPCell(new Phrase(column.ColumnName, columnHeaderFont));
-                            headerCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                            headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                            headerCell.Padding = 6f;
-                            headerCell.MinimumHeight = 20;
-                            headerCell.BackgroundColor = new BaseColor(220, 220, 220);
-                            headerCell.BorderWidth = 0.3f;
-                            headerCell.BorderColor = new BaseColor(180, 180, 180);
-                            pdfTable.AddCell(headerCell);
-                        }
-
-                        foreach (DataRow row in table.Rows)
-                        {
-                            foreach (var cell in row.ItemArray)
-                            {
-                                PdfPCell dataCell = new PdfPCell(new Phrase(cell?.ToString() ?? ""));
-                                dataCell.Padding = 5f;
-                                dataCell.MinimumHeight = 16f;
-                                dataCell.BackgroundColor = new BaseColor(245, 245, 245);
-                                dataCell.BorderWidth = 0.3f;
-                                dataCell.BorderColor = new BaseColor(200, 200, 200);
-                                pdfTable.AddCell(dataCell);
-                            }
-                        }
-
-                        doc.Add(pdfTable);
-                        doc.Close();
-                    }
-                    MessageBox.Show("Report saved to PDF", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+            string dateFilter = $"[Recently Supplied] >= '{dtFrom.Value}' AND [Recently Supplied] <= '{dtTo.Value}'";
+            string supplerFilter = string.IsNullOrEmpty(txt.Text) ? "" : $"[Supplier Name] LIKE '%{txt.Text}%'";
+            string finalFilter = string.Join(" AND ", new[] { supplerFilter, dateFilter }.Where(f => !string.IsNullOrEmpty(f)));
+            view.RowFilter = finalFilter;
         }
+
     }
 }

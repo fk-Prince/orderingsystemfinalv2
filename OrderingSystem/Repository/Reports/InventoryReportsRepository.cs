@@ -231,5 +231,41 @@ namespace OrderingSystem.Repository.Reports
                 db.closeConnection();
             }
         }
+
+        public DataView getSupplier()
+        {
+            var db = DatabaseHandler.getInstance();
+            string query = @"
+                        SELECT s.supplier_name AS 'Supplier Name',i.ingredient_name AS 'Ingredeint Name',SUM(mi.quantity) AS 'Total Supplied', MAX(si.date_supplied) AS 'Recently Supplied' FROM suppliers s
+                        INNER JOIN supplier_ingredient_stock si ON si.supplier_id = s.supplier_id 
+                        INNER JOIN monitor_inventory mi ON mi.ingredient_stock_id = si.ingredient_stock_id
+                        INNER JOIN ingredient_stock oss ON mi.ingredient_stock_id = oss.ingredient_stock_id
+                        INNER JOIN ingredients i ON i.ingredient_id = oss.ingredient_id
+                        GROUP BY s.supplier_name,i.ingredient_name
+                        ORDER BY CASE WHEN s.supplier_name = 'N/A' THEN 1 ELSE 0 END, s.supplier_name
+                        ";
+            DataTable dt = new DataTable();
+            try
+            {
+                var conn = db.getConnection();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    using (var adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+                DataView view = new DataView(dt);
+                return view;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+        }
     }
 }
