@@ -87,6 +87,7 @@ namespace OrderingSystem.CashierApp.Forms.FactoryForm
                 f4.l4.Text = "Reason";
                 f4.b1.Text = "Submit";
                 f4.title.Text = "Deduct Ingredients";
+                f4.t6.Tag = "Optional";
             }
             else if (fx is PopupForm f5 && type.ToLower() == "update-ingredients")
             {

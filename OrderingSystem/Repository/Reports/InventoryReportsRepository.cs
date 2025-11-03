@@ -241,6 +241,7 @@ namespace OrderingSystem.Repository.Reports
                         INNER JOIN monitor_inventory mi ON mi.ingredient_stock_id = si.ingredient_stock_id
                         INNER JOIN ingredient_stock oss ON mi.ingredient_stock_id = oss.ingredient_stock_id
                         INNER JOIN ingredients i ON i.ingredient_id = oss.ingredient_id
+                        WHERE mi.type = 'Add'
                         GROUP BY s.supplier_name,i.ingredient_name
                         ORDER BY CASE WHEN s.supplier_name = 'N/A' THEN 1 ELSE 0 END, s.supplier_name
                         ";
