@@ -460,5 +460,6 @@ namespace OrderingSystem
             date.Text = DateTime.Now.ToString("yyyy, MMMM dd");
             week.Text = DateTime.Now.DayOfWeek.ToString();
         }
+
     }
 }

@@ -19,6 +19,7 @@ namespace OrderingSystem.KioskApplication.Component
             BackColor = Color.Transparent;
             FillColor = ColorTranslator.FromHtml("#DBEAFE");
             BorderThickness = 2;
+            BorderRadius = 10;
             Margin = new Padding(0, 0, 0, 0);
             catSelected = new List<int>();
             catR = new List<MyRadioButton2>();

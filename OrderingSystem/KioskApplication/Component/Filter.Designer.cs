@@ -115,7 +115,7 @@
             // Filter
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(231, 493);
+            this.ClientSize = new System.Drawing.Size(231, 483);
             this.Controls.Add(this.fb);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.flow);

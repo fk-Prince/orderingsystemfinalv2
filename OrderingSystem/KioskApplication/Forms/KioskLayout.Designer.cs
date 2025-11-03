@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KioskLayout));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.catFlow = new Guna.UI2.WinForms.Guna2Panel();
+            this.week = new System.Windows.Forms.Label();
             this.cartPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.flowCart = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
@@ -51,35 +54,32 @@
             this.orderCount = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.week = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
-            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.time = new System.Windows.Forms.Label();
-            this.catFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.xxx = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel9 = new Guna.UI2.WinForms.Guna2Panel();
             this.count2 = new System.Windows.Forms.Label();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.time = new System.Windows.Forms.Label();
             this.flowMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.t = new System.Windows.Forms.Timer(this.components);
             this.debouncing = new System.Windows.Forms.Timer(this.components);
             this.cc = new System.Windows.Forms.Timer(this.components);
             this.dt = new System.Windows.Forms.Timer(this.components);
             this.guna2Panel1.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
             this.cartPanel.SuspendLayout();
             this.guna2Panel8.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
             this.guna2Panel6.SuspendLayout();
             this.guna2Panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            this.guna2Panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.xxx.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -88,14 +88,53 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
+            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.Controls.Add(this.week);
             this.guna2Panel1.Controls.Add(this.cartPanel);
-            this.guna2Panel1.Controls.Add(this.guna2Panel3);
+            this.guna2Panel1.Controls.Add(this.date);
             this.guna2Panel1.Controls.Add(this.xxx);
+            this.guna2Panel1.Controls.Add(this.guna2PictureBox4);
+            this.guna2Panel1.Controls.Add(this.time);
             this.guna2Panel1.Controls.Add(this.flowMenu);
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1300, 700);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel2.BorderRadius = 20;
+            this.guna2Panel2.Controls.Add(this.catFlow);
+            this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(159)))), ((int)(((byte)(249)))));
+            this.guna2Panel2.Location = new System.Drawing.Point(12, 168);
+            this.guna2Panel2.MaximumSize = new System.Drawing.Size(258, 514);
+            this.guna2Panel2.MinimumSize = new System.Drawing.Size(258, 514);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(258, 514);
+            this.guna2Panel2.TabIndex = 4;
+            // 
+            // catFlow
+            // 
+            this.catFlow.BackColor = System.Drawing.Color.Transparent;
+            this.catFlow.BorderRadius = 10;
+            this.catFlow.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.catFlow.Location = new System.Drawing.Point(14, 15);
+            this.catFlow.Name = "catFlow";
+            this.catFlow.Size = new System.Drawing.Size(229, 483);
+            this.catFlow.TabIndex = 5;
+            // 
+            // week
+            // 
+            this.week.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.week.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.week.Location = new System.Drawing.Point(42, 98);
+            this.week.Name = "week";
+            this.week.Size = new System.Drawing.Size(134, 17);
+            this.week.TabIndex = 12;
+            this.week.Text = "Wednesday";
+            this.week.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cartPanel
             // 
@@ -348,84 +387,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Order Details";
             // 
-            // guna2Panel3
-            // 
-            this.guna2Panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Panel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
-            this.guna2Panel3.BorderThickness = 1;
-            this.guna2Panel3.Controls.Add(this.week);
-            this.guna2Panel3.Controls.Add(this.date);
-            this.guna2Panel3.Controls.Add(this.guna2PictureBox4);
-            this.guna2Panel3.Controls.Add(this.time);
-            this.guna2Panel3.Controls.Add(this.catFlow);
-            this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2Panel3.MaximumSize = new System.Drawing.Size(230, 2000);
-            this.guna2Panel3.MinimumSize = new System.Drawing.Size(230, 700);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(230, 700);
-            this.guna2Panel3.TabIndex = 2;
-            // 
-            // week
-            // 
-            this.week.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.week.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.week.Location = new System.Drawing.Point(46, 103);
-            this.week.Name = "week";
-            this.week.Size = new System.Drawing.Size(134, 17);
-            this.week.TabIndex = 12;
-            this.week.Text = "Wednesday";
-            this.week.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // date
             // 
             this.date.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.date.Location = new System.Drawing.Point(41, 85);
+            this.date.Location = new System.Drawing.Point(37, 80);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(147, 20);
             this.date.TabIndex = 10;
             this.date.Text = "2025, October 15 ";
             this.date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // guna2PictureBox4
-            // 
-            this.guna2PictureBox4.AutoRoundedCorners = true;
-            this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
-            this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(63, 8);
-            this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(105, 53);
-            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox4.TabIndex = 9;
-            this.guna2PictureBox4.TabStop = false;
-            // 
-            // time
-            // 
-            this.time.AutoSize = true;
-            this.time.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.time.Location = new System.Drawing.Point(44, 53);
-            this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(144, 32);
-            this.time.TabIndex = 8;
-            this.time.Text = "00:00:00 PM";
-            // 
-            // catFlow
-            // 
-            this.catFlow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.catFlow.Location = new System.Drawing.Point(0, 254);
-            this.catFlow.Margin = new System.Windows.Forms.Padding(0);
-            this.catFlow.MaximumSize = new System.Drawing.Size(230, 2000);
-            this.catFlow.Name = "catFlow";
-            this.catFlow.Size = new System.Drawing.Size(229, 398);
-            this.catFlow.TabIndex = 0;
             // 
             // xxx
             // 
@@ -492,6 +463,29 @@
             this.guna2PictureBox2.UseTransparentBackground = true;
             this.guna2PictureBox2.Click += new System.EventHandler(this.triggerCart);
             // 
+            // guna2PictureBox4
+            // 
+            this.guna2PictureBox4.AutoRoundedCorners = true;
+            this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
+            this.guna2PictureBox4.ImageRotate = 0F;
+            this.guna2PictureBox4.Location = new System.Drawing.Point(59, 3);
+            this.guna2PictureBox4.Name = "guna2PictureBox4";
+            this.guna2PictureBox4.Size = new System.Drawing.Size(105, 53);
+            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox4.TabIndex = 9;
+            this.guna2PictureBox4.TabStop = false;
+            // 
+            // time
+            // 
+            this.time.AutoSize = true;
+            this.time.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.time.Location = new System.Drawing.Point(40, 48);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(144, 32);
+            this.time.TabIndex = 8;
+            this.time.Text = "00:00:00 PM";
+            // 
             // flowMenu
             // 
             this.flowMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -544,6 +538,8 @@
             this.Load += new System.EventHandler(this.KioskLayout_Load);
             this.SizeChanged += new System.EventHandler(this.KioskLayout_SizeChanged);
             this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
+            this.guna2Panel2.ResumeLayout(false);
             this.cartPanel.ResumeLayout(false);
             this.guna2Panel8.ResumeLayout(false);
             this.guna2Panel8.PerformLayout();
@@ -552,13 +548,11 @@
             this.guna2Panel6.PerformLayout();
             this.guna2Panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            this.guna2Panel3.ResumeLayout(false);
-            this.guna2Panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.xxx.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -568,8 +562,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.FlowLayoutPanel flowMenu;
         private Guna.UI2.WinForms.Guna2Panel xxx;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private System.Windows.Forms.FlowLayoutPanel catFlow;
         private Guna.UI2.WinForms.Guna2Panel cartPanel;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
@@ -602,6 +594,8 @@
         private System.Windows.Forms.Label week;
         private System.Windows.Forms.Timer cc;
         private System.Windows.Forms.Timer dt;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2Panel catFlow;
     }
 }
 
