@@ -5,7 +5,7 @@ using OrderingSystem.DatabaseConnection;
 
 namespace OrderingSystem.Repository.Reports
 {
-    public class InventoryReportsRepository : IInventoryReportsRepository
+    public class ReportRepository : IReportRepository
     {
         public DataView getInventoryReports()
         {
@@ -266,6 +266,191 @@ namespace OrderingSystem.Repository.Reports
             {
                 db.closeConnection();
             }
+        }
+
+        public Tuple<string, string> getTransactions(DateTime now)
+        {
+            var db = DatabaseHandler.getInstance();
+            try
+            {
+                using (var conn = db.getConnection())
+                {
+                    string query = @"
+                            WITH totals AS (
+                              SELECT
+                                COALESCE(SUM(CASE 
+                                  WHEN MONTH(available_until) = MONTH(@start_date)
+                                       AND YEAR(available_until) = YEAR(@start_date)
+                                  THEN total_amount ELSE 0 END), 0) AS this_month,
+                                COALESCE(SUM(CASE 
+                                  WHEN MONTH(available_until) = MONTH(DATE_SUB(@start_date, INTERVAL 1 MONTH))
+                                       AND YEAR(available_until) = YEAR(DATE_SUB(@start_date, INTERVAL 1 MONTH))
+                                  THEN total_amount ELSE 0 END), 0) AS last_month
+                              FROM orders
+                              WHERE status = 'Paid'
+                            )
+                            SELECT
+                              this_month,
+                              last_month,
+                              COALESCE(
+                                ROUND(
+                                  CASE 
+                                    WHEN last_month = 0 AND this_month > 0 THEN 100     
+                                    WHEN last_month = 0 AND this_month = 0 THEN 0  
+                                    ELSE ((this_month - last_month) / last_month) * 100
+                                  END, 
+                                  2
+                                ), 0
+                              ) AS percent_change
+                            FROM totals;
+                        ";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@start_date", now);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                decimal thisMOneth = reader.GetDecimal("this_month");
+                                decimal percentChange = reader.GetDecimal("percent_change");
+                                return Tuple.Create(thisMOneth.ToString(), percentChange.ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching transaction data", ex);
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return null;
+        }
+        public Tuple<string, string> getOrders(DateTime now, string x)
+        {
+            var db = DatabaseHandler.getInstance();
+            try
+            {
+                using (var conn = db.getConnection())
+                {
+                    string query = @"
+                              WITH monthly_totals AS (
+                                    SELECT
+                                        COALESCE(SUM(CASE 
+                                            WHEN MONTH(available_until) = MONTH(@start_date)
+                                                 AND YEAR(available_until) = YEAR(@start_date)
+                                            THEN total_amount ELSE 0 END), 0) AS this_month,
+                                        COALESCE(SUM(CASE 
+                                            WHEN MONTH(available_until) = MONTH(DATE_SUB(@start_date, INTERVAL 1 MONTH))
+                                                 AND YEAR(available_until) = YEAR(DATE_SUB(@start_date, INTERVAL 1 MONTH))
+                                            THEN total_amount ELSE 0 END), 0) AS last_month
+                                    FROM orders
+                                    WHERE (@status = '' OR status = @status)
+                                )
+                                SELECT
+                                    this_month,
+                                    last_month,
+                                    COALESCE(
+                                        ROUND(
+                                            CASE 
+                                                WHEN last_month = 0 AND this_month > 0 THEN 100     
+                                                WHEN last_month = 0 AND this_month = 0 THEN 0  
+                                                ELSE ((this_month - last_month) / last_month) * 100
+                                            END, 
+                                            2
+                                        ), 0
+                                    ) AS percent_change
+                                FROM monthly_totals;
+                        ";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@start_date", now);
+                        cmd.Parameters.AddWithValue("@status", x);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                decimal thisMOneth = reader.GetDecimal("this_month");
+                                decimal percentage = reader.GetDecimal("percent_change");
+                                return Tuple.Create(thisMOneth.ToString(), percentage.ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching transaction data", ex);
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return null;
+        }
+
+        public Tuple<string, string> getTotalOrders(DateTime now, string x)
+        {
+            var db = DatabaseHandler.getInstance();
+            try
+            {
+                using (var conn = db.getConnection())
+                {
+                    string query = @"
+                            WITH monthly_totals AS (
+                                SELECT
+                                    COUNT(CASE 
+                                        WHEN MONTH(available_until) = MONTH(@start_date)
+                                             AND YEAR(available_until) = YEAR(@start_date)
+                                        THEN 1 END) AS this_month,
+                                    COUNT(CASE 
+                                        WHEN MONTH(available_until) = MONTH(DATE_SUB(@start_date, INTERVAL 1 MONTH))
+                                             AND YEAR(available_until) = YEAR(DATE_SUB(@start_date, INTERVAL 1 MONTH))
+                                        THEN 1 END) AS last_month
+                                FROM orders
+                                WHERE (@status = '' OR status = @status)
+                            )
+                            SELECT
+                                this_month,
+                                last_month,
+                                COALESCE((this_month - last_month), 0) AS change_value
+                            FROM monthly_totals;
+                        ";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@start_date", now);
+                        cmd.Parameters.AddWithValue("@status", x);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int thisMonth = reader.GetInt32("this_month");
+                                int changeValue = reader.GetInt32("change_value");
+
+                                return Tuple.Create(thisMonth.ToString(), changeValue.ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return null;
         }
     }
 }

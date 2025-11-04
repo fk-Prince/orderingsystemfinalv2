@@ -1,15 +1,15 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using OrderingSystem.Repository.Reports;
 
 namespace OrderingSystem.Services
 {
     public class ReportServices
     {
-        private IInventoryReportsRepository inventoryReportsRepository;
-        public ReportServices(IInventoryReportsRepository inventoryReportsRepository)
+        private IReportRepository inventoryReportsRepository;
+        public ReportServices(IReportRepository inventoryReportsRepository)
         {
             this.inventoryReportsRepository = inventoryReportsRepository;
-
         }
         public DataView getTrackingIngredients()
         {
@@ -40,6 +40,21 @@ namespace OrderingSystem.Services
         public DataView getSupplier()
         {
             return inventoryReportsRepository.getSupplier();
+        }
+
+        public Tuple<string, string> getTransactionByDate(DateTime date)
+        {
+
+            return inventoryReportsRepository.getTransactions(date);
+        }
+        public Tuple<string, string> getOrders(DateTime date, string type)
+        {
+            return inventoryReportsRepository.getOrders(date, type);
+        }
+
+        public Tuple<string, string> getTotalOrderByType(DateTime date, string type)
+        {
+            return inventoryReportsRepository.getTotalOrders(date, type);
         }
     }
 }

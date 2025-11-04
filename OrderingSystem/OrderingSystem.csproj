@@ -365,6 +365,12 @@
     <Compile Include="CashierApp\Forms\Staffs\StaffInformation.Designer.cs">
       <DependentUpon>StaffInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="CashierApp\Layout\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashierApp\Layout\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="CashierApp\Layout\LoginLayout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -605,8 +611,8 @@
     <Compile Include="Repository\KioskMenu\KioskMenuRepository.cs" />
     <Compile Include="Repository\Orders\IOrderRepository.cs" />
     <Compile Include="Repository\Orders\OrderRepository.cs" />
-    <Compile Include="Repository\Reports\IInventoryReportsRepository.cs" />
-    <Compile Include="Repository\Reports\InventoryReportsRepository.cs" />
+    <Compile Include="Repository\Reports\IReportRepository.cs" />
+    <Compile Include="Repository\Reports\ReportRepository.cs" />
     <Compile Include="Repository\Staff\IStaffRepository.cs" />
     <Compile Include="Repository\Staff\StaffRepository.cs" />
     <Compile Include="Services\CartServices.cs" />
@@ -658,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CashierApp\Forms\Staffs\StaffInformation.resx">
       <DependentUpon>StaffInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashierApp\Layout\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CashierApp\Layout\LoginLayout.resx">
       <DependentUpon>LoginLayout.cs</DependentUpon>
@@ -832,6 +841,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\id.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trans.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\decrease.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\increase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\even.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orderb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

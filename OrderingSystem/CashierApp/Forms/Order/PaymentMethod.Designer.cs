@@ -169,7 +169,6 @@
             this.total.Size = new System.Drawing.Size(195, 27);
             this.total.TabIndex = 12;
             this.total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.total.TextChanged += new System.EventHandler(this.total_TextChanged);
             // 
             // l2
             // 

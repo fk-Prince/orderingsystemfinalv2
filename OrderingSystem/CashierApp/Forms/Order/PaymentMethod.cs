@@ -126,10 +126,5 @@ namespace OrderingSystem.CashierApp.Forms.Order
                 calculateChange(p);
             }
         }
-
-        private void total_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
