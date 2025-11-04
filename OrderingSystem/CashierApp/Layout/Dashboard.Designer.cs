@@ -28,59 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.transactionP = new System.Windows.Forms.Label();
+            this.transactionI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.transactionT = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.orderP = new System.Windows.Forms.Label();
+            this.orderI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.orderT = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.comP = new System.Windows.Forms.Label();
+            this.comI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.comT = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.coP = new System.Windows.Forms.Label();
+            this.coI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.coT = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.poP = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.poI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.poT = new System.Windows.Forms.Label();
-            this.date = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.transactionI = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.orderI = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.comI = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.coI = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.poI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.date = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.flowLayoutPanel1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            this.guna2Panel4.SuspendLayout();
-            this.guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
+            this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
+            this.guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.poI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -135,6 +134,17 @@
             this.transactionP.TabIndex = 5;
             this.transactionP.Text = "%";
             // 
+            // transactionI
+            // 
+            this.transactionI.Image = global::OrderingSystem.Properties.Resources.even;
+            this.transactionI.ImageRotate = 0F;
+            this.transactionI.Location = new System.Drawing.Point(183, 57);
+            this.transactionI.Name = "transactionI";
+            this.transactionI.Size = new System.Drawing.Size(27, 33);
+            this.transactionI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.transactionI.TabIndex = 6;
+            this.transactionI.TabStop = false;
+            // 
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -176,6 +186,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Total Transactions";
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::OrderingSystem.Properties.Resources.trans;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(11, 8);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(32, 34);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
@@ -207,6 +228,17 @@
             this.orderP.TabIndex = 7;
             this.orderP.Text = "0";
             // 
+            // orderI
+            // 
+            this.orderI.Image = global::OrderingSystem.Properties.Resources.even;
+            this.orderI.ImageRotate = 0F;
+            this.orderI.Location = new System.Drawing.Point(183, 57);
+            this.orderI.Name = "orderI";
+            this.orderI.Size = new System.Drawing.Size(27, 33);
+            this.orderI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.orderI.TabIndex = 8;
+            this.orderI.TabStop = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -237,6 +269,17 @@
             this.label6.Size = new System.Drawing.Size(75, 15);
             this.label6.TabIndex = 5;
             this.label6.Text = "Total Orders";
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::OrderingSystem.Properties.Resources.orderb;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(13, 8);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(32, 34);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 4;
+            this.guna2PictureBox2.TabStop = false;
             // 
             // guna2Panel3
             // 
@@ -280,6 +323,17 @@
             this.comP.TabIndex = 9;
             this.comP.Text = "0";
             // 
+            // comI
+            // 
+            this.comI.Image = global::OrderingSystem.Properties.Resources.even;
+            this.comI.ImageRotate = 0F;
+            this.comI.Location = new System.Drawing.Point(183, 57);
+            this.comI.Name = "comI";
+            this.comI.Size = new System.Drawing.Size(27, 33);
+            this.comI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.comI.TabIndex = 10;
+            this.comI.TabStop = false;
+            // 
             // comT
             // 
             this.comT.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -299,6 +353,17 @@
             this.label8.Size = new System.Drawing.Size(102, 15);
             this.label8.TabIndex = 9;
             this.label8.Text = "Complete Orders";
+            // 
+            // guna2PictureBox3
+            // 
+            this.guna2PictureBox3.Image = global::OrderingSystem.Properties.Resources.orderC;
+            this.guna2PictureBox3.ImageRotate = 0F;
+            this.guna2PictureBox3.Location = new System.Drawing.Point(13, 8);
+            this.guna2PictureBox3.Name = "guna2PictureBox3";
+            this.guna2PictureBox3.Size = new System.Drawing.Size(32, 34);
+            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox3.TabIndex = 8;
+            this.guna2PictureBox3.TabStop = false;
             // 
             // guna2Panel4
             // 
@@ -331,6 +396,17 @@
             this.coP.TabIndex = 12;
             this.coP.Text = "0";
             // 
+            // coI
+            // 
+            this.coI.Image = global::OrderingSystem.Properties.Resources.even;
+            this.coI.ImageRotate = 0F;
+            this.coI.Location = new System.Drawing.Point(183, 57);
+            this.coI.Name = "coI";
+            this.coI.Size = new System.Drawing.Size(27, 33);
+            this.coI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.coI.TabIndex = 13;
+            this.coI.TabStop = false;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -361,6 +437,17 @@
             this.label11.Size = new System.Drawing.Size(96, 15);
             this.label11.TabIndex = 9;
             this.label11.Text = "Cancelled Order";
+            // 
+            // guna2PictureBox4
+            // 
+            this.guna2PictureBox4.Image = global::OrderingSystem.Properties.Resources.cance;
+            this.guna2PictureBox4.ImageRotate = 0F;
+            this.guna2PictureBox4.Location = new System.Drawing.Point(13, 8);
+            this.guna2PictureBox4.Name = "guna2PictureBox4";
+            this.guna2PictureBox4.Size = new System.Drawing.Size(32, 34);
+            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox4.TabIndex = 8;
+            this.guna2PictureBox4.TabStop = false;
             // 
             // guna2Panel5
             // 
@@ -404,6 +491,17 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Vs Last Month";
             // 
+            // poI
+            // 
+            this.poI.Image = global::OrderingSystem.Properties.Resources.even;
+            this.poI.ImageRotate = 0F;
+            this.poI.Location = new System.Drawing.Point(183, 57);
+            this.poI.Name = "poI";
+            this.poI.Size = new System.Drawing.Size(27, 33);
+            this.poI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.poI.TabIndex = 11;
+            this.poI.TabStop = false;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -424,6 +522,17 @@
             this.poT.Size = new System.Drawing.Size(127, 25);
             this.poT.TabIndex = 9;
             // 
+            // guna2PictureBox5
+            // 
+            this.guna2PictureBox5.Image = global::OrderingSystem.Properties.Resources.pen;
+            this.guna2PictureBox5.ImageRotate = 0F;
+            this.guna2PictureBox5.Location = new System.Drawing.Point(13, 8);
+            this.guna2PictureBox5.Name = "guna2PictureBox5";
+            this.guna2PictureBox5.Size = new System.Drawing.Size(32, 34);
+            this.guna2PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox5.TabIndex = 8;
+            this.guna2PictureBox5.TabStop = false;
+            // 
             // date
             // 
             this.date.BorderRadius = 5;
@@ -442,116 +551,6 @@
             this.date.Value = new System.DateTime(2025, 11, 4, 17, 3, 13, 499);
             this.date.ValueChanged += new System.EventHandler(this.date_ValueChanged);
             // 
-            // transactionI
-            // 
-            this.transactionI.Image = global::OrderingSystem.Properties.Resources.even;
-            this.transactionI.ImageRotate = 0F;
-            this.transactionI.Location = new System.Drawing.Point(183, 57);
-            this.transactionI.Name = "transactionI";
-            this.transactionI.Size = new System.Drawing.Size(27, 33);
-            this.transactionI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.transactionI.TabIndex = 6;
-            this.transactionI.TabStop = false;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::OrderingSystem.Properties.Resources.trans;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(11, 8);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(32, 34);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // orderI
-            // 
-            this.orderI.Image = global::OrderingSystem.Properties.Resources.even;
-            this.orderI.ImageRotate = 0F;
-            this.orderI.Location = new System.Drawing.Point(183, 57);
-            this.orderI.Name = "orderI";
-            this.orderI.Size = new System.Drawing.Size(27, 33);
-            this.orderI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.orderI.TabIndex = 8;
-            this.orderI.TabStop = false;
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Image = global::OrderingSystem.Properties.Resources.orderb;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(13, 8);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(32, 34);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 4;
-            this.guna2PictureBox2.TabStop = false;
-            // 
-            // comI
-            // 
-            this.comI.Image = global::OrderingSystem.Properties.Resources.even;
-            this.comI.ImageRotate = 0F;
-            this.comI.Location = new System.Drawing.Point(183, 57);
-            this.comI.Name = "comI";
-            this.comI.Size = new System.Drawing.Size(27, 33);
-            this.comI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.comI.TabIndex = 10;
-            this.comI.TabStop = false;
-            // 
-            // guna2PictureBox3
-            // 
-            this.guna2PictureBox3.Image = global::OrderingSystem.Properties.Resources.orderC;
-            this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(13, 8);
-            this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(32, 34);
-            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox3.TabIndex = 8;
-            this.guna2PictureBox3.TabStop = false;
-            // 
-            // coI
-            // 
-            this.coI.Image = global::OrderingSystem.Properties.Resources.even;
-            this.coI.ImageRotate = 0F;
-            this.coI.Location = new System.Drawing.Point(183, 57);
-            this.coI.Name = "coI";
-            this.coI.Size = new System.Drawing.Size(27, 33);
-            this.coI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.coI.TabIndex = 13;
-            this.coI.TabStop = false;
-            // 
-            // guna2PictureBox4
-            // 
-            this.guna2PictureBox4.Image = global::OrderingSystem.Properties.Resources.cance;
-            this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(13, 8);
-            this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(32, 34);
-            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox4.TabIndex = 8;
-            this.guna2PictureBox4.TabStop = false;
-            // 
-            // poI
-            // 
-            this.poI.Image = global::OrderingSystem.Properties.Resources.even;
-            this.poI.ImageRotate = 0F;
-            this.poI.Location = new System.Drawing.Point(183, 57);
-            this.poI.Name = "poI";
-            this.poI.Size = new System.Drawing.Size(27, 33);
-            this.poI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.poI.TabIndex = 11;
-            this.poI.TabStop = false;
-            // 
-            // guna2PictureBox5
-            // 
-            this.guna2PictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox5.Image")));
-            this.guna2PictureBox5.ImageRotate = 0F;
-            this.guna2PictureBox5.Location = new System.Drawing.Point(13, 8);
-            this.guna2PictureBox5.Name = "guna2PictureBox5";
-            this.guna2PictureBox5.Size = new System.Drawing.Size(32, 34);
-            this.guna2PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox5.TabIndex = 8;
-            this.guna2PictureBox5.TabStop = false;
-            // 
             // Dashboard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -568,22 +567,22 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
-            this.guna2Panel3.ResumeLayout(false);
-            this.guna2Panel3.PerformLayout();
-            this.guna2Panel4.ResumeLayout(false);
-            this.guna2Panel4.PerformLayout();
-            this.guna2Panel5.ResumeLayout(false);
-            this.guna2Panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            this.guna2Panel3.ResumeLayout(false);
+            this.guna2Panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
+            this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
+            this.guna2Panel5.ResumeLayout(false);
+            this.guna2Panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.poI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).EndInit();
             this.ResumeLayout(false);
