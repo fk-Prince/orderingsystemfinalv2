@@ -468,5 +468,13 @@ namespace OrderingSystem
             week.Text = DateTime.Now.DayOfWeek.ToString();
         }
 
+        private void guna2PictureBox4_Click(object sender, EventArgs e)
+        {
+            orderList.Clear();
+            flowCart.Controls.Clear();
+            displayTotal(this, EventArgs.Empty);
+            Dashboard f = this.Parent.Parent as Dashboard;
+            f.reset();
+        }
     }
 }

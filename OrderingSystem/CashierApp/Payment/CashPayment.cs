@@ -22,8 +22,6 @@ namespace OrderingSystem.CashierApp.Payment
             return this.amount = amount;
         }
 
-
-
         public bool processPayment(OrderModel order, double cashReceived)
         {
             if (SessionStaffData.StaffData == null)

@@ -5,7 +5,6 @@ using Guna.UI2.WinForms;
 using OrderingSystem.CashierApp.Forms;
 using OrderingSystem.CashierApp.SessionData;
 using OrderingSystem.Exceptions;
-using OrderingSystem.KioskApplication.Forms;
 using OrderingSystem.Model;
 using OrderingSystem.Repository.Staff;
 
@@ -97,11 +96,8 @@ namespace OrderingSystem.CashierApp.Layout
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             Hide();
-            //KioskLayout k = new KioskLayout();
-            //k.Show();
-            Dashboard d = new Dashboard();
+            KioskApplication.Forms.Dashboard d = new KioskApplication.Forms.Dashboard();
             d.Show();
-
         }
     }
 }
