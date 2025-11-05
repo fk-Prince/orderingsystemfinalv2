@@ -255,6 +255,7 @@ namespace OrderingSystem.CashierApp.Components
                 table.Columns.Add("Size");
                 table.Columns.Add("Prep Estimated Time");
                 table.Columns.Add("Price");
+                table.Columns.Add("Price After Tax");
                 table.Columns.Add("Price After Tax / Discount");
             }
 
@@ -265,6 +266,7 @@ namespace OrderingSystem.CashierApp.Components
                     v.SizeName,
                     v.EstimatedTime,
                     v.MenuPrice,
+                    v.getPriceAfterVat().ToString("N2"),
                     v.getPriceAfterVatWithDiscount().ToString("N2")
                 );
             }
