@@ -172,7 +172,6 @@ namespace OrderingSystem.CashierApp.Layout
 
             if (percent > 0)
             {
-                MessageBox.Show("Xdxd");
                 percentLabel.Text = $"+{percent:N0}%";
                 percentLabel.ForeColor = Color.Green;
                 picture.Image = Properties.Resources.increase;
