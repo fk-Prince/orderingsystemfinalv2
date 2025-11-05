@@ -12,6 +12,7 @@ namespace OrderingSystem.CashierApp.Components
     {
         private DataTable table;
         private readonly IngredientServices ingredientServices;
+        private bool xd;
         private DataView view;
         private List<IngredientModel> ingredientList;
         private List<IngredientModel> ingredientSelected;
@@ -33,6 +34,12 @@ namespace OrderingSystem.CashierApp.Components
                 MessageBox.Show("Internal Server Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public void hideNotSelected()
+        {
+            view.RowFilter = "Quantity IS NOT NULL AND Quantity <> 0";
+        }
+
         public void getIngredient()
         {
             try
@@ -98,6 +105,7 @@ namespace OrderingSystem.CashierApp.Components
         }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            view.RowFilter = "Quantity >= 0";
             dataGrid.Enabled = true;
             table.Rows.Clear();
             table.Columns.Clear();

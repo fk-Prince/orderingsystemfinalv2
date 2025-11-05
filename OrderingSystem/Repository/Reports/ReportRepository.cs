@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using MySqlConnector;
 using OrderingSystem.DatabaseConnection;
@@ -395,7 +396,6 @@ namespace OrderingSystem.Repository.Reports
             }
             return null;
         }
-
         public Tuple<string, string> getTotalOrders(DateTime now, string x)
         {
             var db = DatabaseHandler.getInstance();
@@ -415,7 +415,7 @@ namespace OrderingSystem.Repository.Reports
                                              AND YEAR(available_until) = YEAR(DATE_SUB(@start_date, INTERVAL 1 MONTH))
                                         THEN 1 END) AS last_month
                                 FROM orders
-                                WHERE (@status = '' OR status = @status)
+                                WHERE (@status = '' OR status = @status OR (@status = 'cancelled' AND status = 'voided'))
                             )
                             SELECT
                                 this_month,
@@ -451,6 +451,67 @@ namespace OrderingSystem.Repository.Reports
                 db.closeConnection();
             }
             return null;
+        }
+        public List<Tuple<DateTime, int, int, int>> getOrderMonthly()
+        {
+            string query = @"
+                  WITH RECURSIVE date_sequence AS (
+                    SELECT DATE_FORMAT(CURRENT_DATE, '%Y-%m-01') AS `Order-Date`
+                    UNION ALL
+                    SELECT DATE_ADD(`Order-Date`, INTERVAL 1 DAY)
+                    FROM date_sequence
+                    WHERE `Order-Date` < CURRENT_DATE 
+                )
+                SELECT 
+                    ds.`Order-Date`,
+                    COALESCE(COUNT(o.order_id), 0) AS 'Total Orders',
+                    COALESCE(SUM(CASE WHEN o.status = 'Paid' THEN 1 ELSE 0 END), 0) AS 'Paid Orders',
+                    COALESCE(SUM(CASE WHEN o.status = 'Cancelled' OR o.status = 'Voided' THEN 1 ELSE 0 END), 0) AS 'Cancelled Orders'
+                FROM 
+                    date_sequence ds
+                LEFT JOIN 
+                    orders o 
+                    ON DATE_FORMAT(DATE_SUB(o.available_until, INTERVAL 30 MINUTE), '%Y-%m-%d') = ds.`Order-Date`
+                WHERE 
+                    YEAR(ds.`Order-Date`) = YEAR(CURDATE()) 
+                    AND MONTH(ds.`Order-Date`) = MONTH(CURDATE())
+                GROUP BY 
+                    ds.`Order-Date`
+                ORDER BY 
+                    ds.`Order-Date`;
+                ";
+
+            var result = new List<Tuple<DateTime, int, int, int>>();
+            var db = DatabaseHandler.getInstance();
+            try
+            {
+                using (var connection = db.getConnection())
+                {
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DateTime orderDate = reader.GetDateTime("Order-Date");
+                                int totalOrders = reader.GetInt32("Total Orders");
+                                int paidOrder = reader.GetInt32("Paid Orders");
+                                int totalCancelled = reader.GetInt32("Cancelled Orders");
+                                result.Add(new Tuple<DateTime, int, int, int>(orderDate, totalOrders, paidOrder, totalCancelled));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return result;
         }
     }
 }

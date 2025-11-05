@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.rating = new Guna.UI2.WinForms.Guna2RatingStar();
             this.transactionP = new System.Windows.Forms.Label();
             this.transactionI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -60,12 +62,16 @@
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.poP = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.poI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.poT = new System.Windows.Forms.Label();
             this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.date = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.chart = new LiveCharts.Wpf.CartesianChart();
+            this.refresh = new System.Windows.Forms.Timer(this.components);
+            this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionI)).BeginInit();
@@ -82,6 +88,7 @@
             this.guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.poI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).BeginInit();
+            this.guna2Panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -108,6 +115,7 @@
             this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.rating);
             this.guna2Panel1.Controls.Add(this.transactionP);
             this.guna2Panel1.Controls.Add(this.transactionI);
             this.guna2Panel1.Controls.Add(this.label12);
@@ -123,6 +131,14 @@
             this.guna2Panel1.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2, 2, 4, 4);
             this.guna2Panel1.Size = new System.Drawing.Size(270, 140);
             this.guna2Panel1.TabIndex = 1;
+            // 
+            // rating
+            // 
+            this.rating.Location = new System.Drawing.Point(143, 107);
+            this.rating.Name = "rating";
+            this.rating.ReadOnly = true;
+            this.rating.Size = new System.Drawing.Size(120, 28);
+            this.rating.TabIndex = 10;
             // 
             // transactionP
             // 
@@ -456,7 +472,6 @@
             this.guna2Panel5.BorderRadius = 10;
             this.guna2Panel5.BorderThickness = 1;
             this.guna2Panel5.Controls.Add(this.poP);
-            this.guna2Panel5.Controls.Add(this.label2);
             this.guna2Panel5.Controls.Add(this.poI);
             this.guna2Panel5.Controls.Add(this.label5);
             this.guna2Panel5.Controls.Add(this.poT);
@@ -479,17 +494,6 @@
             this.poP.Size = new System.Drawing.Size(38, 25);
             this.poP.TabIndex = 10;
             this.poP.Text = "%";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(23, 109);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Vs Last Month";
             // 
             // poI
             // 
@@ -551,11 +555,48 @@
             this.date.Value = new System.DateTime(2025, 11, 4, 17, 3, 13, 499);
             this.date.ValueChanged += new System.EventHandler(this.date_ValueChanged);
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.elementHost1.Location = new System.Drawing.Point(11, 38);
+            this.elementHost1.MaximumSize = new System.Drawing.Size(850, 250);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(850, 221);
+            this.elementHost1.TabIndex = 3;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.chart;
+            // 
+            // refresh
+            // 
+            this.refresh.Interval = 60000;
+            this.refresh.Tick += new System.EventHandler(this.refresh_Tick);
+            // 
+            // guna2Panel6
+            // 
+            this.guna2Panel6.Controls.Add(this.label2);
+            this.guna2Panel6.Controls.Add(this.elementHost1);
+            this.guna2Panel6.Location = new System.Drawing.Point(12, 379);
+            this.guna2Panel6.Name = "guna2Panel6";
+            this.guna2Panel6.Size = new System.Drawing.Size(1054, 268);
+            this.guna2Panel6.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(159)))), ((int)(((byte)(249)))));
+            this.label2.Location = new System.Drawing.Point(8, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(190, 30);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Order this Month";
+            // 
             // Dashboard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1130, 650);
+            this.Controls.Add(this.guna2Panel6);
             this.Controls.Add(this.date);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -585,6 +626,8 @@
             this.guna2Panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.poI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).EndInit();
+            this.guna2Panel6.ResumeLayout(false);
+            this.guna2Panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -610,7 +653,6 @@
         private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox5;
         private System.Windows.Forms.Label label12;
@@ -629,5 +671,11 @@
         private System.Windows.Forms.Label poP;
         private Guna.UI2.WinForms.Guna2PictureBox poI;
         private System.Windows.Forms.Label poT;
+        private Guna.UI2.WinForms.Guna2RatingStar rating;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private LiveCharts.Wpf.CartesianChart chart;
+        private System.Windows.Forms.Timer refresh;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
+        private System.Windows.Forms.Label label2;
     }
 }

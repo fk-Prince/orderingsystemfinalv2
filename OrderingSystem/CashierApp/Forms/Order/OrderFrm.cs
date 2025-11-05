@@ -140,5 +140,14 @@ namespace OrderingSystem.CashierApp.Forms
             }
         }
 
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            OrdersPopup pop = new OrdersPopup(orderServices);
+            DialogResult rs = pop.ShowDialog(this);
+            if (rs == DialogResult.OK)
+            {
+                pop.Hide();
+            }
+        }
     }
 }

@@ -128,6 +128,7 @@ namespace OrderingSystem.CashierApp.Components
                     };
                     im.getIngredientByMenu(variantDetail);
                     im.initTable1();
+                    im.hideNotSelected();
                     im.updateButton.Visible = true;
                     im.confirmButton.Visible = true;
                     DialogResult rs = im.ShowDialog(this);

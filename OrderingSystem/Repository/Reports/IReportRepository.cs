@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace OrderingSystem.Repository.Reports
@@ -17,5 +18,6 @@ namespace OrderingSystem.Repository.Reports
         Tuple<string, string> getOrders(DateTime now, string query);
 
         Tuple<string, string> getTotalOrders(DateTime now, string x);
+        List<Tuple<DateTime, int, int, int>> getOrderMonthly();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using OrderingSystem.Model;
 
 namespace OrderingSystem.Repository
@@ -16,5 +17,7 @@ namespace OrderingSystem.Repository
         List<string> getAvailablePayments();
 
         Tuple<TimeSpan, string> getTimeInvoiceWaiting(string order_id);
+        DataView getOrderView(int offSet);
+        bool voidOrder(string orderId);
     }
 }

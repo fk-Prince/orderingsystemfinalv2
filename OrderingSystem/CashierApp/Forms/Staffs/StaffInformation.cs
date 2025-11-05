@@ -188,6 +188,10 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
                     DialogResult = DialogResult.OK;
                 }
             }
+            catch (InvalidAction ex)
+            {
+                MessageBox.Show(ex.Message, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (InvalidInput ex)
             {
                 MessageBox.Show(ex.Message, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);

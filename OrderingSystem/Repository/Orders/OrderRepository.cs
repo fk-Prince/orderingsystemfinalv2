@@ -309,5 +309,72 @@ namespace OrderingSystem.Repository.Order
             }
             return null;
         }
+
+        public DataView getOrderView(int offSet)
+        {
+            string query = @"
+                    SELECT 
+                        order_id AS 'Order ID',
+                        Total_Amount AS 'Total Amount',
+                        Status AS 'Status',
+                        order_type AS 'Dine-in or Take-Out',
+                        Available_until AS 'Available Until'
+                    FROM orders
+                    LIMIT 50 OFFSET @offSet
+                ";
+
+            var db = DatabaseHandler.getInstance();
+            DataTable dt = new DataTable();
+            try
+            {
+                var conn = db.getConnection();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@offSet", offSet);
+                    using (var adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+                DataView view = new DataView(dt);
+                return view;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+        }
+
+        public bool voidOrder(string orderId)
+        {
+            string query = @"
+                  UPDATE orders SET status = 'Voided' WHERE order_id = @order_id
+                ";
+
+            var db = DatabaseHandler.getInstance();
+            try
+            {
+                var conn = db.getConnection();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@order_id", orderId);
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+        }
     }
 }

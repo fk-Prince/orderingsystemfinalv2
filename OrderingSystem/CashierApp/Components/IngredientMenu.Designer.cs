@@ -75,7 +75,7 @@
             this.search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.search.IconLeft = global::OrderingSystem.Properties.Resources.ss;
             this.search.IconLeftSize = new System.Drawing.Size(25, 25);
-            this.search.Location = new System.Drawing.Point(13, 57);
+            this.search.Location = new System.Drawing.Point(13, 41);
             this.search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.search.MaximumSize = new System.Drawing.Size(229, 36);
             this.search.MaxLength = 255;
@@ -94,7 +94,7 @@
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGrid.ColumnHeadersHeight = 35;
-            this.dataGrid.Location = new System.Drawing.Point(13, 103);
+            this.dataGrid.Location = new System.Drawing.Point(13, 87);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.Size = new System.Drawing.Size(507, 368);
             this.dataGrid.TabIndex = 9;
@@ -111,7 +111,7 @@
             this.updateButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.updateButton.ForeColor = System.Drawing.Color.White;
-            this.updateButton.Location = new System.Drawing.Point(269, 51);
+            this.updateButton.Location = new System.Drawing.Point(269, 35);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(126, 46);
             this.updateButton.TabIndex = 13;
@@ -130,7 +130,7 @@
             this.confirmButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
             this.confirmButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.confirmButton.ForeColor = System.Drawing.Color.White;
-            this.confirmButton.Location = new System.Drawing.Point(401, 51);
+            this.confirmButton.Location = new System.Drawing.Point(401, 35);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(119, 45);
             this.confirmButton.TabIndex = 15;
@@ -145,9 +145,9 @@
             this.guna2PictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2PictureBox1.Image = global::OrderingSystem.Properties.Resources.exit;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(498, 7);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(497, 4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(22, 21);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(27, 22);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 16;
             this.guna2PictureBox1.TabStop = false;
@@ -164,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 479);
+            this.ClientSize = new System.Drawing.Size(532, 468);
             this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.updateButton);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using OrderingSystem.Exceptions;
 using OrderingSystem.Model;
 using OrderingSystem.Repository;
@@ -66,6 +67,14 @@ namespace OrderingSystem.KioskApplication.Services
             return orderRepository.getTimeInvoiceWaiting(order_id);
         }
 
+        public DataView getOrders(int offSet)
+        {
+            return orderRepository.getOrderView(offSet);
+        }
 
+        public bool voidOrder(string orderId)
+        {
+            return orderRepository.voidOrder(orderId);
+        }
     }
 }

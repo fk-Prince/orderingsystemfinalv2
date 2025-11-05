@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using OrderingSystem.Repository.Reports;
 
@@ -55,6 +56,15 @@ namespace OrderingSystem.Services
         public Tuple<string, string> getTotalOrderByType(DateTime date, string type)
         {
             return inventoryReportsRepository.getTotalOrders(date, type);
+        }
+
+        public List<Tuple<DateTime, int, int, int>> getOrderTotal()
+        {
+
+
+
+
+            return inventoryReportsRepository.getOrderMonthly();
         }
     }
 }
