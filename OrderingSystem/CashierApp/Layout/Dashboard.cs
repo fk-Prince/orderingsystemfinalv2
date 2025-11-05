@@ -18,7 +18,6 @@ namespace OrderingSystem.CashierApp.Layout
     public partial class Dashboard : Form
     {
         private readonly ReportServices ir;
-        private Timer chartRefreshTimer;
 
         public Dashboard()
         {
@@ -191,7 +190,6 @@ namespace OrderingSystem.CashierApp.Layout
                 picture.Image = Properties.Resources.even;
             }
         }
-
         private void display(Label total, Label percentLabel, Guna2PictureBox picture, Tuple<string, string> trans, bool reverse = false)
         {
             if (trans == null) return;
@@ -232,8 +230,8 @@ namespace OrderingSystem.CashierApp.Layout
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            chartRefreshTimer?.Stop();
-            chartRefreshTimer?.Dispose();
+            refresh?.Stop();
+            refresh?.Dispose();
             base.OnFormClosing(e);
         }
 
