@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Drawing;
-using Guna.UI2.WinForms;
 using OrderingSystem.Model;
+using UserControl = System.Windows.Forms.UserControl;
 namespace OrderingSystem.KioskApplication.Components
 {
-    public partial class CartCard : Guna2Panel
+    public partial class CartCard : UserControl
     {
         public OrderItemModel menu;
         public event EventHandler<OrderItemModel> addQuantityEvent;
@@ -19,11 +18,11 @@ namespace OrderingSystem.KioskApplication.Components
 
         private void cardLayout()
         {
-            BorderRadius = 5;
-            BorderColor = Color.LightGray;
-            BorderThickness = 1;
-            FillColor = Color.FromArgb(255, 255, 255);
-            BackColor = Color.Transparent;
+            //pp.BorderRadius = 5;
+            //BorderColor = Color.LightGray;
+            //BorderThickness = 1;
+            //FillColor = Color.FromArgb(255, 255, 255);
+            //BackColor = Color.Transparent;
         }
 
         public void displayPurchasedMenu()
@@ -42,7 +41,7 @@ namespace OrderingSystem.KioskApplication.Components
             detail.Text = text;
             qty.Text = menu.PurchaseQty.ToString();
             bb.Text = qty.Text;
-            total.Text = Math.Round((menu.PurchaseMenu.getPriceAfterVatWithDiscount() * menu.PurchaseQty), 2).ToString("N2");
+            total.Text = (Math.Round(menu.PurchaseMenu.getPriceAfterVatWithDiscount(), 2) * menu.PurchaseQty).ToString("N2");
         }
 
         private void addQuantity(object sender, System.EventArgs e)

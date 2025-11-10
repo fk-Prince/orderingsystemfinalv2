@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using OrderingSystem.KioskApplication.Components;
 using OrderingSystem.Model;
 using OrderingSystem.Services;
 
 namespace OrderingSystem.KioskApplication.Layouts
 {
-    public partial class PackageLayout : Guna2Panel
+    public partial class PackageLayout : UserControl
     {
         private string titleOption;
         private string subTitle;
@@ -30,7 +28,6 @@ namespace OrderingSystem.KioskApplication.Layouts
             try
             {
                 menuDetails = kioskMenuServices.getDetailsByPackage(menuDetail);
-                cardLayout();
                 displayFlavor(menuDetail);
             }
             catch (Exception)
@@ -38,14 +35,7 @@ namespace OrderingSystem.KioskApplication.Layouts
                 throw;
             }
         }
-        private void cardLayout()
-        {
-            BorderRadius = 8;
-            BorderColor = Color.LightGray;
-            BorderThickness = 1;
-            FillColor = Color.FromArgb(244, 244, 244);
-            BackColor = Color.Transparent;
-        }
+
         private void displayFlavor(MenuModel menuDetail)
         {
             string t = "Select your menu.";
@@ -67,8 +57,8 @@ namespace OrderingSystem.KioskApplication.Layouts
 
                 FlavorLayout fl = new FlavorLayout(x);
                 fl.Margin = new Padding(0);
-                fl.BorderThickness = 0;
-                fl.BorderRadius = 0;
+                fl.pp.BorderThickness = 0;
+                fl.pp.BorderRadius = 0;
                 fl.FlavorSelected += flavorSelected;
                 fl.setTitle(titleOption, menuDetail.MenuName);
                 fl.setSubTitle(subTitle);
@@ -144,8 +134,8 @@ namespace OrderingSystem.KioskApplication.Layouts
                 subTitle = $"Select Size of your choice.";
                 sc = new SizeLayout(selectedFlavor, x);
                 sc.Margin = new Padding(0);
-                sc.BorderThickness = 0;
-                sc.BorderRadius = 0;
+                sc.pp.BorderThickness = 0;
+                sc.pp.BorderRadius = 0;
                 sc.setTitleOption(titleOption, menuList[0].MenuName);
                 sc.setSubTitle(subTitle);
                 sc.SizeSelected += (s, e) =>

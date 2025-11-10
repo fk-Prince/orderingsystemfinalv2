@@ -28,19 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pp = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.id = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.role = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.Label();
             this.image = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pp.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pp
+            // 
+            this.pp.BackColor = System.Drawing.Color.Transparent;
+            this.pp.BorderRadius = 5;
+            this.pp.BorderThickness = 1;
+            this.pp.Controls.Add(this.guna2Panel1);
+            this.pp.Controls.Add(this.guna2Panel2);
+            this.pp.Controls.Add(this.name);
+            this.pp.Controls.Add(this.image);
+            this.pp.Controls.Add(this.guna2PictureBox1);
+            this.pp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(159)))), ((int)(((byte)(249)))));
+            this.pp.Location = new System.Drawing.Point(0, 0);
+            this.pp.Name = "pp";
+            this.pp.Size = new System.Drawing.Size(203, 320);
+            this.pp.TabIndex = 0;
             // 
             // guna2Panel1
             // 
@@ -51,7 +70,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(11, 168);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(179, 51);
-            this.guna2Panel1.TabIndex = 9;
+            this.guna2Panel1.TabIndex = 14;
             // 
             // id
             // 
@@ -75,6 +94,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ID:";
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.BorderRadius = 5;
+            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::OrderingSystem.Properties.Resources.id;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(203, 320);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 12;
+            this.guna2PictureBox1.TabStop = false;
+            this.guna2PictureBox1.UseTransparentBackground = true;
+            // 
             // guna2Panel2
             // 
             this.guna2Panel2.AutoRoundedCorners = true;
@@ -84,7 +118,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(30, 265);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(144, 30);
-            this.guna2Panel2.TabIndex = 10;
+            this.guna2Panel2.TabIndex = 15;
             // 
             // role
             // 
@@ -106,7 +140,7 @@
             this.name.Location = new System.Drawing.Point(7, 224);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(184, 23);
-            this.name.TabIndex = 11;
+            this.name.TabIndex = 16;
             this.name.Text = "Prince I. Sestoso";
             this.name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -120,54 +154,36 @@
             this.image.Name = "image";
             this.image.Size = new System.Drawing.Size(66, 64);
             this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.image.TabIndex = 8;
+            this.image.TabIndex = 13;
             this.image.TabStop = false;
             this.image.UseTransparentBackground = true;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.BorderRadius = 5;
-            this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::OrderingSystem.Properties.Resources.id;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(203, 320);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 7;
-            this.guna2PictureBox1.TabStop = false;
-            this.guna2PictureBox1.UseTransparentBackground = true;
             // 
             // StaffCard
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(203, 320);
-            this.Controls.Add(this.name);
-            this.Controls.Add(this.guna2Panel2);
-            this.Controls.Add(this.image);
-            this.Controls.Add(this.guna2Panel1);
-            this.Controls.Add(this.guna2PictureBox1);
+            this.Controls.Add(this.pp);
             this.Name = "StaffCard";
-            this.Text = "StaffCard";
+            this.Size = new System.Drawing.Size(203, 320);
+            this.pp.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2PictureBox image;
+
+        private Guna.UI2.WinForms.Guna2Panel pp;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label id;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label role;
         private System.Windows.Forms.Label name;
+        private Guna.UI2.WinForms.Guna2PictureBox image;
     }
 }

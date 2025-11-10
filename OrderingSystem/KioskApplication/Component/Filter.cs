@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using OrderingSystem.Model;
 
 namespace OrderingSystem.KioskApplication.Component
 {
-    public partial class Filter : Guna2Panel
+    public partial class Filter : UserControl
 
     {
         private List<MyRadioButton2> catR;
@@ -16,10 +15,10 @@ namespace OrderingSystem.KioskApplication.Component
         public Filter(List<CategoryModel> cat, double maxPrice)
         {
             InitializeComponent();
-            BackColor = Color.Transparent;
-            FillColor = ColorTranslator.FromHtml("#DBEAFE");
-            BorderThickness = 2;
-            BorderRadius = 10;
+            pp.BackColor = Color.Transparent;
+            pp.FillColor = ColorTranslator.FromHtml("#DBEAFE");
+            pp.BorderThickness = 2;
+            pp.BorderRadius = 10;
             Margin = new Padding(0, 0, 0, 0);
             catSelected = new List<int>();
             catR = new List<MyRadioButton2>();

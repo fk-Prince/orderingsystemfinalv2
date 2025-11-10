@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.check = new Guna.UI2.WinForms.Guna2CheckBox();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.txt = new Guna.UI2.WinForms.Guna2TextBox();
@@ -47,7 +47,7 @@
             this.check.CheckedState.BorderThickness = 0;
             this.check.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.check.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check.Location = new System.Drawing.Point(931, 84);
+            this.check.Location = new System.Drawing.Point(58, 85);
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(127, 19);
             this.check.TabIndex = 3;
@@ -68,14 +68,14 @@
             this.dataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGrid.ColumnHeadersHeight = 35;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGrid.Location = new System.Drawing.Point(58, 107);
             this.dataGrid.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.dataGrid.Name = "dataGrid";
@@ -102,7 +102,7 @@
             this.txt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt.IconLeft = global::OrderingSystem.Properties.Resources.ss;
             this.txt.IconLeftSize = new System.Drawing.Size(25, 25);
-            this.txt.Location = new System.Drawing.Point(58, 59);
+            this.txt.Location = new System.Drawing.Point(58, 37);
             this.txt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt.MaxLength = 255;
             this.txt.Name = "txt";
@@ -117,14 +117,14 @@
             // bb
             // 
             this.bb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bb.BorderRadius = 1;
+            this.bb.BorderRadius = 5;
             this.bb.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.bb.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.bb.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.bb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.bb.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bb.ForeColor = System.Drawing.Color.White;
-            this.bb.Location = new System.Drawing.Point(903, 37);
+            this.bb.Location = new System.Drawing.Point(903, 59);
             this.bb.Name = "bb";
             this.bb.Size = new System.Drawing.Size(155, 41);
             this.bb.TabIndex = 13;

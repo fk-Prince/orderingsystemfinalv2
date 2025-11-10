@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Guna.UI2.WinForms;
 using OrderingSystem.Model;
 
 namespace OrderingSystem.KioskApplication.Components
 {
-    public partial class SizeLayout : Guna2Panel
+    public partial class SizeLayout : System.Windows.Forms.UserControl
     {
         public event EventHandler<MenuModel> SizeSelected;
         private List<MenuModel> menuDetails;
@@ -17,17 +16,8 @@ namespace OrderingSystem.KioskApplication.Components
             InitializeComponent();
             this.selectedFlavor = selectedFlavor;
             this.menuDetails = menuDetails;
-            BorderRadius = 8;
-            BorderColor = Color.LightGray;
-            BorderThickness = 1;
-            Width = 730;
-            FillColor = Color.FromArgb(244, 244, 244);
-            BackColor = Color.Transparent;
-
             displaySizes();
         }
-
-
 
         public void displaySizes()
         {
@@ -87,26 +77,24 @@ namespace OrderingSystem.KioskApplication.Components
                     }
                     SizeSelected?.Invoke(this, m);
                 };
-                Controls.Add(rs);
+                pp.Controls.Add(rs);
                 radioSamples.Add(rs);
                 y += 50;
                 this.Height += 40;
+                pp.Height += 40;
                 isFirst = false;
             }
 
         }
-
         public void setTitleOption(string text, string menu)
         {
             titleOption.Text = text;
             menuName.Text = menu;
         }
-
         public void setSubTitle(string text)
         {
             subtitle.Text = text;
         }
-
         public void defaultSelection()
         {
             if (menuDetails.Count > 0 && radioSamples.Count > 0)

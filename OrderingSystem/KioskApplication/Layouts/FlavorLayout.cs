@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using Guna.UI2.WinForms;
+using System.Windows.Forms;
 using OrderingSystem.Model;
 using Point = System.Drawing.Point;
 
 namespace OrderingSystem.KioskApplication.Components
 {
-    public partial class FlavorLayout : Guna2Panel
+    public partial class FlavorLayout : UserControl
     {
         private List<MenuModel> menuDetails;
         public event EventHandler<MenuModel> FlavorSelected;
@@ -19,16 +18,14 @@ namespace OrderingSystem.KioskApplication.Components
             this.menuDetails = menuDetails;
 
 
-            BorderRadius = 8;
-            BorderColor = Color.LightGray;
-            BorderThickness = 1;
-            Width = 730;
-            FillColor = Color.FromArgb(244, 244, 244);
-            BackColor = Color.Transparent;
+            //BorderRadius = 8;
+            //BorderColor = Color.LightGray;
+            //BorderThickness = 1;
+            //Width = 730;
+            //FillColor = Color.FromArgb(244, 244, 244);
+            //BackColor = Color.Transparent;
 
             displayFlavor();
-
-
         }
 
         public void setTitle(string text, string x)
@@ -100,7 +97,7 @@ namespace OrderingSystem.KioskApplication.Components
                         FlavorSelected?.Invoke(this, null);
                     }
                 };
-                Controls.Add(rs);
+                pp.Controls.Add(rs);
                 radioSamples.Add(rs);
                 y += 50;
                 this.Height += 40;

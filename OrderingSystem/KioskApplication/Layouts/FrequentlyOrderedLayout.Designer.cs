@@ -28,11 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pp = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
+            this.pp.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pp
+            // 
+            this.pp.BackColor = System.Drawing.Color.Transparent;
+            this.pp.BorderColor = System.Drawing.Color.LightGray;
+            this.pp.BorderRadius = 8;
+            this.pp.BorderThickness = 1;
+            this.pp.Controls.Add(this.guna2Panel1);
+            this.pp.Controls.Add(this.title);
+            this.pp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.pp.Location = new System.Drawing.Point(0, 0);
+            this.pp.Name = "pp";
+            this.pp.Size = new System.Drawing.Size(732, 135);
+            this.pp.TabIndex = 5;
             // 
             // guna2Panel1
             // 
@@ -44,7 +61,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(614, 16);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(91, 25);
-            this.guna2Panel1.TabIndex = 4;
+            this.guna2Panel1.TabIndex = 6;
             // 
             // label1
             // 
@@ -66,26 +83,25 @@
             this.title.Location = new System.Drawing.Point(23, 16);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(239, 21);
-            this.title.TabIndex = 3;
+            this.title.TabIndex = 5;
             this.title.Text = "Frequently Ordered Together";
             // 
             // FrequentlyOrderedLayout
             // 
-            this.ClientSize = new System.Drawing.Size(732, 135);
-            this.Controls.Add(this.guna2Panel1);
-            this.Controls.Add(this.title);
+            this.Controls.Add(this.pp);
             this.Name = "FrequentlyOrderedLayout";
-            this.Text = "FrequentlyOrdered";
-            //this.Load += new System.EventHandler(this.FrequentlyOrderedLayout_Load);
+            this.Size = new System.Drawing.Size(732, 135);
+            this.pp.ResumeLayout(false);
+            this.pp.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private Guna.UI2.WinForms.Guna2Panel pp;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label title;

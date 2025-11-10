@@ -301,7 +301,7 @@
       <DependentUpon>BundleMenuPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="CashierApp\Forms\Category\CategoryCard.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CashierApp\Forms\Category\CategoryCard.Designer.cs">
       <DependentUpon>CategoryCard.cs</DependentUpon>
@@ -327,7 +327,7 @@
       <DependentUpon>OrdersPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="CashierApp\Forms\Staffs\StaffCard.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CashierApp\Forms\Staffs\StaffCard.Designer.cs">
       <DependentUpon>StaffCard.cs</DependentUpon>
@@ -419,7 +419,7 @@
       <DependentUpon>VariantMenuPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="CashierApp\Components\MenuCard.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CashierApp\Components\MenuCard.Designer.cs">
       <DependentUpon>MenuCard.cs</DependentUpon>
@@ -474,25 +474,25 @@
     <Compile Include="Exceptions\NotSupportedException.cs" />
     <Compile Include="Exceptions\InvalidAction.cs" />
     <Compile Include="KioskApplication\Component\Filter.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\Filter.Designer.cs">
       <DependentUpon>Filter.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Component\MyRadioButton2.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\MyRadioButton2.Designer.cs">
       <DependentUpon>MyRadioButton2.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Component\OrderCard.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\OrderCard.Designer.cs">
       <DependentUpon>OrderCard.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Component\FrequentlyOrderedCard.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\FrequentlyOrderedCard.Designer.cs">
       <DependentUpon>FrequentlyOrderedCard.cs</DependentUpon>
@@ -503,32 +503,32 @@
     <Compile Include="Exceptions\OrderNotFound.cs" />
     <Compile Include="Exceptions\OutOfOrder.cs" />
     <Compile Include="KioskApplication\Component\MenuCard.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\MenuCard.Designer.cs">
       <DependentUpon>MenuCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\DatabaseHandler.cs" />
     <Compile Include="KioskApplication\Component\MyRadioButton.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\MyRadioButton.Designer.cs">
       <DependentUpon>MyRadioButton.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Component\Note.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\Note.Designer.cs">
       <DependentUpon>Note.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Component\Title.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\Title.Designer.cs">
       <DependentUpon>Title.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Component\CartCard.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Component\CartCard.Designer.cs">
       <DependentUpon>CartCard.cs</DependentUpon>
@@ -572,25 +572,25 @@
     <Compile Include="KioskApplication\Options\PackageOption.cs" />
     <Compile Include="KioskApplication\Options\RegularOption.cs" />
     <Compile Include="KioskApplication\Layouts\FlavorLayout.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Layouts\FlavorLayout.Designer.cs">
       <DependentUpon>FlavorLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Layouts\FrequentlyOrderedLayout.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Layouts\FrequentlyOrderedLayout.Designer.cs">
       <DependentUpon>FrequentlyOrderedLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Layouts\PackageLayout.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Layouts\PackageLayout.Designer.cs">
       <DependentUpon>PackageLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Layouts\SizeLayout.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KioskApplication\Layouts\SizeLayout.Designer.cs">
       <DependentUpon>SizeLayout.cs</DependentUpon>

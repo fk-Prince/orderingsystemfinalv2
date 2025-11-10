@@ -92,6 +92,7 @@
             // cmbCat
             // 
             this.cmbCat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmbCat.FormattingEnabled = true;

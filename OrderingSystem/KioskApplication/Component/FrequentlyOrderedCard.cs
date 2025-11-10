@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
-using Guna.UI2.WinForms;
+using System.Windows.Forms;
 using OrderingSystem.Model;
 namespace OrderingSystem.KioskApplication.Components
 {
-    public partial class FrequentlyOrderedCard : Guna2Panel
+    public partial class FrequentlyOrderedCard : UserControl
     {
         private MenuModel menu;
         public event EventHandler<OrderItemModel> checkedMenu;
@@ -26,8 +26,8 @@ namespace OrderingSystem.KioskApplication.Components
             {
                 if (checkBox.Checked)
                 {
-                    BorderColor = Color.FromArgb(94, 148, 255);
-                    BorderThickness = 2;
+                    pp.BorderColor = Color.FromArgb(94, 148, 255);
+                    pp.BorderThickness = 2;
                     var om = OrderItemModel.Builder()
                         .WithPurchaseMenu(menu)
                         .WithPurchaseQty(1)
@@ -36,8 +36,8 @@ namespace OrderingSystem.KioskApplication.Components
                 }
                 else
                 {
-                    BorderColor = Color.DarkGray;
-                    BorderThickness = 1;
+                    pp.BorderColor = Color.DarkGray;
+                    pp.BorderThickness = 1;
                     var om = OrderItemModel.Builder()
                         .WithPurchaseMenu(menu)
                         .Build();
@@ -56,21 +56,11 @@ namespace OrderingSystem.KioskApplication.Components
         }
         private void cardLayout()
         {
-            BorderRadius = 5;
-            BorderColor = Color.DarkGray;
-            BorderThickness = 1;
-            FillColor = Color.FromArgb(244, 244, 244);
-            BackColor = Color.Transparent;
-        }
-
-        private void checkBoxChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void price_Click(object sender, EventArgs e)
-        {
-
+            pp.BorderRadius = 5;
+            pp.BorderColor = Color.DarkGray;
+            pp.BorderThickness = 1;
+            pp.FillColor = Color.FromArgb(244, 244, 244);
+            pp.BackColor = Color.Transparent;
         }
     }
 }

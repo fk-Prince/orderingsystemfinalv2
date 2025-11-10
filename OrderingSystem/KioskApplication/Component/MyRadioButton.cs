@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using OrderingSystem.Model;
 
 namespace OrderingSystem.KioskApplication.Components
 {
-    public partial class MyRadioButton : Guna2Panel
+    public partial class MyRadioButton : UserControl
     {
         public event EventHandler<MenuModel> RadioCheckedChanged;
         public MyRadioButton(string namex, string xprice, MenuModel m)

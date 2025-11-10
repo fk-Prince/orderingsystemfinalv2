@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using OrderingSystem.CashierApp.Forms.Category;
 using OrderingSystem.Exceptions;
 using OrderingSystem.Model;
@@ -9,7 +8,7 @@ using OrderingSystem.Services;
 
 namespace OrderingSystem.CashierApp.Components
 {
-    public partial class CategoryCard : Guna2Panel
+    public partial class CategoryCard : UserControl
     {
         private CategoryModel c;
         private CategoryServices categoryServices;
@@ -20,15 +19,8 @@ namespace OrderingSystem.CashierApp.Components
             this.categoryServices = categoryServices;
             this.c = c;
             display();
-            layout();
         }
-        private void layout()
-        {
-            BackColor = Color.Transparent;
-            FillColor = Color.FromArgb(242, 242, 242);
-            BorderRadius = 8;
-            ShadowDecoration.Enabled = true;
-        }
+
         private void click(Control c)
         {
             c.Click += update;
@@ -42,8 +34,8 @@ namespace OrderingSystem.CashierApp.Components
         }
         private void hover(Control c)
         {
-            c.MouseEnter += (s, e) => { BorderColor = Color.FromArgb(94, 148, 255); BorderThickness = 2; };
-            c.MouseLeave += (s, e) => { BorderColor = Color.FromArgb(34, 34, 34); BorderThickness = 1; };
+            c.MouseEnter += (s, e) => { pp.BorderColor = Color.FromArgb(94, 148, 255); pp.BorderThickness = 2; };
+            c.MouseLeave += (s, e) => { pp.BorderColor = Color.FromArgb(34, 34, 34); pp.BorderThickness = 1; };
             c.Cursor = Cursors.Hand;
 
             foreach (Control cc in c.Controls)

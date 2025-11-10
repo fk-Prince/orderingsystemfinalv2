@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using OrderingSystem.Model;
 using OrderingSystem.Services;
 
 namespace OrderingSystem.KioskApplication.Cards
 {
-    public partial class MenuCard : Guna2Panel
+    public partial class MenuCard : UserControl
     {
         public readonly MenuModel menu;
         private readonly KioskMenuServices kioskMenuServices;
@@ -20,8 +19,11 @@ namespace OrderingSystem.KioskApplication.Cards
             InitializeComponent();
             this.kioskMenuServices = kioskMenuServices;
             this.menu = menu;
+
             displayMenu();
             cardLayout();
+            handleClicked(pp);
+            hoverEffects(pp);
         }
 
         public void outOfOrder(bool b)
@@ -30,25 +32,25 @@ namespace OrderingSystem.KioskApplication.Cards
         }
         private void cardLayout()
         {
-            dPrice.Text = menu.getPriceAfterVat() != menu.getPriceAfterVatWithDiscount() ? menu.getPriceAfterVatWithDiscount().ToString("C", new CultureInfo("en-PH")) : "0.00";
+            dPrice.Text = menu.getPriceAfterVat() != menu.getPriceAfterVatWithDiscount()
+                ? menu.getPriceAfterVatWithDiscount().ToString("C", new CultureInfo("en-PH"))
+                : "0.00";
             dPrice.Visible = menu.getPriceAfterVatWithDiscount() != menu.getPriceAfterVat();
             v1.Visible = menu.getPriceAfterVatWithDiscount() != menu.getPriceAfterVat();
             v2.Visible = menu.getPriceAfterVatWithDiscount() != menu.getPriceAfterVat();
 
             sale.Visible = ooo.Visible || (menu.Discount != null && menu.Discount.DiscountId != 0);
-
             ooo.Visible = !(menu.MaxOrder <= 0);
-            BorderRadius = 8;
-            BorderThickness = 1;
-            BorderColor = Color.FromArgb(34, 34, 34);
-            FillColor = Color.White;
-            handleClicked(this);
-            hoverEffects(this);
+
+            pp.BorderColor = Color.FromArgb(220, 220, 220);
+            pp.BorderThickness = 1;
+            pp.BackColor = Color.Transparent;
+            pp.FillColor = Color.FromArgb(241, 241, 241);
         }
-        private void menuClicked(object sender, EventArgs b)
+        private void menuClicked(object sender, EventArgs e)
         {
             PopupOption popup = new PopupOption(kioskMenuServices, menu);
-            popup.orderListEvent += (s, e) => orderListEvent?.Invoke(this, e);
+            popup.orderListEvent += (s, args) => orderListEvent?.Invoke(this, args);
             DialogResult res = popup.ShowDialog(this);
             if (res == DialogResult.OK)
                 popup.Hide();
@@ -61,9 +63,24 @@ namespace OrderingSystem.KioskApplication.Cards
         }
         private void hoverEffects(Control c)
         {
-            c.MouseEnter += (s, e) => { BorderColor = Color.FromArgb(94, 148, 255); BorderThickness = 2; };
-            c.MouseLeave += (s, e) => { BorderColor = Color.FromArgb(34, 34, 34); BorderThickness = 1; };
-            c.Cursor = Cursors.Hand;
+            c.MouseEnter += (s, e) =>
+            {
+                pp.BorderRadius = 8;
+                pp.BorderColor = Color.FromArgb(94, 148, 255);
+                pp.BorderThickness = 2;
+                pp.BackColor = Color.Transparent;
+                pp.FillColor = Color.LightGray;
+            };
+
+            c.MouseLeave += (s, e) =>
+            {
+                pp.BorderRadius = 8;
+                pp.BorderColor = Color.FromArgb(220, 220, 220);
+                pp.BorderThickness = 1;
+                pp.BackColor = Color.Transparent;
+                pp.FillColor = Color.FromArgb(241, 241, 241);
+            };
+
             foreach (Control cc in c.Controls)
                 hoverEffects(cc);
         }
@@ -73,11 +90,6 @@ namespace OrderingSystem.KioskApplication.Cards
             price.Text = menu.getPriceAfterVat().ToString("C", new CultureInfo("en-PH"));
             image.Image = menu.MenuImage;
             description.Text = menu.MenuDescription;
-            menuName.ForeColor = Color.Black;
-            price.ForeColor = Color.Black;
-            description.ForeColor = Color.Black;
         }
-
-
     }
 }

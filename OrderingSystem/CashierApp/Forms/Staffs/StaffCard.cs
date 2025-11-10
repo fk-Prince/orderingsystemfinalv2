@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using OrderingSystem.CashierApp.Forms.FactoryForm;
 using OrderingSystem.CashierApp.Forms.Staffs;
 using OrderingSystem.Model;
@@ -9,7 +7,7 @@ using OrderingSystem.Services;
 
 namespace OrderingSystem.CashierApp.Components
 {
-    public partial class StaffCard : Guna2Panel
+    public partial class StaffCard : UserControl
     {
         private StaffModel staff;
         public event EventHandler staffUpdated;
@@ -20,26 +18,16 @@ namespace OrderingSystem.CashierApp.Components
             InitializeComponent();
             this.staff = staff;
             this.staffServices = staffServices;
-            BorderRadius = 5;
-            BorderThickness = 1;
-            BorderColor = ColorTranslator.FromHtml("#689FF9");
+
             id.Text = staff.StaffId.ToString();
             image.Image = staff.Image;
             name.Text = staff.FirstName.Substring(0, 1).ToUpper() + staff.FirstName.Substring(1).ToLower() + "  " + staff.LastName.Substring(0, 1).ToUpper() + staff.LastName.Substring(1).ToLower();
             role.Text = staff.Role.Substring(0, 1).ToUpper() + staff.Role.Substring(1);
 
             effects(this);
-            hover(this);
             this.iForms = iForms;
         }
-        private void hover(Control c)
-        {
-            c.Cursor = Cursors.Hand;
-            foreach (Control cc in c.Controls)
-            {
-                hover(cc);
-            }
-        }
+
 
 
         private void effects(Control c)

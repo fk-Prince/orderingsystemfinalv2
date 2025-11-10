@@ -1,9 +1,9 @@
 ﻿using System;
-using Guna.UI2.WinForms;
+using System.Windows.Forms;
 
 namespace OrderingSystem.KioskApplication.Component
 {
-    public partial class MyRadioButton2 : Guna2Panel
+    public partial class MyRadioButton2 : UserControl
     {
         public event EventHandler<bool> check;
         private bool xd;

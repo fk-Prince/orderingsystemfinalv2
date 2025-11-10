@@ -28,33 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pp = new Guna.UI2.WinForms.Guna2Panel();
+            this.menuName = new System.Windows.Forms.Label();
             this.subTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.titleOption = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.menuName = new System.Windows.Forms.Label();
-            this.guna2Panel1.SuspendLayout();
+            this.pp.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pp
+            // 
+            this.pp.BackColor = System.Drawing.Color.Transparent;
+            this.pp.BorderColor = System.Drawing.Color.LightGray;
+            this.pp.BorderRadius = 8;
+            this.pp.BorderThickness = 1;
+            this.pp.Controls.Add(this.menuName);
+            this.pp.Controls.Add(this.subTitle);
+            this.pp.Controls.Add(this.label2);
+            this.pp.Controls.Add(this.titleOption);
+            this.pp.Controls.Add(this.guna2Panel2);
+            this.pp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.pp.Location = new System.Drawing.Point(0, 0);
+            this.pp.Name = "pp";
+            this.pp.Size = new System.Drawing.Size(730, 141);
+            this.pp.TabIndex = 0;
+            // 
+            // menuName
+            // 
+            this.menuName.AutoSize = true;
+            this.menuName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuName.Location = new System.Drawing.Point(136, 17);
+            this.menuName.Name = "menuName";
+            this.menuName.Size = new System.Drawing.Size(43, 17);
+            this.menuName.TabIndex = 18;
+            this.menuName.Text = "label3";
             // 
             // subTitle
             // 
             this.subTitle.AutoSize = true;
             this.subTitle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subTitle.Location = new System.Drawing.Point(57, 51);
+            this.subTitle.Location = new System.Drawing.Point(56, 47);
             this.subTitle.Name = "subTitle";
             this.subTitle.Size = new System.Drawing.Size(147, 13);
-            this.subTitle.TabIndex = 12;
+            this.subTitle.TabIndex = 17;
             this.subTitle.Text = "Select Flavor of your choice";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label2.ForeColor = System.Drawing.Color.IndianRed;
-            this.label2.Location = new System.Drawing.Point(110, 16);
+            this.label2.Location = new System.Drawing.Point(109, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
-            this.label2.TabIndex = 11;
+            this.label2.TabIndex = 16;
             this.label2.Text = "*";
             // 
             // titleOption
@@ -62,23 +92,23 @@
             this.titleOption.AutoSize = true;
             this.titleOption.BackColor = System.Drawing.Color.Transparent;
             this.titleOption.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleOption.Location = new System.Drawing.Point(23, 16);
+            this.titleOption.Location = new System.Drawing.Point(22, 12);
             this.titleOption.Name = "titleOption";
             this.titleOption.Size = new System.Drawing.Size(96, 25);
-            this.titleOption.TabIndex = 9;
+            this.titleOption.TabIndex = 14;
             this.titleOption.Text = "Option A";
             // 
-            // guna2Panel1
+            // guna2Panel2
             // 
-            this.guna2Panel1.AutoRoundedCorners = true;
-            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.BorderRadius = 11;
-            this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.FillColor = System.Drawing.Color.IndianRed;
-            this.guna2Panel1.Location = new System.Drawing.Point(614, 16);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(91, 25);
-            this.guna2Panel1.TabIndex = 10;
+            this.guna2Panel2.AutoRoundedCorners = true;
+            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel2.BorderRadius = 11;
+            this.guna2Panel2.Controls.Add(this.label1);
+            this.guna2Panel2.FillColor = System.Drawing.Color.IndianRed;
+            this.guna2Panel2.Location = new System.Drawing.Point(613, 12);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(91, 25);
+            this.guna2Panel2.TabIndex = 15;
             // 
             // label1
             // 
@@ -93,41 +123,26 @@
             this.label1.Text = "Required";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // menuName
-            // 
-            this.menuName.AutoSize = true;
-            this.menuName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuName.Location = new System.Drawing.Point(137, 21);
-            this.menuName.Name = "menuName";
-            this.menuName.Size = new System.Drawing.Size(43, 17);
-            this.menuName.TabIndex = 13;
-            this.menuName.Text = "label3";
-            // 
             // FlavorLayout
             // 
-            this.ClientSize = new System.Drawing.Size(739, 141);
-            this.Controls.Add(this.menuName);
-            this.Controls.Add(this.subTitle);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.titleOption);
-            this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.pp);
             this.Name = "FlavorLayout";
-            this.Text = "FlavorLayout";
-            //this.Load += new System.EventHandler(this.FlavorLayout_Load_2);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
+            this.Size = new System.Drawing.Size(730, 141);
+            this.pp.ResumeLayout(false);
+            this.pp.PerformLayout();
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
+        private System.Windows.Forms.Label menuName;
         private System.Windows.Forms.Label subTitle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label titleOption;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label menuName;
+        public Guna.UI2.WinForms.Guna2Panel pp;
     }
 }

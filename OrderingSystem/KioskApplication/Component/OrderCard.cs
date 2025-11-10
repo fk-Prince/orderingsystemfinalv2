@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Drawing;
 using System.Globalization;
-using Guna.UI2.WinForms;
+using System.Windows.Forms;
 using OrderingSystem.Model;
 
 namespace OrderingSystem.KioskApplication.Component
 {
-    public partial class OrderCard : Guna2Panel
+    public partial class OrderCard : UserControl
     {
 
         public event EventHandler<OrderItemModel> AddQuantity;
@@ -36,11 +35,6 @@ namespace OrderingSystem.KioskApplication.Component
             f2.Text = om.PurchaseMenu.FlavorName;
             s2.Text = om.PurchaseMenu.SizeName;
 
-            BorderRadius = 10;
-            BackColor = Color.Transparent;
-            BorderColor = ColorTranslator.FromHtml("#DBEAFE");
-            FillColor = Color.FromArgb(245, 245, 245);
-            BorderThickness = 1;
 
             price.Text = om.PurchaseMenu.getPriceAfterVat().ToString("C", new CultureInfo("en-PH"));
             dPrice.Text = om.PurchaseMenu.getPriceAfterVat() != om.PurchaseMenu.getPriceAfterVatWithDiscount() ? om.PurchaseMenu.getPriceAfterVatWithDiscount().ToString("C", new CultureInfo("en-PH")) : "0.00";
