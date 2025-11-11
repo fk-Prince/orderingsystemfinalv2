@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using OrderingSystem.CashierApp.Forms.FactoryForm;
+using OrderingSystem.CashierApp.SessionData;
 using OrderingSystem.Exceptions;
 using OrderingSystem.Repository.Ingredients;
 using OrderingSystem.Services;
@@ -18,6 +19,12 @@ namespace OrderingSystem.CashierApp.Forms
             InitializeComponent();
             ingredientServices = new IngredientServices(new IngredientRepository());
             updateTable();
+
+            if (SessionStaffData.Role.ToLower() == "cashier")
+            {
+                bb.Visible = false;
+                dataGrid.CellClick -= dataGrid_CellClick;
+            }
         }
 
         public void updateTable()

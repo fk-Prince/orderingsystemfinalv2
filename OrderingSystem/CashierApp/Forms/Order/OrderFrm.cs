@@ -132,11 +132,19 @@ namespace OrderingSystem.CashierApp.Forms
             try
             {
                 bool suc = orderServices.adjustTime();
+                if (suc)
+                    MessageBox.Show("Successfully Adjusted the pending orders", "TIME", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Failed to adjust", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Internal Server Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

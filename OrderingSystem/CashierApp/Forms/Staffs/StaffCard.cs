@@ -26,6 +26,9 @@ namespace OrderingSystem.CashierApp.Components
 
             effects(this);
             this.iForms = iForms;
+
+
+
         }
 
 

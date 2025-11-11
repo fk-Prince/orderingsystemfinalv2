@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using OrderingSystem.CashierApp.Forms.Category;
+using OrderingSystem.CashierApp.SessionData;
 using OrderingSystem.Exceptions;
 using OrderingSystem.Model;
 using OrderingSystem.Services;
@@ -23,7 +24,8 @@ namespace OrderingSystem.CashierApp.Components
 
         private void click(Control c)
         {
-            c.Click += update;
+            if (SessionStaffData.Role.ToLower() != "cashier")
+                c.Click += update;
             c.Cursor = Cursors.Hand;
 
             foreach (Control cc in c.Controls)

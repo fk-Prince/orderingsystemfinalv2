@@ -18,7 +18,6 @@ namespace OrderingSystem.Model
         {
             return OrderItemList.Sum(item => item.getSubtotal());
         }
-
         public double GetCouponDiscount()
         {
             if (Coupon == null) return 0;
@@ -29,19 +28,16 @@ namespace OrderingSystem.Model
                 return Coupon.CouponRate;
             return 0;
         }
-
         public double GetTotalWithVAT()
         {
             return GetGrossRevenue() - GetCouponDiscount();
         }
-
         public double GetVATAmount()
         {
             double totalWithVAT = GetTotalWithVAT();
             double totalWithoutVAT = totalWithVAT / 1.12;
             return Math.Max(0, totalWithVAT - totalWithoutVAT);
         }
-
         public double GetAmountWithoutVAT()
         {
             return GetTotalWithVAT() / 1.12;

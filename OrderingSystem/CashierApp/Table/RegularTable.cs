@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using OrderingSystem.CashierApp.SessionData;
 using OrderingSystem.Model;
 using OrderingSystem.Repo.CashierMenuRepository;
 using OrderingSystem.Services;
@@ -134,6 +135,11 @@ namespace OrderingSystem.CashierApp.Components
                     im.hideNotSelected();
                     im.updateButton.Visible = true;
                     im.confirmButton.Visible = true;
+                    if (SessionStaffData.Role.ToLower() == "cashier")
+                    {
+                        im.confirmButton.Visible = false;
+                        im.updateButton.Visible = false;
+                    }
                     DialogResult rs = im.ShowDialog(this);
                     if (rs == DialogResult.OK)
                     {

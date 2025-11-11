@@ -24,7 +24,6 @@ namespace OrderingSystem.KioskApplication.Services
             this.flowCart = flowCart;
             this.orderList = orderList;
         }
-
         public void addMenuToCart(List<OrderItemModel> newOrders)
         {
 

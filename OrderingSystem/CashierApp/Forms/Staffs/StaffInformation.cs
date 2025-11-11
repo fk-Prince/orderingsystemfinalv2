@@ -20,8 +20,10 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
             InitializeComponent();
             this.staffServices = staffServices;
             if (SessionStaffData.Role.ToLower() == "cashier")
+            {
                 fb.Visible = false;
-
+                b1.Visible = false;
+            }
         }
         private void allowType(bool isEditMode)
         {
@@ -225,8 +227,8 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
             else
             {
                 image.ImageLocation = null;
-                image.Image = viewingStaff.Image;
-                if (viewingStaff.Image != null) image.BorderStyle = BorderStyle.None;
+                image.Image = viewingStaff?.Image;
+                if (viewingStaff?.Image != null) image.BorderStyle = BorderStyle.None;
             }
         }
     }

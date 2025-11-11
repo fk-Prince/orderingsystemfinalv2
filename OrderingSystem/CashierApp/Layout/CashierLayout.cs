@@ -45,6 +45,8 @@ namespace OrderingSystem.CashierApp.Forms
             drop.Items.Add("Switch User");
             drop.Items.Add("Sign-out");
 
+            if (SessionStaffData.Role.ToLower() == "cashier") b7.Visible = false;
+
 
             loadForm(new Dashboard());
             displayStaffDetails();

@@ -44,9 +44,9 @@ namespace OrderingSystem.CashierApp.Layout
                     rating.FillColor = Color.Gray;
                     if (stars >= 4)
                         rating.RatingColor = Color.LimeGreen;
-                    else if (stars >= 2.5)
+                    else if (stars >= 1)
                         rating.RatingColor = Color.Gold;
-                    else
+                    else if (stars > 1)
                         rating.RatingColor = Color.Red;
                 }
 

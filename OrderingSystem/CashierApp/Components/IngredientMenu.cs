@@ -23,6 +23,7 @@ namespace OrderingSystem.CashierApp.Components
             this.ingredientServices = ingredientServices;
             ingredientSelected = new List<IngredientModel>();
         }
+
         public void getIngredientByMenu(MenuModel variantDetail)
         {
             try
