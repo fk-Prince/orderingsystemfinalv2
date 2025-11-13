@@ -552,7 +552,6 @@
       <DependentUpon>OrderLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Interface\ICalculateOrder.cs" />
-    <Compile Include="KioskApplication\Interface\IOrderNote.cs" />
     <Compile Include="KioskApplication\Options\FrequentlyOrderedOption.cs" />
     <Compile Include="KioskApplication\Interface\IMenuOptions.cs" />
     <Compile Include="KioskApplication\Interface\IOutOfOrder.cs" />

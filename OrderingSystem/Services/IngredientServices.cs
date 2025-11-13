@@ -72,7 +72,7 @@ namespace OrderingSystem.Services
             if (qty <= 0)
                 throw new InvalidInput("Invalid Quantity must be greater than zero.");
 
-            if (string.IsNullOrEmpty(supplierName))
+            if (string.IsNullOrWhiteSpace(supplierName))
                 supplierName = "N/A";
 
             if (!double.TryParse(batchCost, out double cost))

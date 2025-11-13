@@ -56,10 +56,10 @@
             // 
             this.flowPanel.AutoScroll = true;
             this.flowPanel.Controls.Add(this.guna2Panel1);
-            this.flowPanel.Location = new System.Drawing.Point(-3, -4);
+            this.flowPanel.Location = new System.Drawing.Point(-7, -4);
             this.flowPanel.Margin = new System.Windows.Forms.Padding(0);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(776, 618);
+            this.flowPanel.Size = new System.Drawing.Size(780, 618);
             this.flowPanel.TabIndex = 0;
             // 
             // guna2Panel1

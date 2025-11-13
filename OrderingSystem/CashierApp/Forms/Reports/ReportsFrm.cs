@@ -90,8 +90,6 @@ namespace OrderingSystem.CashierApp.Forms
             dataGrid.Refresh();
         }
 
-
-
         private void cb_SelectedIndexChanged(object sender, EventArgs ee)
         {
             if (cb.SelectedIndex == -1) return;

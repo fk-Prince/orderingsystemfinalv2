@@ -86,19 +86,36 @@ namespace OrderingSystem.CashierApp.Forms
         }
         private void cashPayment(object sender, System.EventArgs e)
         {
-            PaymentMethod p = new PaymentMethod(orderServices);
-            p.setOrder(om);
-            DialogResult rs = p.ShowDialog(this);
-
-            if (rs == DialogResult.OK)
+            try
             {
-                Tuple<TimeSpan, string> xd = orderServices.getTimeInvoiceWaiting(om.OrderId);
-                OrderReceipt or = new OrderReceipt(om);
-                or.Cash(p.CashAmount);
-                or.Message("Wait for your Order", xd.Item1.ToString(@"hh\:mm\:ss"), xd.Item2);
-                or.print();
-                p.Hide();
-                clear();
+                bool suc = orderServices.isOrderAvailable(om.OrderId);
+
+                if (suc)
+                {
+                    PaymentMethod p = new PaymentMethod(orderServices);
+                    p.setOrder(om);
+                    DialogResult rs = p.ShowDialog(this);
+
+                    if (rs == DialogResult.OK)
+                    {
+                        Tuple<TimeSpan, string> xd = orderServices.getTimeInvoiceWaiting(om.OrderId);
+                        OrderReceipt or = new OrderReceipt(om);
+                        or.Cash(p.CashAmount);
+                        or.Message("Wait for your Order", xd.Item1.ToString(@"hh\:mm\:ss"), xd.Item2);
+                        or.print();
+                        p.Hide();
+                        clear();
+                    }
+                }
+            }
+
+            catch (Exception ex) when (ex is OrderInvalid || ex is OrderNotFound)
+            {
+                MessageBox.Show(ex.Message, "Order", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal Server Error" + ex.Message, "Order", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void txt_MouseDown(object sender, MouseEventArgs e)

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pp = new Guna.UI2.WinForms.Guna2Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.fb = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
@@ -42,6 +43,7 @@
             // pp
             // 
             this.pp.BackColor = System.Drawing.Color.White;
+            this.pp.Controls.Add(this.label3);
             this.pp.Controls.Add(this.label2);
             this.pp.Controls.Add(this.fb);
             this.pp.Controls.Add(this.guna2Button1);
@@ -54,6 +56,16 @@
             this.pp.Name = "pp";
             this.pp.Size = new System.Drawing.Size(231, 483);
             this.pp.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 15);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Categories";
             // 
             // label2
             // 
@@ -82,6 +94,7 @@
             this.fb.Size = new System.Drawing.Size(100, 30);
             this.fb.TabIndex = 23;
             this.fb.Text = "Reset";
+            this.fb.Click += new System.EventHandler(this.fb_Click_1);
             // 
             // guna2Button1
             // 
@@ -97,21 +110,22 @@
             this.guna2Button1.Size = new System.Drawing.Size(121, 32);
             this.guna2Button1.TabIndex = 22;
             this.guna2Button1.Text = "Search";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
             // 
             // flow
             // 
             this.flow.AutoScroll = true;
-            this.flow.Location = new System.Drawing.Point(10, 85);
+            this.flow.Location = new System.Drawing.Point(10, 118);
             this.flow.Margin = new System.Windows.Forms.Padding(0);
             this.flow.Name = "flow";
-            this.flow.Size = new System.Drawing.Size(213, 307);
+            this.flow.Size = new System.Drawing.Size(213, 277);
             this.flow.TabIndex = 21;
             // 
             // max
             // 
             this.max.AutoSize = true;
             this.max.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.max.Location = new System.Drawing.Point(174, 56);
+            this.max.Location = new System.Drawing.Point(174, 61);
             this.max.Name = "max";
             this.max.Size = new System.Drawing.Size(48, 21);
             this.max.TabIndex = 20;
@@ -121,7 +135,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 56);
+            this.label1.Location = new System.Drawing.Point(18, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 21);
             this.label1.TabIndex = 19;
@@ -129,7 +143,7 @@
             // 
             // tt
             // 
-            this.tt.Location = new System.Drawing.Point(27, 30);
+            this.tt.Location = new System.Drawing.Point(27, 35);
             this.tt.Maximum = 1000;
             this.tt.Minimum = 10;
             this.tt.Name = "tt";
@@ -137,6 +151,7 @@
             this.tt.TabIndex = 18;
             this.tt.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.tt.Value = 500;
+            this.tt.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tt_Scroll_1);
             // 
             // Filter
             // 
@@ -160,5 +175,6 @@
         private System.Windows.Forms.Label max;
         private System.Windows.Forms.Label label1;
         public Guna.UI2.WinForms.Guna2TrackBar tt;
+        private System.Windows.Forms.Label label3;
     }
 }

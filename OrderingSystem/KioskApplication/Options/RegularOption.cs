@@ -4,20 +4,18 @@ using System.Linq;
 using System.Windows.Forms;
 using OrderingSystem.Exceptions;
 using OrderingSystem.KioskApplication.Components;
-using OrderingSystem.KioskApplication.Interface;
 using OrderingSystem.KioskApplication.Services;
 using OrderingSystem.Model;
 using OrderingSystem.Services;
 
 namespace OrderingSystem.KioskApplication.Options
 {
-    public class RegularOption : IMenuOptions, ISelectedFrequentlyOrdered, IOrderNote
+    public class RegularOption : IMenuOptions, ISelectedFrequentlyOrdered
     {
         private readonly KioskMenuServices kioskMenuServices;
         private readonly FlowLayoutPanel flowPanel;
         private readonly FrequentlyOrderedOption frequentlyOrderedOption;
 
-        //private Note n;
         private SizeLayout sc;
         private MenuModel menu;
 
@@ -26,8 +24,6 @@ namespace OrderingSystem.KioskApplication.Options
         private string titleOption;
         private string subTitle;
         private List<MenuModel> menuDetails;
-
-        public string getNote { get; set; } = "";
 
         public RegularOption(KioskMenuServices kioskMenuServices, FlowLayoutPanel flowPanel)
         {

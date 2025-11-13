@@ -53,17 +53,8 @@ namespace OrderingSystem.KioskApplication.Component
             }
         }
 
-        private void tt_Scroll(object sender, ScrollEventArgs e)
-        {
-            max.Text = tt.Value.ToString();
-        }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            int price = tt.Value;
-            if (FindForm() is KioskLayout parentForm)
-                parentForm.displayCategory(catSelected, price);
-        }
+
 
         public void resetFilter()
         {
@@ -73,11 +64,24 @@ namespace OrderingSystem.KioskApplication.Component
             tt.Value = tt.Maximum;
         }
 
-        private void fb_Click(object sender, EventArgs e)
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+            int price = tt.Value;
+            if (FindForm() is KioskLayout parentForm)
+                parentForm.displayCategory(catSelected, price);
+        }
+
+        private void fb_Click_1(object sender, EventArgs e)
         {
             resetFilter();
             if (FindForm() is KioskLayout parentForm)
                 parentForm.displayCategory(new List<int>(), tt.Maximum);
+        }
+
+        private void tt_Scroll_1(object sender, ScrollEventArgs e)
+        {
+            max.Text = tt.Value.ToString();
         }
     }
 }

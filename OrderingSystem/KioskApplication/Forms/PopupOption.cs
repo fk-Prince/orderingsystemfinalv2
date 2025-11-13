@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using OrderingSystem.Exceptions;
-using OrderingSystem.KioskApplication.Interface;
 using OrderingSystem.KioskApplication.Options;
 using OrderingSystem.KioskApplication.Services;
 using OrderingSystem.Model;
@@ -37,6 +36,7 @@ namespace OrderingSystem.KioskApplication
                 else
                 {
                     menuOptions = new RegularOption(kioskMenuServices, flowPanel);
+
                 }
                 if (menuOptions is IOutOfOrder e)
                 {
@@ -46,11 +46,6 @@ namespace OrderingSystem.KioskApplication
                     };
                 }
                 menuOptions.displayMenuOptions(menu);
-
-
-                if (menuOptions is IOrderNote i)
-                    i.displayOrderNotice();
-
             }
             catch (Exception)
             {
@@ -80,11 +75,6 @@ namespace OrderingSystem.KioskApplication
                             order.AddRange(frequentlyOrdered);
                     }
 
-                    if (menuOptions is IOrderNote iNo)
-                    {
-                        string ino = iNo.getNote;
-                    }
-
                     var orders = menuOptions.confirmOrder();
                     if (orders == null || orders.Count == 0)
                         return;
@@ -109,6 +99,5 @@ namespace OrderingSystem.KioskApplication
         {
             DialogResult = DialogResult.Abort;
         }
-
     }
 }
