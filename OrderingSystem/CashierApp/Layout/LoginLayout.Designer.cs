@@ -136,7 +136,7 @@
             // 
             this.pass.BorderRadius = 5;
             this.pass.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.pass.DefaultText = "aeyc";
+            this.pass.DefaultText = "";
             this.pass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.pass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.pass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -161,7 +161,7 @@
             // 
             this.user.BorderRadius = 5;
             this.user.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.user.DefaultText = "aeyc";
+            this.user.DefaultText = "";
             this.user.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.user.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.user.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
