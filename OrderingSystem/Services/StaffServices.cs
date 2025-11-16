@@ -21,22 +21,17 @@ namespace OrderingSystem.Services
             string letterRegex = @"^[A-Za-z]+$";
             string numberLetterRegex = @"^[A-Za-z0-9]+$";
             if (!string.IsNullOrWhiteSpace(staff.PhoneNumber) && !Regex.IsMatch(staff.PhoneNumber, numberRegex))
-            {
                 throw new InvalidInput("Invalid Phone number.");
-            }
+
             if (!Regex.IsMatch(staff.FirstName, letterRegex) || !Regex.IsMatch(staff.LastName, letterRegex))
-            {
                 throw new InvalidInput("Invalid Name.");
-            }
+
             if (!string.IsNullOrWhiteSpace(staff.Password) && !Regex.IsMatch(staff.Password, numberLetterRegex))
-            {
                 throw new InvalidInput("Password should not contain Special Characters.");
-            }
 
             if (isUsernameExists(staff))
-            {
                 throw new InvalidInput("Username exists, Try another one");
-            }
+
             return true;
         }
         public bool updateStaff(StaffModel model)

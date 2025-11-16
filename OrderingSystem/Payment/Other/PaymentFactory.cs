@@ -1,9 +1,10 @@
-﻿using OrderingSystem.Exceptions;
+﻿using OrderingSystem.CashierApp.Payment.Types;
+using OrderingSystem.Exceptions;
 using OrderingSystem.KioskApplication.Services;
 
 namespace OrderingSystem.CashierApp.Payment
 {
-    public class PaymentFactory : IPaymentFactoryType
+    public class PaymentFactory : IPaymentFactory
     {
         private OrderServices orderServices;
         public PaymentFactory(OrderServices orderServices)
@@ -14,8 +15,10 @@ namespace OrderingSystem.CashierApp.Payment
         {
             if (type.ToLower() == "cash")
                 return new CashPayment(orderServices);
-            else if (type.ToLower() == "creditcard" || type.ToLower() == "credit-card")
-                return new CreditCardPayment(orderServices);
+            else if (type.ToLower() == "g-cash" || type.ToLower() == "gcash")
+                return new GCashPayment(orderServices);
+            else if (type.ToLower() == "debitcard" || type.ToLower() == "debit-card")
+                return new DebitCardPayment(orderServices);
             else
                 throw new InvalidPayment("Payment Not Supported Yet.");
         }

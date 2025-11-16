@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
-using OrderingSystem.CashierApp.SessionData;
+using OrderingSystem.CashierApp.Payment;
 using OrderingSystem.Model;
 
 namespace OrderingSystem.Receipt
 {
     public partial class OrderReceipt : Form
     {
-        private Image image = Properties.Resources.bloopandas;
+        private Image image = Properties.Resources.finaldashicon;
         private readonly string orderId;
         private readonly List<OrderItemModel> menus;
         private readonly OrderModel om;
+        private InvoiceModel invoice;
 
         private int y = 170;
         private int x = 10;
         private string message;
+        private string type;
         private double cash;
         private string invoice_id;
         private string estimated_date;
@@ -30,10 +32,15 @@ namespace OrderingSystem.Receipt
             this.om = om;
         }
 
+        public void setInvoice(InvoiceModel invoice)
+        {
+            this.invoice = invoice;
+        }
+
         public void print()
         {
             int baseHeight = 700;
-            int rowHeight = 40;
+            int rowHeight = 50;
             int height = menus.Count > 1 ? Math.Max(rowHeight * menus.Count + baseHeight, baseHeight) : baseHeight;
 
             PaperSize customSize = new PaperSize("Custom", 400, height);
@@ -45,11 +52,12 @@ namespace OrderingSystem.Receipt
             printPreviewDialog.ShowDialog();
         }
 
-        public void Message(string message, string estimated_date, string invoice_id)
+        public void receiptMessages(string message, string estimated_date, string invoice_id, string type)
         {
             this.message = message;
             this.estimated_date = estimated_date;
             this.invoice_id = invoice_id;
+            this.type = type;
         }
 
         public void Cash(double cash)
@@ -60,20 +68,32 @@ namespace OrderingSystem.Receipt
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(image, 235, 20, 140, 140);
-            e.Graphics.DrawString("BlooPanda", new Font("Segui UI", 23, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline), Brushes.Black, 15, 25);
+            e.Graphics.DrawString("PandaBite", new Font("Segui UI", 23, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline), Brushes.Black, 15, 25);
             e.Graphics.DrawString("506 J.P. Laurel Ave,", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, 15, 65);
             e.Graphics.DrawString("Poblacion District, Davao City", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, 15, 80);
-            if (!string.IsNullOrWhiteSpace(invoice_id))
+            if (invoice != null)
             {
                 e.Graphics.DrawString("Cashier Name.: ", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, 15, y);
-                e.Graphics.DrawString(SessionStaffData.getFullName(), new Font("Segui UI", 9, FontStyle.Regular | FontStyle.Underline), Brushes.Black, 110, y);
+                e.Graphics.DrawString(invoice.Staff.getFullName(), new Font("Segui UI", 9, FontStyle.Regular | FontStyle.Underline), Brushes.Black, 110, y);
                 y += 20;
                 e.Graphics.DrawString("Invoice ID.: ", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, 15, y);
-                e.Graphics.DrawString(invoice_id.ToString(), new Font("Segui UI", 9, FontStyle.Regular | FontStyle.Underline), Brushes.Black, 90, y);
+                e.Graphics.DrawString(invoice.InvoiceId, new Font("Segui UI", 9, FontStyle.Regular | FontStyle.Underline), Brushes.Black, 90, y);
+                y += 20;
+                e.Graphics.DrawString("Order No.: ", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, 15, y);
+                e.Graphics.DrawString(invoice.Order.OrderId.ToString(), new Font("Segui UI", 9, FontStyle.Regular | FontStyle.Underline | FontStyle.Bold), Brushes.Black, 90, y);
             }
-            y += 20;
-            e.Graphics.DrawString("Order No.: ", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, 15, y);
-            e.Graphics.DrawString(orderId.ToString(), new Font("Segui UI", 9, FontStyle.Regular | FontStyle.Underline | FontStyle.Bold), Brushes.Black, 90, y);
+            else
+            {
+                y += 20;
+                e.Graphics.DrawString("Order No.: ", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, 15, y);
+                e.Graphics.DrawString(orderId.ToString(), new Font("Segui UI", 9, FontStyle.Regular | FontStyle.Underline | FontStyle.Bold), Brushes.Black, 90, y);
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                SizeF size2 = e.Graphics.MeasureString(type, new Font("Segoe UI", 14, FontStyle.Regular));
+                e.Graphics.DrawString(type.Replace("_", "-").ToUpper(), new Font("Sans-serif", 9), Brushes.Black, e.PageBounds.Width - size2.Width - 10, y);
+            }
             y += 50;
 
             e.Graphics.DrawLine(Pens.Black, x + 25, y, x + 25, y + 20);
@@ -139,6 +159,14 @@ namespace OrderingSystem.Receipt
             y += 20;
             e.Graphics.DrawString("VATable Sales", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, x, y);
             y += 20;
+
+            if (invoice != null && invoice.payment != null && invoice.payment is IFeeCalculator f)
+            {
+                e.Graphics.DrawString($"Payment Method: {invoice.payment.PaymentName} {f.feePercent * 100}%", new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, x, y);
+                y += 20;
+            }
+
+
             e.Graphics.DrawString("Total Amount Due", new Font("Segui UI", 10, FontStyle.Bold | FontStyle.Regular), Brushes.Black, x, y);
 
             if (cash != 0)
@@ -174,6 +202,15 @@ namespace OrderingSystem.Receipt
             e.Graphics.DrawString(amountWithoutVAT.ToString("N2"), mainFont, Brushes.Black, x - size1.Width, y1);
             y1 += 20;
 
+            if (invoice != null && invoice.payment != null && invoice.payment is IFeeCalculator ff)
+            {
+                double fee = totalWithVAT * ff.feePercent;
+                totalWithVAT += fee;
+                e.Graphics.DrawString(fee.ToString("N2"), new Font("Segui UI", 9, FontStyle.Regular), Brushes.Black, x - size1.Width, y1);
+                y1 += 20;
+            }
+
+
             size1 = graphics.MeasureString(totalWithVAT.ToString("N2"), new Font("Segui UI", 10, FontStyle.Bold | FontStyle.Regular));
             e.Graphics.DrawString(totalWithVAT.ToString("N2"), new Font("Segui UI", 10, FontStyle.Bold | FontStyle.Regular), Brushes.Black, x - size1.Width, y1);
 
@@ -196,18 +233,18 @@ namespace OrderingSystem.Receipt
                 bx += 7;
             }
 
-            y += 100;
-
+            y += 70;
 
             e.Graphics.DrawString(message, new Font("Segui UI", 15, FontStyle.Bold), Brushes.Black, 95, y);
 
             if (!string.IsNullOrWhiteSpace(estimated_date))
             {
-                y += 80;
+                y += 60;
                 size1 = e.Graphics.MeasureString(estimated_date, new Font("Segoe UI", 15, FontStyle.Regular));
                 float x = (400 - size1.Width) / 2;
                 e.Graphics.DrawString(estimated_date, new Font("Segui UI", 15, FontStyle.Regular), Brushes.Black, x, y);
             }
+
 
         }
     }

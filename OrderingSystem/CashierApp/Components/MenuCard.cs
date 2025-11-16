@@ -6,7 +6,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
     public partial class MenuCard : UserControl
     {
 
-        public MenuCard(MenuModel menu)
+        public MenuCard(MenuDetailModel menu)
         {
             InitializeComponent();
             cardLayout();

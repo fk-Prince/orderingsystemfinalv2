@@ -14,12 +14,12 @@ namespace OrderingSystem.CashierApp.Components
 {
     public partial class RegularTable : Form
     {
-        private List<MenuModel> variants;
+        private List<MenuDetailModel> variants;
         private DataTable table;
         private readonly IngredientServices ingredientServices;
         private bool isUpdating = false;
 
-        public RegularTable(List<MenuModel> variants, IngredientServices ingredientServices)
+        public RegularTable(List<MenuDetailModel> variants, IngredientServices ingredientServices)
         {
             InitializeComponent();
             this.variants = variants;
@@ -135,7 +135,7 @@ namespace OrderingSystem.CashierApp.Components
                     im.hideNotSelected();
                     im.updateButton.Visible = true;
                     im.confirmButton.Visible = true;
-                    if (SessionStaffData.Role.ToLower() == "cashier")
+                    if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
                     {
                         im.confirmButton.Visible = false;
                         im.updateButton.Visible = false;
@@ -149,10 +149,10 @@ namespace OrderingSystem.CashierApp.Components
             };
         }
 
-        public List<MenuModel> getMenus()
+        public List<MenuDetailModel> getMenus()
         {
 
-            List<MenuModel> menus = new List<MenuModel>();
+            List<MenuDetailModel> menus = new List<MenuDetailModel>();
             string patternNumber = @"^(?:\d{1,3}(?:,\d{3})*|\d+)?(?:\.\d+)?$";
             string patternText = @"^[a-zA-Z]+$";
 
@@ -192,7 +192,7 @@ namespace OrderingSystem.CashierApp.Components
                     return null;
                 }
 
-                var menu = MenuModel.Builder()
+                var menu = MenuDetailModel.Builder()
                     .WithMenuDetailId(variants[row.Index].MenuDetailId)
                     .WithFlavorName(flavorText)
                     .WithSizeName(sizeText)
@@ -207,7 +207,7 @@ namespace OrderingSystem.CashierApp.Components
         }
 
 
-        public List<MenuModel> getValues()
+        public List<MenuDetailModel> getValues()
         {
             for (int i = 0; i < variants.Count; i++)
             {
@@ -218,7 +218,7 @@ namespace OrderingSystem.CashierApp.Components
                 TimeSpan time = TimeSpan.Parse(row[2]?.ToString());
                 double price = double.Parse(row[3]?.ToString());
 
-                variants[i] = MenuModel.Builder()
+                variants[i] = MenuDetailModel.Builder()
                     .WithMenuDetailId(variants[i].MenuDetailId)
                     .WithFlavorName(flavor)
                     .WithSizeName(size)
@@ -230,7 +230,7 @@ namespace OrderingSystem.CashierApp.Components
             return variants;
         }
 
-        public void refreshTable(List<MenuModel> variants)
+        public void refreshTable(List<MenuDetailModel> variants)
         {
             this.variants = variants;
 
@@ -277,7 +277,6 @@ namespace OrderingSystem.CashierApp.Components
                 {
                     var variant = variants.Count > e.RowIndex ? variants[e.RowIndex] : null;
                     var discount = variant?.Discount?.Rate ?? 0;
-                    var priceWithTax = price * TaxHelper.TAX_F;
                     var discountedPrice = price * (1 - discount);
                     var discountedPriceWithTax = discountedPrice * TaxHelper.TAX_F;
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using MySqlConnector;
-using Newtonsoft.Json;
 using OrderingSystem.DatabaseConnection;
 using OrderingSystem.Model;
 
@@ -38,7 +37,7 @@ namespace OrderingSystem.Repository.Order
             }
             return false;
         }
-        public bool getOrderExists(string order_id)
+        public bool isOrderExists(string order_id)
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -85,12 +84,10 @@ namespace OrderingSystem.Repository.Order
                     {
                         while (reader.Read())
                         {
-                            DiscountModel d = DiscountModel.Builder()
-                                .WithDiscountId(reader.GetInt32("discount_id"))
-                                .WithRate(reader.GetDouble("rate"))
-                                .Build();
 
-                            MenuModel m = MenuModel.Builder()
+                            DiscountModel d = new DiscountModel(reader.GetInt32("discount_id"), reader.GetDouble("rate"));
+
+                            MenuDetailModel m = MenuDetailModel.Builder()
                                 .WithMenuName(reader.GetString("menu_name"))
                                 .WithFlavorName(reader.GetString("flavor_name"))
                                 .WithSizeName(reader.GetString("size_name"))
@@ -98,12 +95,9 @@ namespace OrderingSystem.Repository.Order
                                 .WithMenuImage(ImageHelper.GetImageFromBlob(reader, "menu"))
                                 .WithDiscount(d)
                                 .Build();
-                            OrderItemModel xd = OrderItemModel.Builder()
-                                .WithOrderItemId(reader.GetInt32("order_item_id"))
-                                .WithPurchaseQty(reader.GetInt32("quantity"))
-                                .WithPurchaseMenu(m)
-                                .Build();
-                            oim.Add(xd);
+
+                            OrderItemModel oxm = new OrderItemModel(reader.GetInt32("order_item_id"), reader.GetInt32("quantity"), m);
+                            oim.Add(oxm);
 
 
                             if (string.IsNullOrEmpty(orderId))
@@ -125,12 +119,7 @@ namespace OrderingSystem.Repository.Order
             {
                 db.closeConnection();
             }
-            OrderModel om = OrderModel.Builder()
-                                .WithOrderId(orderId)
-                                .WithCoupon(new CouponModel(couponRate, couponType))
-                                .WithOrderItemList(oim)
-                                .Build();
-
+            OrderModel om = new OrderModel(orderId, new CouponModel(couponRate, CouponModel.getType(couponType)), oim);
             return om;
         }
         public bool saveNewOrder(OrderModel order)
@@ -148,7 +137,7 @@ namespace OrderingSystem.Repository.Order
                         cmd.Parameters.AddWithValue("@p_coupon_code", order.Coupon.CouponCode);
                     else
                         cmd.Parameters.AddWithValue("@p_coupon_code", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@p_order_type", order.OrderType);
+                    cmd.Parameters.AddWithValue("@p_order_type", order.Type.ToString().Replace("_", "-"));
                     cmd.ExecuteNonQuery();
                     return true;
                 }
@@ -162,7 +151,7 @@ namespace OrderingSystem.Repository.Order
                 db.closeConnection();
             }
         }
-        public bool payOrder(OrderModel order, int staff_id, string payment_method)
+        public bool payOrder(InvoiceModel i)
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -171,10 +160,9 @@ namespace OrderingSystem.Repository.Order
                 using (var cmd = new MySqlCommand("p_Confirm_Payment", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    string json = JsonConvert.SerializeObject(order);
-                    cmd.Parameters.AddWithValue("@p_order_json", json);
-                    cmd.Parameters.AddWithValue("@p_staff_id", staff_id);
-                    cmd.Parameters.AddWithValue("@p_payment_method ", payment_method);
+                    cmd.Parameters.AddWithValue("@v_order_id", i.Order.OrderId);
+                    cmd.Parameters.AddWithValue("@p_staff_id", i.Staff.StaffId);
+                    cmd.Parameters.AddWithValue("@p_payment_method ", i.payment.PaymentName);
                     cmd.ExecuteNonQuery();
                     return true;
                 }
@@ -189,7 +177,7 @@ namespace OrderingSystem.Repository.Order
             }
 
         }
-        public bool isOrderPayed(string order_id)
+        public bool isOrderPaid(string order_id)
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -218,7 +206,7 @@ namespace OrderingSystem.Repository.Order
             }
             return false;
         }
-        public string getOrderId()
+        public string getLastestOrderID()
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -271,12 +259,13 @@ namespace OrderingSystem.Repository.Order
                 db.closeConnection();
             }
         }
-        public Tuple<TimeSpan, string> getTimeInvoiceWaiting(string order_id)
+        public Tuple<TimeSpan, string, string> getTimeInvoiceWaiting(string order_id)
         {
             string query = @"
                         SELECT
                         o.estimated_max_time, 
-                        i.invoice_id
+                        i.invoice_id,
+                        o.order_type
                         FROM orders o
                         INNER JOIN invoice i ON i.order_id = o.order_id
                         WHERE @order_id = o.order_id
@@ -294,8 +283,9 @@ namespace OrderingSystem.Repository.Order
                         {
                             TimeSpan estimatedTime = reader.GetTimeSpan("estimated_max_time");
                             string invoiceId = reader.GetString("invoice_id");
+                            string type = reader.GetString("order_type");
 
-                            return new Tuple<TimeSpan, string>(estimatedTime, invoiceId);
+                            return new Tuple<TimeSpan, string, string>(estimatedTime, invoiceId, type);
                         }
 
                     }
@@ -376,7 +366,7 @@ namespace OrderingSystem.Repository.Order
                 db.closeConnection();
             }
         }
-        public bool adjustTime()
+        public bool adjustOrderingTime()
         {
             string query = @"
                   UPDATE orders SET available_until = @date WHERE status = 'Pending';
@@ -402,6 +392,39 @@ namespace OrderingSystem.Repository.Order
             {
                 db.closeConnection();
             }
+        }
+        public double getFeePaymentMethod(string paymentName)
+        {
+            string query = @"
+                  SELECT rate FROM payment_method WHERE payment_type = @payment_type;
+                ";
+
+            var db = DatabaseHandler.getInstance();
+            try
+            {
+                var conn = db.getConnection();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@payment_type", paymentName);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader.GetDouble("rate");
+                        }
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return 0;
         }
     }
 }

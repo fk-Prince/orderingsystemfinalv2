@@ -122,11 +122,12 @@
             this.bb.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.bb.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.bb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bb.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.bb.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bb.ForeColor = System.Drawing.Color.White;
-            this.bb.Location = new System.Drawing.Point(903, 59);
+            this.bb.Location = new System.Drawing.Point(832, 59);
             this.bb.Name = "bb";
-            this.bb.Size = new System.Drawing.Size(155, 41);
+            this.bb.Size = new System.Drawing.Size(226, 41);
             this.bb.TabIndex = 13;
             this.bb.Text = "Remove All Expired Ingredients";
             this.bb.Click += new System.EventHandler(this.removeAllExpiredClicked);

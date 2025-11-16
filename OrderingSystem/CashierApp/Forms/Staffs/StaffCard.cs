@@ -21,13 +21,11 @@ namespace OrderingSystem.CashierApp.Components
 
             id.Text = staff.StaffId.ToString();
             image.Image = staff.Image;
-            name.Text = staff.FirstName.Substring(0, 1).ToUpper() + staff.FirstName.Substring(1).ToLower() + "  " + staff.LastName.Substring(0, 1).ToUpper() + staff.LastName.Substring(1).ToLower();
-            role.Text = staff.Role.Substring(0, 1).ToUpper() + staff.Role.Substring(1);
+            name.Text = staff.getFullName();
+            role.Text = staff.Role.ToString();
 
             effects(this);
             this.iForms = iForms;
-
-
 
         }
 

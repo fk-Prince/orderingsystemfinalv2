@@ -30,14 +30,14 @@ namespace OrderingSystem.Services
             return ingredientRepository.getIngredientsStock();
         }
 
-        public List<IngredientModel> getIngredientsOfMenu(MenuModel variantDetail)
+        public List<IngredientModel> getIngredientsOfMenu(MenuDetailModel variantDetail)
         {
             return ingredientRepository.getIngredientsOfMenu(variantDetail);
         }
 
-        public bool saveIngredientByMenu(int menuId, List<IngredientModel> ingredientSelected, string v)
+        public bool saveIngredientByMenu(int menuId, List<IngredientModel> ingredientSelected, string type)
         {
-            return ingredientRepository.saveIngredientByMenu(menuId, ingredientSelected, v);
+            return ingredientRepository.saveIngredientByMenu(menuId, ingredientSelected, type);
         }
 
         public List<string> getReasons(string type)
@@ -49,8 +49,7 @@ namespace OrderingSystem.Services
             return ingredientRepository.removeExpiredIngredient();
         }
 
-
-        public bool validateDeductionIngredientStock(int stockId, int quantity, string reason, IngredientModel orig)
+        public bool validateDeductionIngredientStock(int stockId, int quantity, string reason, IngredientStockModel orig)
         {
             if (quantity <= 0)
                 throw new InvalidInput("Invalid Quantity must be greater than zero.");
@@ -61,7 +60,6 @@ namespace OrderingSystem.Services
 
             return ingredientRepository.deductIngredient(stockId, quantity, reason);
         }
-
         public bool validateRestockIngredient(int id, string quantity, DateTime value, string reason, string supplierName, string batchCost)
         {
             if (id == 0)
@@ -94,7 +92,6 @@ namespace OrderingSystem.Services
 
             return ingredientRepository.restockIngredient(os);
         }
-
         public bool validateAddIngredients(string name, string quantity, string unit, DateTime expire, string supplierName, string batchCost)
         {
             if (ingredientRepository.isIngredientNameExists(name))
@@ -117,17 +114,21 @@ namespace OrderingSystem.Services
 
             Supplier s = new Supplier(supplierName);
             IngredientStockModel os = IngredientStockModel.Builder()
-                .WithIngredientQTy(qty)
-                .WithIngredientName(name)
                 .WithSupplier(s)
                 .WithBatchCost(cost)
                 .WithExpiryDate(expire)
-                .WithUnit(unit)
+                .WithIngredientQTy(qty)
                 .Build();
 
-            return ingredientRepository.addIngredient(os);
-        }
+            IngredientModel om = IngredientModel.Builder()
+                .WithIngredientUnit(unit)
+                .WithIngredientName(name)
+                .WithStock(new List<IngredientStockModel>() { os })
+                .Build();
 
+
+            return ingredientRepository.addIngredient(om);
+        }
         public bool validateUpdateIngredient(int id, string name, string unit)
         {
             if (ingredientRepository.isIngredientNameExists(name, id))
@@ -135,7 +136,6 @@ namespace OrderingSystem.Services
 
             return ingredientRepository.updateIngredient(id, name, unit);
         }
-
         public List<string> getSuppliers()
         {
             return ingredientRepository.getSuppliers();

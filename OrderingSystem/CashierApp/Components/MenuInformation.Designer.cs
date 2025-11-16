@@ -229,7 +229,7 @@
             this.b1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.b1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.b1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.b1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
+            this.b1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.b1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.b1.ForeColor = System.Drawing.Color.White;
             this.b1.Image = global::OrderingSystem.Properties.Resources.edit1;
@@ -250,7 +250,7 @@
             this.b2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.b2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.b2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.b2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
+            this.b2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.b2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.b2.ForeColor = System.Drawing.Color.White;
             this.b2.Image = global::OrderingSystem.Properties.Resources.add1;
@@ -270,7 +270,7 @@
             this.b3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.b3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.b3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.b3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
+            this.b3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.b3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.b3.ForeColor = System.Drawing.Color.White;
             this.b3.Image = global::OrderingSystem.Properties.Resources.update;
@@ -290,7 +290,7 @@
             this.b4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.b4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.b4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.b4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
+            this.b4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.b4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.b4.ForeColor = System.Drawing.Color.White;
             this.b4.Image = global::OrderingSystem.Properties.Resources.add1;

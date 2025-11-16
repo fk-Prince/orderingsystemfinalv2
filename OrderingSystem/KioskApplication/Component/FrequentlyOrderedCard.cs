@@ -6,11 +6,11 @@ namespace OrderingSystem.KioskApplication.Components
 {
     public partial class FrequentlyOrderedCard : UserControl
     {
-        private MenuModel menu;
+        private MenuDetailModel menu;
         public event EventHandler<OrderItemModel> checkedMenu;
         public event EventHandler<OrderItemModel> unCheckedMenu;
 
-        public FrequentlyOrderedCard(MenuModel menu)
+        public FrequentlyOrderedCard(MenuDetailModel menu)
         {
             InitializeComponent();
             this.menu = menu;
@@ -28,20 +28,13 @@ namespace OrderingSystem.KioskApplication.Components
                 {
                     pp.BorderColor = Color.FromArgb(94, 148, 255);
                     pp.BorderThickness = 2;
-                    var om = OrderItemModel.Builder()
-                        .WithPurchaseMenu(menu)
-                        .WithPurchaseQty(1)
-                        .Build();
-                    checkedMenu.Invoke(this, om);
+                    checkedMenu.Invoke(this, new OrderItemModel(1, menu));
                 }
                 else
                 {
                     pp.BorderColor = Color.DarkGray;
                     pp.BorderThickness = 1;
-                    var om = OrderItemModel.Builder()
-                        .WithPurchaseMenu(menu)
-                        .Build();
-                    unCheckedMenu.Invoke(this, om);
+                    unCheckedMenu.Invoke(this, new OrderItemModel(1, menu));
                     menu = null;
                 }
             };

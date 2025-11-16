@@ -8,11 +8,11 @@ namespace OrderingSystem.KioskApplication.Components
 {
     public partial class FlavorLayout : UserControl
     {
-        private List<MenuModel> menuDetails;
-        public event EventHandler<MenuModel> FlavorSelected;
+        private List<MenuDetailModel> menuDetails;
+        public event EventHandler<MenuDetailModel> FlavorSelected;
         private List<MyRadioButton> radioSamples;
 
-        public FlavorLayout(List<MenuModel> menuDetails)
+        public FlavorLayout(List<MenuDetailModel> menuDetails)
         {
             InitializeComponent();
             this.menuDetails = menuDetails;

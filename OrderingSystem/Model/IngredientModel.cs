@@ -1,4 +1,6 @@
-﻿namespace OrderingSystem.Model
+﻿using System.Collections.Generic;
+
+namespace OrderingSystem.Model
 {
     public class IngredientModel
     {
@@ -6,11 +8,14 @@
         protected int ingredientQuantity;
         protected string ingredientName;
         protected string ingredientUnit;
+        protected List<IngredientStockModel> os;
+
 
         public string IngredientName { get => ingredientName; }
-        public string IngredientUnit { get => ingredientUnit; }
-        public int Ingredient_id { get => ingredientId; }
         public int IngredientQuantity { get => ingredientQuantity; }
+        public string IngredientUnit { get => ingredientUnit; }
+        public List<IngredientStockModel> IngredientStockModel { get => os; }
+        public int Ingredient_id { get => ingredientId; }
 
         public interface IIngredientModel
         {
@@ -18,6 +23,7 @@
             IngredientBuilder WithIngredientID(int ingredient_id);
             IngredientBuilder WithInredeintQty(int ingredientQuantity);
             IngredientBuilder WithIngredientUnit(string ingredientUnit);
+            IngredientBuilder WithStock(List<IngredientStockModel> os);
             IngredientModel Build();
         }
         public static IngredientBuilder Builder() => new IngredientBuilder();
@@ -49,6 +55,12 @@
             public IngredientBuilder WithInredeintQty(int ingredientQuantity)
             {
                 ingredientModel.ingredientQuantity = ingredientQuantity;
+                return this;
+            }
+
+            public IngredientBuilder WithStock(List<IngredientStockModel> os)
+            {
+                ingredientModel.os = os;
                 return this;
             }
         }

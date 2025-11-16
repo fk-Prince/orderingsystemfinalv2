@@ -61,7 +61,7 @@
             this.checkBox.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.checkBox.CheckedState.BorderRadius = 2;
             this.checkBox.CheckedState.BorderThickness = 1;
-            this.checkBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.checkBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(29)))));
             this.checkBox.CheckMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.checkBox.Location = new System.Drawing.Point(18, 37);
             this.checkBox.Name = "checkBox";
@@ -122,10 +122,9 @@
             // 
             // FrequentlyOrderedCard
             // 
-            this.ClientSize = new System.Drawing.Size(693, 101);
             this.Controls.Add(this.pp);
             this.Name = "FrequentlyOrderedCard";
-            this.Text = "FotCard";
+            this.Size = new System.Drawing.Size(693, 101);
             this.pp.ResumeLayout(false);
             this.pp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();

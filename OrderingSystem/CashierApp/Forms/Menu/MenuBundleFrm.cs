@@ -14,7 +14,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
 {
     public partial class MenuBundleFrm : Form
     {
-        private List<MenuModel> inclded = new List<MenuModel>();
+        private List<MenuDetailModel> inclded = new List<MenuDetailModel>();
         private List<IngredientModel> ingredientSelected = new List<IngredientModel>();
         private readonly IngredientServices ingredientServices;
         private readonly MenuService menuService;

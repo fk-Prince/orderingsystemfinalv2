@@ -65,7 +65,7 @@ namespace OrderingSystem.Repository.Coupon
                         reader.GetDouble("rate"),
                         reader.GetDateTime("expiry_Date"),
                          reader.IsDBNull(reader.GetOrdinal("coupon_description")) ? "" : reader.GetString(reader.GetOrdinal("coupon_description")),
-                         reader.GetString("type"), reader.GetDouble("min")
+                          CouponModel.getType(reader.GetString("type")), reader.GetDouble("min")
                        ));
                 }
             }
@@ -100,7 +100,7 @@ namespace OrderingSystem.Repository.Coupon
                         reader.GetDouble("rate"),
                         reader.GetDateTime("expiry_Date"),
                         reader.IsDBNull(reader.GetOrdinal("coupon_description")) ? "" : reader.GetString(reader.GetOrdinal("coupon_description")),
-                         reader.GetString("type"), reader.GetDouble("min")
+                         CouponModel.getType(reader.GetString("type")), reader.GetDouble("min")
                        );
                 }
             }

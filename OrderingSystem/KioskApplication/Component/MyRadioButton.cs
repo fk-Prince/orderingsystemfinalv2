@@ -7,8 +7,8 @@ namespace OrderingSystem.KioskApplication.Components
 {
     public partial class MyRadioButton : UserControl
     {
-        public event EventHandler<MenuModel> RadioCheckedChanged;
-        public MyRadioButton(string namex, string xprice, MenuModel m)
+        public event EventHandler<MenuDetailModel> RadioCheckedChanged;
+        public MyRadioButton(string namex, string xprice, MenuDetailModel m)
         {
             InitializeComponent();
 

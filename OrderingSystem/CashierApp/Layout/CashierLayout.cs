@@ -10,6 +10,7 @@ using OrderingSystem.CashierApp.Forms.Menu;
 using OrderingSystem.CashierApp.Forms.Staffs;
 using OrderingSystem.CashierApp.Layout;
 using OrderingSystem.CashierApp.SessionData;
+using OrderingSystem.Model;
 using OrderingSystem.Repository.CategoryRepository;
 using OrderingSystem.Repository.Reports;
 using OrderingSystem.Services;
@@ -45,7 +46,7 @@ namespace OrderingSystem.CashierApp.Forms
             drop.Items.Add("Switch User");
             drop.Items.Add("Sign-out");
 
-            if (SessionStaffData.Role.ToLower() == "cashier") b7.Visible = false;
+            if (SessionStaffData.Role == StaffModel.StaffRole.Cashier) b7.Visible = false;
 
 
             loadForm(new Dashboard());
@@ -54,7 +55,7 @@ namespace OrderingSystem.CashierApp.Forms
 
         private void displayStaffDetails()
         {
-            if (SessionStaffData.Role.ToLower() != "manager")
+            if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
             {
                 nm.Visible = false;
                 nb.Visible = false;
@@ -64,8 +65,8 @@ namespace OrderingSystem.CashierApp.Forms
                 md.Visible = false;
             }
             image.Image = SessionStaffData.Image;
-            name.Text = SessionStaffData.FirstName.Substring(0, 1).ToUpper() + SessionStaffData.FirstName.Substring(1).ToLower() + "  " + SessionStaffData.LastName.Substring(0, 1).ToUpper() + SessionStaffData.LastName.Substring(1).ToLower();
-            role.Text = SessionStaffData.Role.Substring(0, 1).ToUpper() + SessionStaffData.Role.Substring(1);
+            name.Text = SessionStaffData.getFullName();
+            role.Text = SessionStaffData.Role.ToString();
         }
         public void loadForm(Form f)
         {
@@ -79,7 +80,7 @@ namespace OrderingSystem.CashierApp.Forms
         }
         private void showSubPanel(Panel panel)
         {
-            if (panel.Visible == false && SessionStaffData.Role.ToLower() == "manager")
+            if (panel.Visible == false && SessionStaffData.Role == StaffModel.StaffRole.Manager)
             {
                 hideSubPanel();
                 panel.Visible = true;
@@ -91,8 +92,8 @@ namespace OrderingSystem.CashierApp.Forms
         }
         private void hideSubPanel()
         {
-            if (b4.Visible == true && SessionStaffData.Role.ToLower() == "manager") b4.Visible = false;
-            if (b6.Visible == true && SessionStaffData.Role.ToLower() == "manager") b6.Visible = false;
+            if (b4.Visible == true && SessionStaffData.Role == StaffModel.StaffRole.Manager) b4.Visible = false;
+            if (b6.Visible == true && SessionStaffData.Role == StaffModel.StaffRole.Manager) b6.Visible = false;
         }
         private void viewOrder(object sender, System.EventArgs e)
         {

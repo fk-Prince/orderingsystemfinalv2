@@ -38,7 +38,7 @@ namespace OrderingSystem.CashierApp.Forms.Coupon
             {
                 try
                 {
-                    DataView suc = couponServices.saveAction(p.t1.Text, p.dt2.Value, p.t3.Text, p.t4.Text, p.c5.Text, p.t6.Text);
+                    DataView suc = couponServices.saveCoupon(p.t1.Text, p.dt2.Value, p.t3.Text, p.t4.Text, p.c5.Text, p.t6.Text);
                     if (suc != null)
                     {
                         printCoupon(suc);
@@ -99,7 +99,7 @@ namespace OrderingSystem.CashierApp.Forms.Coupon
                 table.Columns.Add("Status");
 
                 couponList.ForEach(c =>
-                    table.Rows.Add(c.CouponCode, c.Description, c.calculateX(), c.getType(),
+                    table.Rows.Add(c.CouponCode, c.Description, c.getCouponRate(), c.getType(),
                     c.ExpiryDate.ToString("yyyy/MM/dd"), c.Status)
                 );
 
@@ -107,7 +107,7 @@ namespace OrderingSystem.CashierApp.Forms.Coupon
                 tableLayout.dataGrid.DataSource = view;
 
 
-                if (SessionStaffData.Role.ToLower() == "cashier")
+                if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
                     tableLayout.b1.Visible = false;
             }
             catch (Exception)
@@ -128,7 +128,7 @@ namespace OrderingSystem.CashierApp.Forms.Coupon
         private void loadForm(Form f)
         {
             if (mm.Controls.Count > 0) mm.Controls.Clear();
-            if (SessionStaffData.Role.ToLower() == "cashier" && f is TableLayout t) t.b1.Visible = false;
+            if (SessionStaffData.Role == StaffModel.StaffRole.Cashier && f is TableLayout t) t.b1.Visible = false;
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
 

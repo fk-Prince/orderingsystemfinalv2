@@ -16,10 +16,10 @@ namespace OrderingSystem.CashierApp.Forms.Menu
     {
 
         private List<IngredientModel> ingredientSelected;
-        private readonly List<MenuModel> variantList;
+        private readonly List<MenuDetailModel> variantList;
         private readonly IngredientServices ingredientServices;
 
-        public VariantMenuPopup(List<MenuModel> variantList, IngredientServices ingredientServices)
+        public VariantMenuPopup(List<MenuDetailModel> variantList, IngredientServices ingredientServices)
         {
             InitializeComponent();
             this.variantList = variantList;
@@ -67,7 +67,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
                 return;
             }
 
-            MenuModel variant = MenuModel.Builder()
+            MenuDetailModel variant = MenuDetailModel.Builder()
                 .WithPrice(double.Parse(menuPrice.Text.Trim()) / 1.12)
                 .WithFlavorName(flavor)
                 .WithEstimatedTime(TimeSpan.Parse(estimatedTime.Text.Trim()))
@@ -79,7 +79,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
             MessageBox.Show("Successfully Added");
             ingredientSelected.Clear();
         }
-        public List<MenuModel> getVariants()
+        public List<MenuDetailModel> getVariants()
         {
             return variantList;
         }
@@ -98,9 +98,9 @@ namespace OrderingSystem.CashierApp.Forms.Menu
         {
             try
             {
-                MenuRepository menuRepository = new MenuRepository();
-                List<string> flavor = menuRepository.getFlavor();
-                List<string> size = menuRepository.getSize();
+                MenuService m = new MenuService(new MenuRepository());
+                List<string> flavor = m.getSizeFlavor("flavor");
+                List<string> size = m.getSizeFlavor("size");
                 flavor.ForEach(f => cmbFlavor.Items.Add(f));
                 size.ForEach(f => cmbSize.Items.Add(f));
                 if (flavor.Count > 0) cmbFlavor.SelectedItem = "Regular";

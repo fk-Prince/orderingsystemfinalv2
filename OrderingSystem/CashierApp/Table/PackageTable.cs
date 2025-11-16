@@ -9,12 +9,12 @@ namespace OrderingSystem.CashierApp.Table
     public partial class PackageTable : Form
     {
         private DataTable table;
-        private List<MenuModel> included;
-        private List<MenuModel> menuS;
+        private List<MenuDetailModel> included;
+        private List<MenuDetailModel> menuS;
 
-        public List<MenuModel> getMenus()
+        public List<MenuDetailModel> getMenus()
         {
-            menuS = new List<MenuModel>();
+            menuS = new List<MenuDetailModel>();
 
             foreach (DataGridViewRow row in dataGrid.Rows)
             {
@@ -49,7 +49,7 @@ namespace OrderingSystem.CashierApp.Table
 
             return menuS;
         }
-        public PackageTable(List<MenuModel> included)
+        public PackageTable(List<MenuDetailModel> included)
         {
             InitializeComponent();
             this.included = included;

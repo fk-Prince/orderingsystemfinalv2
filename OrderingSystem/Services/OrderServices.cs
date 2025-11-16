@@ -14,9 +14,9 @@ namespace OrderingSystem.KioskApplication.Services
         {
             this.orderRepository = orderRepository;
         }
-        public string getNewOrderId()
+        public string getLastestOrderID()
         {
-            return orderRepository.getOrderId();
+            return orderRepository.getLastestOrderID();
         }
         public bool confirmOrder(OrderModel order)
         {
@@ -34,7 +34,7 @@ namespace OrderingSystem.KioskApplication.Services
         }
         public bool isOrderAvailable(string order_id)
         {
-            bool payed = orderRepository.isOrderPayed(order_id);
+            bool payed = orderRepository.isOrderPaid(order_id);
             if (payed)
                 throw new OrderInvalid("This order is already process.");
 
@@ -45,23 +45,23 @@ namespace OrderingSystem.KioskApplication.Services
 
             return true;
         }
-        public OrderModel getAllOrders(string order_id)
+        public OrderModel getOrders(string order_id)
         {
-            bool existsting = orderRepository.getOrderExists(order_id);
+            bool existsting = orderRepository.isOrderExists(order_id);
             if (!existsting)
                 throw new OrderNotFound("Order-ID not Found.");
 
             return orderRepository.getOrders(order_id); ;
         }
-        public bool payOrder(OrderModel order, int staff_id, string payment_method)
+        public bool payOrder(InvoiceModel i)
         {
-            return orderRepository.payOrder(order, staff_id, payment_method);
+            return orderRepository.payOrder(i);
         }
         public List<string> getAvailablePayments()
         {
             return orderRepository.getAvailablePayments();
         }
-        public Tuple<TimeSpan, string> getTimeInvoiceWaiting(string order_id)
+        public Tuple<TimeSpan, string, string> getTimeInvoiceWaiting(string order_id)
         {
             return orderRepository.getTimeInvoiceWaiting(order_id);
         }
@@ -73,9 +73,13 @@ namespace OrderingSystem.KioskApplication.Services
         {
             return orderRepository.voidOrder(orderId);
         }
-        public bool adjustTime()
+        public bool adjustOrderingTime()
         {
-            return orderRepository.adjustTime();
+            return orderRepository.adjustOrderingTime();
+        }
+        public double getFeePaymentMethod(string paymentName)
+        {
+            return orderRepository.getFeePaymentMethod(paymentName);
         }
     }
 }

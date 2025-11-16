@@ -29,10 +29,5 @@ namespace OrderingSystem.CashierApp.Forms.FactoryForm
         {
             FilterChanged?.Invoke(this, cb.Checked);
         }
-
-        private void title_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

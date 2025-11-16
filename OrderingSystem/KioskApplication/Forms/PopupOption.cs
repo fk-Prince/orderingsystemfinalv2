@@ -11,11 +11,11 @@ namespace OrderingSystem.KioskApplication
 {
     public partial class PopupOption : Form
     {
-        public MenuModel menu { get; }
+        public MenuDetailModel menu { get; }
         private KioskMenuServices kioskMenuServices;
         public event EventHandler<List<OrderItemModel>> orderListEvent;
         private IMenuOptions menuOptions;
-        public PopupOption(KioskMenuServices kioskMenuServices, MenuModel menu)
+        public PopupOption(KioskMenuServices kioskMenuServices, MenuDetailModel menu)
         {
             InitializeComponent();
             this.kioskMenuServices = kioskMenuServices;
@@ -54,7 +54,7 @@ namespace OrderingSystem.KioskApplication
         }
 
 
-        private void displayDetails(MenuModel menu)
+        private void displayDetails(MenuDetailModel menu)
         {
             image.Image = menu.MenuImage;
             menuName.Text = menu.MenuName;

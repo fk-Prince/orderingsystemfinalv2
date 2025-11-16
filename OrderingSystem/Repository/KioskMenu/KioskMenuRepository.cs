@@ -16,9 +16,9 @@ namespace OrderingSystem.Repository
         {
             this.orderList = orderList;
         }
-        public List<MenuModel> getMenu()
+        public List<MenuDetailModel> getMenu()
         {
-            List<MenuModel> list = new List<MenuModel>();
+            List<MenuDetailModel> list = new List<MenuDetailModel>();
             var db = DatabaseHandler.getInstance();
             try
             {
@@ -29,11 +29,8 @@ namespace OrderingSystem.Repository
                     {
                         while (reader.Read())
                         {
-                            DiscountModel dm = DiscountModel.Builder()
-                                .WithDiscountId(reader.GetInt32("discount_id"))
-                                .WithRate(reader.GetDouble("rate"))
-                                .Build();
-                            var menu = MenuModel.Builder()
+                            DiscountModel d = new DiscountModel(reader.GetInt32("discount_id"), reader.GetDouble("rate"));
+                            var menu = MenuDetailModel.Builder()
                                 .WithMenuId(reader.GetInt32("menu_id"))
                                 .WithMenuName(reader.GetString("menu_name"))
                                 .WithMenuDescription(reader.GetString("menu_description"))
@@ -43,7 +40,7 @@ namespace OrderingSystem.Repository
                                 .WithCategoryId(reader.GetInt32("category_id"))
                                 .WithMaxOrder(getMaxOrderRealTime(reader.GetInt32("menu_id"), orderList))
                                 .WithMenuImage(ImageHelper.GetImageFromBlob(reader, "menu"))
-                                .WithDiscount(dm)
+                                .WithDiscount(d)
                                 .Build();
                             list.Add(menu);
                         }
@@ -61,10 +58,10 @@ namespace OrderingSystem.Repository
             }
             return list;
         }
-        public List<MenuModel> getDetails(MenuModel menu)
+        public List<MenuDetailModel> getDetails(MenuDetailModel menu)
         {
             var db = DatabaseHandler.getInstance();
-            List<MenuModel> mds = new List<MenuModel>();
+            List<MenuDetailModel> mds = new List<MenuDetailModel>();
             try
             {
                 var conn = db.getConnection();
@@ -82,12 +79,9 @@ namespace OrderingSystem.Repository
                     {
                         while (reader.Read())
                         {
-                            DiscountModel dm = DiscountModel.Builder()
-                                .WithDiscountId(reader.GetInt32("discount_id"))
-                                .WithRate(reader.GetDouble("rate"))
-                                .Build();
+                            DiscountModel d = new DiscountModel(reader.GetInt32("discount_id"), reader.GetDouble("rate"));
                             int maxOrder = getMaxOrderRealTime(reader.GetInt32("menu_detail_id"), orderList);
-                            mds.Add(MenuModel.Builder()
+                            mds.Add(MenuDetailModel.Builder()
                                 .WithMenuId(reader.GetInt32("menu_id"))
                                 .WithMenuDetailId(reader.GetInt32("menu_detail_id"))
                                 .WithPrice(reader.GetDouble("price"))
@@ -97,7 +91,7 @@ namespace OrderingSystem.Repository
                                 .WithMaxOrder(maxOrder)
                                 .WithFlavorName(reader.GetString("flavor_name"))
                                 .WithSizeName(reader.GetString("size_name"))
-                                .WithDiscount(dm)
+                                .WithDiscount(d)
                                 .Build());
                         }
                     }
@@ -115,9 +109,9 @@ namespace OrderingSystem.Repository
             }
             return mds;
         }
-        public List<MenuModel> getFrequentlyOrderedTogether(MenuModel menus)
+        public List<MenuDetailModel> getFrequentlyOrderedTogether(MenuDetailModel menus)
         {
-            List<MenuModel> list = new List<MenuModel>();
+            List<MenuDetailModel> list = new List<MenuDetailModel>();
             var db = DatabaseHandler.getInstance();
             try
             {
@@ -136,7 +130,7 @@ namespace OrderingSystem.Repository
                                 if (i == 0)
                                     continue;
 
-                                var menu = MenuModel.Builder()
+                                var menu = MenuDetailModel.Builder()
                                     .WithMenuId(reader.GetInt32("menu_id"))
                                     .WithMenuName(reader.GetString("menu_name"))
                                     .WithMenuDescription(reader.GetString("menu_description"))
@@ -166,9 +160,9 @@ namespace OrderingSystem.Repository
             }
             return list;
         }
-        public List<MenuModel> getIncludedMenu(MenuModel menu)
+        public List<MenuDetailModel> getIncludedMenu(MenuDetailModel menu)
         {
-            List<MenuModel> list = new List<MenuModel>();
+            List<MenuDetailModel> list = new List<MenuDetailModel>();
             var db = DatabaseHandler.getInstance();
             try
             {
@@ -246,10 +240,10 @@ namespace OrderingSystem.Repository
             }
             return list;
         }
-        public List<MenuModel> getDetailsByPackage(MenuModel menu)
+        public List<MenuDetailModel> getDetailsByPackage(MenuDetailModel menu)
         {
             var db = DatabaseHandler.getInstance();
-            List<MenuModel> mds = new List<MenuModel>();
+            List<MenuDetailModel> mds = new List<MenuDetailModel>();
             try
             {
                 var conn = db.getConnection();
@@ -310,7 +304,7 @@ namespace OrderingSystem.Repository
             }
             return mds;
         }
-        public bool isMenuPackage(MenuModel menu)
+        public bool isMenuPackage(MenuDetailModel menu)
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -347,7 +341,7 @@ namespace OrderingSystem.Repository
             }
             return false;
         }
-        public double getNewPackagePrice(int menuid, List<MenuModel> selectedMenus)
+        public double getNewPackagePrice(int menuid, List<MenuDetailModel> selectedMenus)
         {
             var db = DatabaseHandler.getInstance();
 

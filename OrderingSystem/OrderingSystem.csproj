@@ -400,11 +400,17 @@
     <Compile Include="CashierApp\Layout\LoginLayout.Designer.cs">
       <DependentUpon>LoginLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="CashierApp\Payment\CashPayment.cs" />
-    <Compile Include="CashierApp\Payment\CreditCardPayment.cs" />
-    <Compile Include="CashierApp\Payment\IPayment.cs" />
-    <Compile Include="CashierApp\Payment\IPaymentFactoryType.cs" />
-    <Compile Include="CashierApp\Payment\PaymentFactory.cs" />
+    <Compile Include="Model\InvoiceModel.cs" />
+    <Compile Include="Payment\Types\BasePayment.cs" />
+    <Compile Include="Payment\Other\FeeCalculator.cs" />
+    <Compile Include="Payment\Types\CashPayment.cs" />
+    <Compile Include="Payment\Types\GCashPayment.cs" />
+    <Compile Include="Payment\Interface\ICashHandling.cs" />
+    <Compile Include="Payment\Interface\IFeeCalculator.cs" />
+    <Compile Include="Payment\Interface\IPayment.cs" />
+    <Compile Include="Payment\Interface\IPaymentFactory.cs" />
+    <Compile Include="Payment\Other\PaymentFactory.cs" />
+    <Compile Include="Payment\Types\DebitCardPayment.cs" />
     <Compile Include="CashierApp\SessionData\SessionStaffData.cs" />
     <Compile Include="CashierApp\Table\PackageTable.cs">
       <SubType>Form</SubType>
@@ -613,14 +619,15 @@
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\MenuDetailModel.cs" />
     <Compile Include="Receipt\OrderReceipt.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Receipt\OrderReceipt.Designer.cs">
       <DependentUpon>OrderReceipt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Cashier\MenuRepository.cs" />
-    <Compile Include="Repository\Cashier\IMenuRepository.cs" />
+    <Compile Include="Repository\CashierMenu\MenuRepository.cs" />
+    <Compile Include="Repository\CashierMenu\IMenuRepository.cs" />
     <Compile Include="Repository\Category\CategoryRepository.cs" />
     <Compile Include="Repository\Category\ICategoryRepository.cs" />
     <Compile Include="Repository\Coupons\CouponRepository.cs" />
@@ -915,6 +922,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\finaldashicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minusO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dinein.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\takeout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cardas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

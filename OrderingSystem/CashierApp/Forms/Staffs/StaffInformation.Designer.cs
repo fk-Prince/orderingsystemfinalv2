@@ -39,9 +39,9 @@
             this.hired = new Guna.UI2.WinForms.Guna2TextBox();
             this.b1 = new Guna.UI2.WinForms.Guna2Button();
             this.fb = new Guna.UI2.WinForms.Guna2Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.ul = new System.Windows.Forms.Label();
             this.username = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.up = new System.Windows.Forms.Label();
             this.password = new Guna.UI2.WinForms.Guna2TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cRolePanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -194,7 +194,7 @@
             this.b1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.b1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.b1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.b1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.b1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(159)))), ((int)(((byte)(249)))));
             this.b1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.b1.ForeColor = System.Drawing.Color.White;
             this.b1.Image = global::OrderingSystem.Properties.Resources.edit;
@@ -228,16 +228,16 @@
             this.fb.Text = "Fire";
             this.fb.Click += new System.EventHandler(this.fireButton);
             // 
-            // label4
+            // ul
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(10, 186);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 17);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Username";
+            this.ul.AutoSize = true;
+            this.ul.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ul.ForeColor = System.Drawing.Color.Gray;
+            this.ul.Location = new System.Drawing.Point(10, 186);
+            this.ul.Name = "ul";
+            this.ul.Size = new System.Drawing.Size(67, 17);
+            this.ul.TabIndex = 17;
+            this.ul.Text = "Username";
             // 
             // username
             // 
@@ -263,16 +263,16 @@
             this.username.Size = new System.Drawing.Size(192, 36);
             this.username.TabIndex = 16;
             // 
-            // label5
+            // up
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(228, 186);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Password";
+            this.up.AutoSize = true;
+            this.up.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.up.ForeColor = System.Drawing.Color.Gray;
+            this.up.Location = new System.Drawing.Point(228, 186);
+            this.up.Name = "up";
+            this.up.Size = new System.Drawing.Size(64, 17);
+            this.up.TabIndex = 19;
+            this.up.Text = "Password";
             // 
             // password
             // 
@@ -476,9 +476,9 @@
             this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.cRolePanel);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.up);
             this.Controls.Add(this.password);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.ul);
             this.Controls.Add(this.username);
             this.Controls.Add(this.fb);
             this.Controls.Add(this.label3);
@@ -518,9 +518,9 @@
         public System.Windows.Forms.Label label3;
         public Guna.UI2.WinForms.Guna2TextBox hired;
         public Guna.UI2.WinForms.Guna2Button fb;
-        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label up;
         public Guna.UI2.WinForms.Guna2TextBox password;
-        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label ul;
         public Guna.UI2.WinForms.Guna2TextBox username;
         public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public Guna.UI2.WinForms.Guna2Panel cRolePanel;

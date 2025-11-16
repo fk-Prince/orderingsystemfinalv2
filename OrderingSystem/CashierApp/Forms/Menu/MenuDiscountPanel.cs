@@ -23,7 +23,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
             {
                 try
                 {
-                    bool suc = new DiscountServices(new DiscountRepository()).AddDiscount(p.t1.Text, p.dt2.Value);
+                    bool suc = new DiscountServices(new DiscountRepository()).saveDiscount(p.t1.Text, p.dt2.Value);
                     if (suc)
                     {
                         MessageBox.Show("Successfully added", "Discount", MessageBoxButtons.OK, MessageBoxIcon.Information);

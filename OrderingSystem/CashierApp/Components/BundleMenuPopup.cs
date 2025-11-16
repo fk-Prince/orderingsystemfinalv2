@@ -14,9 +14,9 @@ namespace OrderingSystem.CashierApp.Components
 
         private DataTable table;
         private DataView view;
-        private List<MenuModel> menuSelected;
-        private List<MenuModel> menuList;
-        public BundleMenuPopup(MenuService menuService, List<MenuModel> menuSelected)
+        private List<MenuDetailModel> menuSelected;
+        private List<MenuDetailModel> menuList;
+        public BundleMenuPopup(MenuService menuService, List<MenuDetailModel> menuSelected)
         {
             InitializeComponent();
             this.menuSelected = menuSelected;
@@ -142,7 +142,7 @@ namespace OrderingSystem.CashierApp.Components
                     bool fx = bool.Parse(row.Cells["Fixed ✓"].Value.ToString());
                     int q = int.Parse(row.Cells["Quantity"].Value?.ToString());
 
-                    MenuModel originalMenu = menuList.Find(x =>
+                    MenuDetailModel originalMenu = menuList.Find(x =>
                            x.MenuName == menuName &&
                            x.FlavorName == flavor &&
                            x.SizeName == size);
@@ -169,7 +169,7 @@ namespace OrderingSystem.CashierApp.Components
             //xx?.Invoke(this, EventArgs.Empty);
         }
 
-        public List<MenuModel> getMenuSelected()
+        public List<MenuDetailModel> getMenuSelected()
         {
             return menuSelected;
         }

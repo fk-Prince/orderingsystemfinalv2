@@ -13,15 +13,15 @@ namespace OrderingSystem.KioskApplication.Layouts
         private string titleOption;
         private string subTitle;
         private SizeLayout sc;
-        private MenuModel selectedFlavor;
-        private MenuModel selectedSize;
+        private MenuDetailModel selectedFlavor;
+        private MenuDetailModel selectedSize;
 
-        private MenuModel selectedMenu;
-        public MenuModel SelectedMenuDetail => selectedMenu;
+        private MenuDetailModel selectedMenu;
+        public MenuDetailModel SelectedMenuDetail => selectedMenu;
 
-        private readonly MenuModel menuDetail;
-        private readonly List<MenuModel> menuDetails;
-        public PackageLayout(KioskMenuServices kioskMenuServices, MenuModel menuDetail)
+        private readonly MenuDetailModel menuDetail;
+        private readonly List<MenuDetailModel> menuDetails;
+        public PackageLayout(KioskMenuServices kioskMenuServices, MenuDetailModel menuDetail)
         {
             InitializeComponent();
             this.menuDetail = menuDetail;
@@ -36,7 +36,7 @@ namespace OrderingSystem.KioskApplication.Layouts
             }
         }
 
-        private void displayFlavor(MenuModel menuDetail)
+        private void displayFlavor(MenuDetailModel menuDetail)
         {
             string t = "Select your menu.";
             titleOption = "Option A";
@@ -81,12 +81,12 @@ namespace OrderingSystem.KioskApplication.Layouts
                 throw;
             }
         }
-        private void filterSizeByFlavor(List<MenuModel> menuDetails, int menuid, string flavor)
+        private void filterSizeByFlavor(List<MenuDetailModel> menuDetails, int menuid, string flavor)
         {
-            List<MenuModel> l = string.IsNullOrWhiteSpace(flavor) ? menuDetails.FindAll(x => menuid == x.MenuId) : menuDetails.FindAll(x => menuid == x.MenuId && x.FlavorName == flavor);
+            List<MenuDetailModel> l = string.IsNullOrWhiteSpace(flavor) ? menuDetails.FindAll(x => menuid == x.MenuId) : menuDetails.FindAll(x => menuid == x.MenuId && x.FlavorName == flavor);
             displaySize(l);
         }
-        private void flavorSelected(object sender, MenuModel e)
+        private void flavorSelected(object sender, MenuDetailModel e)
         {
             selectedFlavor = e;
 
@@ -103,7 +103,7 @@ namespace OrderingSystem.KioskApplication.Layouts
             if (e != null)
                 filterSizeByFlavor(menuDetails, menuDetail.MenuId, menuDetail.FlavorName);
         }
-        private void displaySize(List<MenuModel> menuList)
+        private void displaySize(List<MenuDetailModel> menuList)
         {
 
             if (sc != null)

@@ -6,15 +6,15 @@ namespace OrderingSystem.Repository.Ingredients
 {
     public interface IIngredientRepository
     {
-        List<IngredientModel> getIngredientsOfMenu(MenuModel menu);
+        bool saveIngredientByMenu(int menudetail_id, List<IngredientModel> menu, string type);
+        bool addIngredient(IngredientModel os);
+        List<IngredientModel> getIngredientsOfMenu(MenuDetailModel menu);
         List<IngredientModel> getIngredients();
         List<IngredientStockModel> getIngredientsStock();
         DataView getIngredientsView();
         bool isIngredientNameExists(string name, int id = 0);
         bool removeExpiredIngredient();
-        bool saveIngredientByMenu(int menudetail_id, List<IngredientModel> menu, string type);
         bool deductIngredient(int id, int quantity, string reason);
-        bool addIngredient(IngredientStockModel os);
         bool restockIngredient(IngredientStockModel os);
         bool updateIngredient(int id, string name, string unit);
         List<string> getInventoryReasons(string type);

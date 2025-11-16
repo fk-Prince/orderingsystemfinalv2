@@ -16,14 +16,14 @@ namespace OrderingSystem.Model
         public double CouponMin { get; set; }
         public DateTime ExpiryDate { get; set; }
         public int NumberOfTimes { get; set; }
-        public string type { get; set; }
+        public CouponType type { get; set; }
 
-        public CouponModel(double couponRate, string type)
+        public CouponModel(double couponRate, CouponType type)
         {
             this.CouponRate = couponRate;
             this.type = type;
         }
-        public CouponModel(string couponCode, string status, double couponRate, DateTime expiryDate, string description, string type, double min)
+        public CouponModel(string couponCode, string status, double couponRate, DateTime expiryDate, string description, CouponType type, double min)
         {
             this.CouponCode = couponCode;
             this.Status = status;
@@ -33,7 +33,8 @@ namespace OrderingSystem.Model
             this.type = type;
             this.CouponMin = min;
         }
-        public CouponModel(double couponRate, DateTime expiryDate, string description, int numberOfTimes, string type, double min)
+
+        public CouponModel(double couponRate, DateTime expiryDate, string description, int numberOfTimes, CouponType type, double min)
         {
             this.CouponRate = CouponRate;
             this.ExpiryDate = expiryDate;
@@ -42,20 +43,20 @@ namespace OrderingSystem.Model
             this.type = type;
             this.CouponMin = min;
         }
+
         public CouponType getType()
+        {
+            return type;
+        }
+        public static CouponType getType(string type)
         {
             return type.ToUpper() == "FIXED" ? CouponType.FIXED : CouponType.PERCENTAGE;
         }
-
-        public double calculate(double total)
-        {
-            return getType() == CouponType.FIXED ? total - CouponRate : total - (total * CouponRate);
-        }
-        public double getCoupon(double total)
+        public double getCouponTotal(double total)
         {
             return getType() == CouponType.FIXED ? CouponRate : total * CouponRate;
         }
-        public double calculateX()
+        public double getCouponRate()
         {
             return getType() == CouponType.FIXED ? CouponRate : CouponRate * 100;
         }

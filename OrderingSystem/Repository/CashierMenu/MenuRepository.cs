@@ -13,7 +13,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
     {
         public bool isMenuNameExist(string name)
         {
-            List<MenuModel> list = new List<MenuModel>();
+            List<MenuDetailModel> list = new List<MenuDetailModel>();
             var db = DatabaseHandler.getInstance();
             try
             {
@@ -41,7 +41,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             }
             return false;
         }
-        public bool createRegularMenu(MenuModel md)
+        public bool createRegularMenu(MenuDetailModel md)
         {
 
             var db = DatabaseHandler.getInstance();
@@ -111,9 +111,9 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             }
 
         }
-        public List<MenuModel> getMenu()
+        public List<MenuDetailModel> getMenu()
         {
-            List<MenuModel> list = new List<MenuModel>();
+            List<MenuDetailModel> list = new List<MenuDetailModel>();
             var db = DatabaseHandler.getInstance();
             try
             {
@@ -124,13 +124,9 @@ namespace OrderingSystem.Repo.CashierMenuRepository
                     {
                         while (reader.Read())
                         {
-                            DiscountModel d = DiscountModel.Builder()
-                                .WithDiscountId(reader.GetInt32("discount_id"))
-                                .WithRate(reader.GetDouble("rate"))
-                                .WithUntilDate(reader.GetDateTime("until_date"))
-                                .Build();
+                            DiscountModel d = new DiscountModel(reader.GetInt32("discount_id"), reader.GetDouble("rate"), reader.GetDateTime("until_date"));
 
-                            MenuModel md = MenuModel.Builder()
+                            MenuDetailModel md = MenuDetailModel.Builder()
                                      .WithCategoryName(reader.GetString("category_Name"))
                                      .isAvailable(reader.GetString("isAvailable").ToLower() == "yes")
                                      .WithMenuId(reader.GetInt32("menu_id"))
@@ -157,9 +153,9 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             }
             return list;
         }
-        public List<MenuModel> getMenuDetail()
+        public List<MenuDetailModel> getMenuDetail()
         {
-            List<MenuModel> list = new List<MenuModel>();
+            List<MenuDetailModel> list = new List<MenuDetailModel>();
             var db = DatabaseHandler.getInstance();
             try
             {
@@ -170,11 +166,8 @@ namespace OrderingSystem.Repo.CashierMenuRepository
                     {
                         while (reader.Read())
                         {
-                            DiscountModel d = DiscountModel.Builder()
-                                .WithDiscountId(reader.GetInt32("discount_id"))
-                                .WithRate(reader.GetDouble("rate"))
-                                .WithUntilDate(reader.GetDateTime("until_date"))
-                                .Build();
+
+                            DiscountModel d = new DiscountModel(reader.GetInt32("discount_id"), reader.GetDouble("rate"), reader.GetDateTime("until_date"));
                             MenuPackageModel md = MenuPackageModel.Builder()
                                 .WithMenuId(reader.GetInt32("menu_id"))
                                 .WithMenuDetailId(reader.GetInt32("menu_detail_id"))
@@ -258,7 +251,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             }
             return list;
         }
-        public bool newMenuVariant(int menuId, List<MenuModel> m)
+        public bool newMenuVariant(int menuId, List<MenuDetailModel> m)
         {
 
             var db = DatabaseHandler.getInstance();
@@ -286,7 +279,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             }
 
         }
-        public bool isMenuPackage(MenuModel menu)
+        public bool isMenuPackage(MenuDetailModel menu)
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -323,7 +316,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             }
             return false;
         }
-        public List<MenuModel> getBundled(MenuModel menu)
+        public List<MenuDetailModel> getBundled(MenuDetailModel menu)
         {
 
             string query = @"SElECT m.menu_id, m.menu_name, md.menu_detail_id,md.price,md.estimated_time,md.size_name,md.flavor_name,mp.quantity,mp.package_type,mp.package_id FROM menu m 
@@ -334,7 +327,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
 	                                WHERE menu_id = @menu_id
                                 )
                               ";
-            List<MenuModel> list = new List<MenuModel>();
+            List<MenuDetailModel> list = new List<MenuDetailModel>();
             var db = DatabaseHandler.getInstance();
             try
             {
@@ -347,7 +340,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
                         while (reader.Read())
                         {
 
-                            MenuModel md = MenuPackageModel.Builder()
+                            MenuDetailModel md = MenuPackageModel.Builder()
                                 .WithMenuId(reader.GetInt32("menu_id"))
                                 .WithPackageId(reader.GetInt32("package_id"))
                                 .WithMenuDetailId(reader.GetInt32("menu_detail_id"))
@@ -375,7 +368,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             }
             return list;
         }
-        public double getBundlePrice(MenuModel menu)
+        public double getBundlePrice(MenuDetailModel menu)
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -406,7 +399,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             }
             return 0;
         }
-        public bool updateRegularMenu(MenuModel m)
+        public bool updateRegularMenu(MenuDetailModel m)
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -485,7 +478,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
                 db.closeConnection();
             }
         }
-        public bool updateBundle2(int id, List<MenuModel> included)
+        public bool updateBundle(int id, List<MenuDetailModel> included)
         {
             var db = DatabaseHandler.getInstance();
             try

@@ -23,7 +23,7 @@ namespace OrderingSystem.CashierApp.Components
             ingredientSelected = new List<IngredientModel>();
         }
 
-        public void getIngredientByMenu(MenuModel variantDetail)
+        public void getIngredientByMenu(MenuDetailModel variantDetail)
         {
             try
             {
@@ -181,7 +181,6 @@ namespace OrderingSystem.CashierApp.Components
                     }
                 }
             }
-
             IngredientSelectedEvent?.Invoke(this, ingredientSelected);
         }
         public void reset()
@@ -192,5 +191,6 @@ namespace OrderingSystem.CashierApp.Components
         {
             DialogResult = DialogResult.OK;
         }
+
     }
 }

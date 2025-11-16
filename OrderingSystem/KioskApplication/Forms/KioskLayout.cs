@@ -29,7 +29,7 @@ namespace OrderingSystem
         private readonly Dictionary<int, Guna2Panel> categoryContainer;
         private readonly List<Guna2Button> buttonListTop;
         private Filter filterSide;
-        private List<MenuModel> allMenus;
+        private List<MenuDetailModel> allMenus;
         private CartServices cartServices;
         private CouponModel couponSelected;
         private Guna2Button lastClickedTop;
@@ -66,8 +66,8 @@ namespace OrderingSystem
                 {
                     c.BackColor = Color.Transparent;
                     c.ForeColor = Color.White;
-                    c.FillColor = ColorTranslator.FromHtml("#689FF9");
-                    lastClickedTop.FillColor = ColorTranslator.FromHtml("#DBEAFE");
+                    c.FillColor = Color.FromArgb(255, 97, 29);
+                    lastClickedTop.FillColor = Color.FromArgb(255, 224, 192);
                     lastClickedTop.ForeColor = Color.FromArgb(34, 34, 34);
                     lastClickedTop = c;
                     break;
@@ -96,7 +96,7 @@ namespace OrderingSystem
             }
             filterSide.resetFilter();
         }
-        public void displayMenu(List<MenuModel> mm)
+        public void displayMenu(List<MenuDetailModel> mm)
         {
             foreach (var p in categoryPanels.Values)
                 p.Controls.Clear();
@@ -105,7 +105,7 @@ namespace OrderingSystem
                 foreach (var panel in categoryContainer.Values)
                     flowMenu.Controls.Add(panel);
 
-            foreach (MenuModel menu in mm)
+            foreach (MenuDetailModel menu in mm)
             {
                 if (categoryPanels.ContainsKey(menu.CategoryId))
                 {
@@ -203,7 +203,7 @@ namespace OrderingSystem
                 b1.Margin = new Padding(0);
                 b1.Location = new Point(x1, 90);
                 b1.AutoRoundedCorners = true;
-                b1.FillColor = ColorTranslator.FromHtml("#DBEAFE");
+                b1.FillColor = Color.FromArgb(255, 224, 192);
                 b1.Click += catClickedTop;
                 b1.BackColor = Color.Transparent;
                 b1.ForeColor = Color.FromArgb(34, 34, 34);
@@ -215,7 +215,7 @@ namespace OrderingSystem
             if (xxx.Controls.Count > 0)
             {
                 lastClickedTop = buttonListTop[0];
-                lastClickedTop.FillColor = ColorTranslator.FromHtml("#689FF9");
+                lastClickedTop.FillColor = Color.FromArgb(255, 97, 29);
                 lastClickedTop.ForeColor = Color.White;
             }
         }
@@ -254,13 +254,10 @@ namespace OrderingSystem
                 }
                 IOrderRepository orderRepository = new OrderRepository();
                 OrderServices orderServices = new OrderServices(orderRepository);
-                string orderId = orderServices.getNewOrderId();
-                OrderModel om = OrderModel.Builder()
-                                    .WithOrderId(orderId)
-                                    .WithOrderItemList(orderList)
-                                    .WithCoupon(couponSelected)
-                                    .WithOrderType(type)
-                                    .Build();
+                string orderId = orderServices.getLastestOrderID();
+                OrderModel om = new OrderModel(orderId, orderList, couponSelected, OrderModel.getOrderType(type));
+
+
                 OrderLayout l = new OrderLayout(om, orderServices);
                 l.AddQuantity += (s, ee) =>
                 {

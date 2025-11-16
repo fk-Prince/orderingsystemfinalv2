@@ -15,18 +15,18 @@ namespace OrderingSystem.Services
             this.discountRepository = discountRepository;
         }
 
-        public List<DiscountModel> GetDiscount()
+        public List<DiscountModel> getDiscount()
         {
-            return discountRepository.GetDiscount();
+            return discountRepository.getDiscount();
         }
 
-        public List<DiscountModel> GetDiscountAvailable()
+        public List<DiscountModel> getDiscountAvailable()
         {
-            List<DiscountModel> d = GetDiscount();
+            List<DiscountModel> d = getDiscount();
             return d.Where(dx => dx.UntilDate > DateTime.Now).ToList();
         }
 
-        public bool AddDiscount(string rate, DateTime date)
+        public bool saveDiscount(string rate, DateTime date)
         {
             if (!double.TryParse(rate, out var d))
                 throw new InvalidInput("Invalid Discount Rate, rate should be number");
@@ -42,7 +42,7 @@ namespace OrderingSystem.Services
 
             d /= 100;
 
-            return discountRepository.SaveDate(d, date);
+            return discountRepository.saveDiscount(d, date);
         }
     }
 }

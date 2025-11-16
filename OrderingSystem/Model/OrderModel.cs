@@ -7,13 +7,38 @@ namespace OrderingSystem.Model
 {
     public class OrderModel
     {
+        public enum OrderType
+        {
+            DINE_IN,
+            TAKE_OUT
+        }
+
         private string order_id;
+
         public List<OrderItemModel> OrderItemList { get; set; }
         public CouponModel Coupon { get; set; }
         public string OrderId { get => order_id; }
-        public string OrderType { get; set; }
+        public OrderType Type { get; set; }
+        public string OrderId1 { get; }
+        public CouponModel CouponSelected { get; }
+        public OrderModel(string orderId, List<OrderItemModel> orderList, CouponModel couponSelected, OrderType orderType)
+        {
+            order_id = orderId;
+            OrderItemList = orderList;
+            CouponSelected = couponSelected;
+            Type = orderType;
+        }
+        public OrderModel(string orderId, CouponModel couponModel, List<OrderItemModel> oim)
+        {
+            order_id = orderId;
+            CouponSelected = couponModel;
+            OrderItemList = oim;
+        }
 
-
+        public static OrderType getOrderType(string t)
+        {
+            return t.ToUpper().Replace("-", "_") == "DINE_IN" ? OrderType.DINE_IN : OrderType.TAKE_OUT;
+        }
         public double GetGrossRevenue()
         {
             return OrderItemList.Sum(item => item.getSubtotal());
@@ -42,50 +67,10 @@ namespace OrderingSystem.Model
         {
             return GetTotalWithVAT() / 1.12;
         }
-
         public string JsonOrderList()
         {
             return JsonConvert.SerializeObject(OrderItemList);
         }
 
-        public static OrderBuilder Builder() => new OrderBuilder();
-
-        public class OrderBuilder
-        {
-            private OrderModel _order;
-
-            public OrderBuilder()
-            {
-                _order = new OrderModel();
-            }
-
-            public OrderBuilder WithOrderId(string c)
-            {
-                _order.order_id = c;
-                return this;
-            }
-            public OrderBuilder WithOrderType(string c)
-            {
-                _order.OrderType = c;
-                return this;
-            }
-
-            public OrderBuilder WithOrderItemList(List<OrderItemModel> c)
-            {
-                _order.OrderItemList = c;
-                return this;
-            }
-
-            public OrderBuilder WithCoupon(CouponModel c)
-            {
-                _order.Coupon = c;
-                return this;
-            }
-
-            public OrderModel Build()
-            {
-                return _order;
-            }
-        }
     }
 }

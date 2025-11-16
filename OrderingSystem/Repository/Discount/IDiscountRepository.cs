@@ -7,7 +7,7 @@ namespace OrderingSystem.Repository.Discount
     public interface IDiscountRepository
     {
 
-        List<DiscountModel> GetDiscount();
-        bool SaveDate(double rate, DateTime date);
+        List<DiscountModel> getDiscount();
+        bool saveDiscount(double rate, DateTime date);
     }
 }

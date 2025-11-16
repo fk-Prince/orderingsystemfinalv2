@@ -9,7 +9,7 @@ namespace OrderingSystem.Repository.Discount
 {
     public class DiscountRepository : IDiscountRepository
     {
-        public List<DiscountModel> GetDiscount()
+        public List<DiscountModel> getDiscount()
         {
             List<DiscountModel> l = new List<DiscountModel>();
             var db = DatabaseHandler.getInstance();
@@ -24,12 +24,8 @@ namespace OrderingSystem.Repository.Discount
                     {
                         while (reader.Read())
                         {
-                            var discount = DiscountModel.Builder()
-                                .WithDiscountId(reader.GetInt32("discount_id"))
-                                .WithRate(reader.GetDouble("rate"))
-                                .WithUntilDate(reader.GetDateTime("until_date"))
-                                .Build();
-                            l.Add(discount);
+                            DiscountModel d = new DiscountModel(reader.GetInt32("discount_id"), reader.GetDouble("rate"), reader.GetDateTime("until_date"));
+                            l.Add(d);
                         }
                     }
                 }
@@ -46,8 +42,7 @@ namespace OrderingSystem.Repository.Discount
 
             return l;
         }
-
-        public bool SaveDate(double rate, DateTime date)
+        public bool saveDiscount(double rate, DateTime date)
         {
             var db = DatabaseHandler.getInstance();
 

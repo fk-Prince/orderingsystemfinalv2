@@ -19,11 +19,11 @@ namespace OrderingSystem.KioskApplication.Options
             this.kioskMenuServices = kioskMenuServices;
         }
 
-        public void displayFrequentlyOrdered(MenuModel menus)
+        public void displayFrequentlyOrdered(MenuDetailModel menus)
         {
             try
             {
-                List<MenuModel> md = kioskMenuServices.getFrequentlyOrderedTogether(menus);
+                List<MenuDetailModel> md = kioskMenuServices.getFrequentlyOrderedTogether(menus);
 
                 if (flowPanel.Contains(fot))
                 {

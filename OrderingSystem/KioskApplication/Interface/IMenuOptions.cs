@@ -5,7 +5,7 @@ namespace OrderingSystem.KioskApplication.Services
 {
     public interface IMenuOptions
     {
-        void displayMenuOptions(MenuModel menu);
+        void displayMenuOptions(MenuDetailModel menu);
         List<OrderItemModel> confirmOrder();
     }
 }

@@ -106,7 +106,7 @@ namespace OrderingSystem.KioskApplication.Services
             if (coupon == null) return 0.00;
             this.coupon = coupon;
             double subtotal = calculateSubtotal();
-            return coupon.getCoupon(subtotal);
+            return coupon.getCouponTotal(subtotal);
         }
         public double calculateTotalAmount()
         {

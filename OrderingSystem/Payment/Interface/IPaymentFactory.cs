@@ -1,6 +1,6 @@
 ﻿namespace OrderingSystem.CashierApp.Payment
 {
-    public interface IPaymentFactoryType
+    public interface IPaymentFactory
     {
         IPayment paymentType(string type);
     }

@@ -69,13 +69,6 @@ namespace OrderingSystem.KioskApplication
             try
             {
                 CouponModel c = couponRepository.getCoupon(txtCoupon.Text);
-                //if (currentCoupon != null)
-                //{
-                //    message.Text = "You’ve already selected a coupon. If you want to change it, please click gift icon.";
-                //    message.ForeColor = Color.IndianRed;
-                //    return;
-                //}
-
 
                 if (c != null)
                 {
@@ -114,10 +107,6 @@ namespace OrderingSystem.KioskApplication
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
         }
     }
 }

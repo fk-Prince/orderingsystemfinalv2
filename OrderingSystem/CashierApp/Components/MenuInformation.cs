@@ -19,17 +19,17 @@ namespace OrderingSystem.CashierApp.Components
     {
         private readonly CategoryServices categoryServices;
         private readonly IngredientServices ingredientServices;
-        private List<MenuModel> variantList;
-        private List<MenuModel> included;
+        private List<MenuDetailModel> variantList;
+        private List<MenuDetailModel> included;
         private MenuService menuService;
 
-        private readonly MenuModel menu;
+        private readonly MenuDetailModel menu;
         private RegularTable regular;
         private PackageTable package;
         private bool isEditMode = false;
         private bool isPackaged = false;
         public event EventHandler menuUpdated;
-        public MenuInformation(MenuModel menu, MenuService menuService, CategoryServices categoryServices, IngredientServices ingredientServices)
+        public MenuInformation(MenuDetailModel menu, MenuService menuService, CategoryServices categoryServices, IngredientServices ingredientServices)
         {
             InitializeComponent();
             this.menu = menu;
@@ -47,7 +47,7 @@ namespace OrderingSystem.CashierApp.Components
             catTxt.Text = menu.CategoryName;
             category.Text = menu.CategoryName;
             cBox.SelectedIndex = menu.isAvailable ? 0 : 1;
-            if (SessionStaffData.Role.ToLower() == "cashier")
+            if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
             {
                 b1.Visible = false;
                 b2.Visible = false;
@@ -62,7 +62,7 @@ namespace OrderingSystem.CashierApp.Components
                 c.ForEach(ex => category.Items.Add(ex.CategoryName));
 
                 cbd.DisplayMember = "DisplayText";
-                List<DiscountModel> dm = new DiscountServices(new DiscountRepository()).GetDiscountAvailable();
+                List<DiscountModel> dm = new DiscountServices(new DiscountRepository()).getDiscountAvailable();
 
                 dm.ForEach(d => d.DisplayText = $"{d.Rate * 100}% | {d.UntilDate:yyyy-MM-dd}");
 
@@ -210,7 +210,7 @@ namespace OrderingSystem.CashierApp.Components
                     imagex = ImageHelper.GetImageFromFile(image.Image);
 
                 bool suc = false;
-                MenuModel menus = null;
+                MenuDetailModel menus = null;
                 string type = "";
                 if (package != null)
                 {
@@ -233,7 +233,7 @@ namespace OrderingSystem.CashierApp.Components
                 else if (regular != null)
                 {
                     if (regular.getMenus() == null) return;
-                    var builder = MenuModel.Builder()
+                    var builder = MenuDetailModel.Builder()
                                  .WithMenuId(menu.MenuId)
                                  .WithMenuName(name)
                                  .isAvailable(cBox.Text == "Available")
@@ -295,7 +295,7 @@ namespace OrderingSystem.CashierApp.Components
         }
         private void newVariantButton(object sender, EventArgs e)
         {
-            var cloneList = new List<MenuModel>(variantList);
+            var cloneList = new List<MenuDetailModel>(variantList);
             VariantMenuPopup pop = new VariantMenuPopup(cloneList, ingredientServices);
             DialogResult rs = pop.ShowDialog(this);
             if (rs == DialogResult.OK)
@@ -318,7 +318,7 @@ namespace OrderingSystem.CashierApp.Components
             if (rs == DialogResult.OK)
             {
                 included = bb.getMenuSelected();
-                bool suc = menuService.updateBundle2(menu.MenuDetailId, included);
+                bool suc = menuService.updateBundle(menu.MenuDetailId, included);
                 if (suc)
                     MessageBox.Show("Updated Bundled", "Update Scucessfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else

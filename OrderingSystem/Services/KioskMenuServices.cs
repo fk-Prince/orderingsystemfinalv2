@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OrderingSystem.Model;
 using OrderingSystem.Repository;
 
@@ -13,46 +12,39 @@ namespace OrderingSystem.Services
             this.menuRepository = menuRepository;
         }
 
-        public List<MenuModel> getMenu()
+        public List<MenuDetailModel> getMenu()
         {
             return menuRepository.getMenu();
         }
-
         public int getMaxOrderRealTime(int menuDetailId, List<OrderItemModel> orderList)
         {
             return menuRepository.getMaxOrderRealTime(menuDetailId, orderList);
         }
-
-        public List<MenuModel> getDetails(MenuModel menu)
+        public List<MenuDetailModel> getDetails(MenuDetailModel menu)
         {
             return menuRepository.getDetails(menu);
         }
-
-        public bool isMenuPackage(MenuModel menu)
+        public bool isMenuPackage(MenuDetailModel menu)
         {
             return menuRepository.isMenuPackage(menu);
         }
-
-        public List<MenuModel> getFrequentlyOrderedTogether(MenuModel menus)
+        public List<MenuDetailModel> getFrequentlyOrderedTogether(MenuDetailModel menus)
         {
             return menuRepository.getFrequentlyOrderedTogether(menus);
         }
-
-        public List<MenuModel> getIncludedMenu(MenuModel menu)
+        public List<MenuDetailModel> getIncludedMenu(MenuDetailModel menu)
         {
             return menuRepository.getIncludedMenu(menu);
         }
-
-        public double getNewPackagePrice(int menuDetailId, List<MenuModel> includedMenu)
+        public double getNewPackagePrice(int menuDetailId, List<MenuDetailModel> includedMenu)
         {
             return menuRepository.getNewPackagePrice(menuDetailId, includedMenu);
         }
-
-        public List<MenuModel> getDetailsByPackage(MenuModel menuDetail)
+        public List<MenuDetailModel> getDetailsByPackage(MenuDetailModel menuDetail)
         {
-            List<MenuModel> l = menuRepository.getDetailsByPackage(menuDetail);
+            List<MenuDetailModel> l = menuRepository.getDetailsByPackage(menuDetail);
 
-            List<MenuModel> newList = new List<MenuModel>();
+            List<MenuDetailModel> newList = new List<MenuDetailModel>();
 
             foreach (var i in l)
             {
@@ -70,11 +62,6 @@ namespace OrderingSystem.Services
             }
 
             return newList;
-        }
-
-        internal List<MenuModel> getMenuDetail()
-        {
-            throw new NotImplementedException();
         }
     }
 }

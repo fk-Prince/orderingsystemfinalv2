@@ -38,6 +38,7 @@ namespace OrderingSystem.CashierApp.Forms
         private void filter()
         {
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            if (view == null) return;
             string s = cb.Text;
 
             switch (s)
@@ -99,6 +100,8 @@ namespace OrderingSystem.CashierApp.Forms
             p1.Visible = false;
             p2.Visible = false;
             string s = cb.Text;
+            dtTo.Value = DateTime.Now.AddDays(1);
+            dtFrom.Value = DateTime.Parse("2020-01-01");
 
             if (s == "Track Quantity In/Out")
             {
@@ -340,6 +343,7 @@ namespace OrderingSystem.CashierApp.Forms
         {
             p1.Visible = true;
             p2.Visible = false;
+
             string dateFilter = $"[Date] >= #{dtFrom.Value:yyyy-MM-dd}# AND [Date] <= #{dtTo.Value:yyyy-MM-dd}#";
             string invoiceFilter = string.IsNullOrEmpty(txt.Text) ? "" : $"[Invoice ID] LIKE '%{txt.Text}%'";
             string finalFilter = string.Join(" AND ", new[] { invoiceFilter, dateFilter }.Where(f => !string.IsNullOrEmpty(f)));
@@ -357,6 +361,7 @@ namespace OrderingSystem.CashierApp.Forms
             decimal netRevenueWithTax = 0;
             decimal totalCost = 0;
             decimal netProfit = 0;
+            decimal fee = 0;
             DateTime? latestDate = null;
 
             foreach (DataRowView rowView in view)
@@ -375,6 +380,7 @@ namespace OrderingSystem.CashierApp.Forms
                 netRevenueWithTax += Convert.ToDecimal(row["Net Revenue with Tax"]);
                 totalCost += Convert.ToDecimal(row["Total Cost"]);
                 netProfit += Convert.ToDecimal(row["Net Profit"]);
+                fee += Convert.ToDecimal(row["Transaction Fee"]);
 
                 DateTime currentDate = Convert.ToDateTime(row["Date"]);
                 if (latestDate == null || currentDate > latestDate)
@@ -399,6 +405,7 @@ namespace OrderingSystem.CashierApp.Forms
                 allRow["Total Cost"] = totalCost;
                 allRow["Net Profit"] = netProfit;
                 allRow["Profit Margin %"] = profitMargin.ToString("N2");
+                allRow["Transaction Fee"] = fee.ToString("N2");
                 allRow["Date"] = latestDate ?? DateTime.Now;
             }
         }
@@ -424,7 +431,5 @@ namespace OrderingSystem.CashierApp.Forms
             string finalFilter = string.Join(" AND ", new[] { supplerFilter, dateFilter }.Where(f => !string.IsNullOrEmpty(f)));
             view.RowFilter = finalFilter;
         }
-
-
     }
 }

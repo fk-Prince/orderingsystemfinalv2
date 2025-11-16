@@ -32,30 +32,30 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashierLayout));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.flows = new System.Windows.Forms.Panel();
-            this.mm = new Guna.UI2.WinForms.Guna2Panel();
-            this.b6 = new System.Windows.Forms.Panel();
-            this.di = new Guna.UI2.WinForms.Guna2Button();
-            this.ri = new Guna.UI2.WinForms.Guna2Button();
-            this.ai = new Guna.UI2.WinForms.Guna2Button();
-            this.b4 = new System.Windows.Forms.Panel();
-            this.md = new Guna.UI2.WinForms.Guna2Button();
-            this.nb = new Guna.UI2.WinForms.Guna2Button();
-            this.nm = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.time = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.image = new Guna.UI2.WinForms.Guna2PictureBox();
             this.su = new Guna.UI2.WinForms.Guna2Button();
             this.signout = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.role = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.Label();
             this.drop = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.dts = new System.Windows.Forms.Timer(this.components);
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.mm = new Guna.UI2.WinForms.Guna2Panel();
+            this.b6 = new System.Windows.Forms.Panel();
+            this.di = new Guna.UI2.WinForms.Guna2Button();
+            this.ri = new Guna.UI2.WinForms.Guna2Button();
+            this.ai = new Guna.UI2.WinForms.Guna2Button();
             this.b8 = new Guna.UI2.WinForms.Guna2Button();
+            this.b4 = new System.Windows.Forms.Panel();
+            this.md = new Guna.UI2.WinForms.Guna2Button();
+            this.nb = new Guna.UI2.WinForms.Guna2Button();
+            this.nm = new Guna.UI2.WinForms.Guna2Button();
             this.b7 = new Guna.UI2.WinForms.Guna2Button();
             this.b9 = new Guna.UI2.WinForms.Guna2Button();
             this.b10 = new Guna.UI2.WinForms.Guna2Button();
@@ -63,18 +63,17 @@
             this.b5 = new Guna.UI2.WinForms.Guna2Button();
             this.b2 = new Guna.UI2.WinForms.Guna2Button();
             this.b1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.image = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.dts = new System.Windows.Forms.Timer(this.components);
             this.guna2Panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.guna2Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
+            this.guna2Panel2.SuspendLayout();
             this.mm.SuspendLayout();
             this.b6.SuspendLayout();
             this.b4.SuspendLayout();
-            this.guna2Panel4.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -85,9 +84,9 @@
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.Controls.Add(this.panel2);
-            this.guna2Panel1.Controls.Add(this.mm);
             this.guna2Panel1.Controls.Add(this.guna2Panel4);
             this.guna2Panel1.Controls.Add(this.guna2Panel3);
+            this.guna2Panel1.Controls.Add(this.mm);
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.guna2Panel1.MinimumSize = new System.Drawing.Size(1366, 700);
@@ -112,6 +111,32 @@
             this.panel2.Size = new System.Drawing.Size(225, 532);
             this.panel2.TabIndex = 16;
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.White;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.guna2Button1.Image = global::OrderingSystem.Properties.Resources.logout;
+            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2Button1.Location = new System.Drawing.Point(10, 474);
+            this.guna2Button1.MaximumSize = new System.Drawing.Size(206, 45);
+            this.guna2Button1.MinimumSize = new System.Drawing.Size(206, 45);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(206, 45);
+            this.guna2Button1.TabIndex = 15;
+            this.guna2Button1.Text = "Logout";
+            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.TextOffset = new System.Drawing.Point(20, 0);
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
             // flows
             // 
             this.flows.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -124,170 +149,6 @@
             this.flows.Name = "flows";
             this.flows.Size = new System.Drawing.Size(207, 453);
             this.flows.TabIndex = 15;
-            // 
-            // mm
-            // 
-            this.mm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mm.BackColor = System.Drawing.Color.White;
-            this.mm.Controls.Add(this.b6);
-            this.mm.Controls.Add(this.b8);
-            this.mm.Controls.Add(this.b4);
-            this.mm.Controls.Add(this.b7);
-            this.mm.Controls.Add(this.b9);
-            this.mm.Controls.Add(this.b10);
-            this.mm.Controls.Add(this.b3);
-            this.mm.Controls.Add(this.b5);
-            this.mm.Controls.Add(this.b2);
-            this.mm.Controls.Add(this.b1);
-            this.mm.Location = new System.Drawing.Point(271, 50);
-            this.mm.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.mm.Name = "mm";
-            this.mm.Size = new System.Drawing.Size(1096, 650);
-            this.mm.TabIndex = 0;
-            // 
-            // b6
-            // 
-            this.b6.Controls.Add(this.di);
-            this.b6.Controls.Add(this.ri);
-            this.b6.Controls.Add(this.ai);
-            this.b6.Location = new System.Drawing.Point(70, 396);
-            this.b6.Name = "b6";
-            this.b6.Size = new System.Drawing.Size(206, 100);
-            this.b6.TabIndex = 10;
-            this.b6.Visible = false;
-            // 
-            // di
-            // 
-            this.di.BackColor = System.Drawing.Color.White;
-            this.di.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.di.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.di.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.di.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.di.Dock = System.Windows.Forms.DockStyle.Top;
-            this.di.FillColor = System.Drawing.Color.White;
-            this.di.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.di.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.di.Location = new System.Drawing.Point(0, 66);
-            this.di.Name = "di";
-            this.di.Size = new System.Drawing.Size(206, 33);
-            this.di.TabIndex = 19;
-            this.di.Text = "Deduct Ingredient";
-            this.di.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.di.TextOffset = new System.Drawing.Point(50, 0);
-            this.di.Click += new System.EventHandler(this.viewDeductIngredient);
-            // 
-            // ri
-            // 
-            this.ri.BackColor = System.Drawing.Color.White;
-            this.ri.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.ri.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.ri.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.ri.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.ri.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ri.FillColor = System.Drawing.Color.White;
-            this.ri.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ri.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.ri.Location = new System.Drawing.Point(0, 33);
-            this.ri.Name = "ri";
-            this.ri.Size = new System.Drawing.Size(206, 33);
-            this.ri.TabIndex = 18;
-            this.ri.Text = "Re-stock Ingredient";
-            this.ri.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ri.TextOffset = new System.Drawing.Point(50, 0);
-            this.ri.Click += new System.EventHandler(this.viewRestockIngredient);
-            // 
-            // ai
-            // 
-            this.ai.BackColor = System.Drawing.Color.White;
-            this.ai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.ai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.ai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.ai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.ai.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ai.FillColor = System.Drawing.Color.White;
-            this.ai.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.ai.Location = new System.Drawing.Point(0, 0);
-            this.ai.Name = "ai";
-            this.ai.Size = new System.Drawing.Size(206, 33);
-            this.ai.TabIndex = 17;
-            this.ai.Text = "Add Ingredient";
-            this.ai.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ai.TextOffset = new System.Drawing.Point(50, 0);
-            this.ai.Click += new System.EventHandler(this.viewAddIngredients);
-            // 
-            // b4
-            // 
-            this.b4.Controls.Add(this.md);
-            this.b4.Controls.Add(this.nb);
-            this.b4.Controls.Add(this.nm);
-            this.b4.Location = new System.Drawing.Point(70, 237);
-            this.b4.Name = "b4";
-            this.b4.Size = new System.Drawing.Size(206, 102);
-            this.b4.TabIndex = 8;
-            this.b4.Visible = false;
-            // 
-            // md
-            // 
-            this.md.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.md.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.md.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.md.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.md.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.md.Dock = System.Windows.Forms.DockStyle.Top;
-            this.md.FillColor = System.Drawing.Color.White;
-            this.md.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.md.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.md.Location = new System.Drawing.Point(0, 66);
-            this.md.Name = "md";
-            this.md.Size = new System.Drawing.Size(206, 33);
-            this.md.TabIndex = 16;
-            this.md.Text = "Menu Discount";
-            this.md.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.md.TextOffset = new System.Drawing.Point(50, 0);
-            this.md.Click += new System.EventHandler(this.menuDiscount);
-            // 
-            // nb
-            // 
-            this.nb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.nb.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.nb.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.nb.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.nb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.nb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.nb.FillColor = System.Drawing.Color.White;
-            this.nb.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.nb.Location = new System.Drawing.Point(0, 33);
-            this.nb.Name = "nb";
-            this.nb.Size = new System.Drawing.Size(206, 33);
-            this.nb.TabIndex = 15;
-            this.nb.Text = "New Bundle";
-            this.nb.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.nb.TextOffset = new System.Drawing.Point(50, 0);
-            this.nb.Click += new System.EventHandler(this.bundleMenu);
-            // 
-            // nm
-            // 
-            this.nm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.nm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.nm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.nm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.nm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.nm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.nm.FillColor = System.Drawing.Color.White;
-            this.nm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.nm.Location = new System.Drawing.Point(0, 0);
-            this.nm.Name = "nm";
-            this.nm.Size = new System.Drawing.Size(206, 33);
-            this.nm.TabIndex = 14;
-            this.nm.Text = "New Menu";
-            this.nm.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.nm.TextOffset = new System.Drawing.Point(50, 0);
-            this.nm.Click += new System.EventHandler(this.newMenu);
             // 
             // guna2Panel4
             // 
@@ -324,6 +185,18 @@
             this.date.TabIndex = 6;
             this.date.Text = "2025, October 15 - Wednesday";
             // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.AutoRoundedCorners = true;
+            this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(49, -1);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(124, 91);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 5;
+            this.guna2PictureBox2.TabStop = false;
+            // 
             // guna2Panel3
             // 
             this.guna2Panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -339,6 +212,20 @@
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(1095, 50);
             this.guna2Panel3.TabIndex = 15;
+            // 
+            // image
+            // 
+            this.image.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.image.AutoRoundedCorners = true;
+            this.image.BackColor = System.Drawing.Color.Transparent;
+            this.image.ImageRotate = 0F;
+            this.image.Location = new System.Drawing.Point(1027, 7);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(40, 40);
+            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.image.TabIndex = 0;
+            this.image.TabStop = false;
+            this.image.Click += new System.EventHandler(this.image_Click);
             // 
             // su
             // 
@@ -436,41 +323,98 @@
             this.drop.TabIndex = 0;
             this.drop.SelectedIndexChanged += new System.EventHandler(this.drop_SelectedIndexChanged);
             // 
-            // dts
+            // mm
             // 
-            this.dts.Interval = 1000;
-            this.dts.Tick += new System.EventHandler(this.dts_Tick);
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.mm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.guna2Button1.Image = global::OrderingSystem.Properties.Resources.logout;
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button1.Location = new System.Drawing.Point(10, 474);
-            this.guna2Button1.MaximumSize = new System.Drawing.Size(206, 45);
-            this.guna2Button1.MinimumSize = new System.Drawing.Size(206, 45);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(206, 45);
-            this.guna2Button1.TabIndex = 15;
-            this.guna2Button1.Text = "Logout";
-            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.TextOffset = new System.Drawing.Point(20, 0);
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.mm.BackColor = System.Drawing.Color.White;
+            this.mm.Controls.Add(this.b6);
+            this.mm.Controls.Add(this.b8);
+            this.mm.Controls.Add(this.b4);
+            this.mm.Controls.Add(this.b7);
+            this.mm.Controls.Add(this.b9);
+            this.mm.Controls.Add(this.b10);
+            this.mm.Controls.Add(this.b3);
+            this.mm.Controls.Add(this.b5);
+            this.mm.Controls.Add(this.b2);
+            this.mm.Controls.Add(this.b1);
+            this.mm.Location = new System.Drawing.Point(271, 50);
+            this.mm.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.mm.Name = "mm";
+            this.mm.Size = new System.Drawing.Size(1096, 650);
+            this.mm.TabIndex = 0;
+            // 
+            // b6
+            // 
+            this.b6.Controls.Add(this.di);
+            this.b6.Controls.Add(this.ri);
+            this.b6.Controls.Add(this.ai);
+            this.b6.Location = new System.Drawing.Point(70, 396);
+            this.b6.Name = "b6";
+            this.b6.Size = new System.Drawing.Size(206, 100);
+            this.b6.TabIndex = 10;
+            this.b6.Visible = false;
+            // 
+            // di
+            // 
+            this.di.BackColor = System.Drawing.Color.White;
+            this.di.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.di.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.di.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.di.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.di.Dock = System.Windows.Forms.DockStyle.Top;
+            this.di.FillColor = System.Drawing.Color.White;
+            this.di.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.di.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.di.Location = new System.Drawing.Point(0, 66);
+            this.di.Name = "di";
+            this.di.Size = new System.Drawing.Size(206, 33);
+            this.di.TabIndex = 19;
+            this.di.Text = "Deduct Ingredient";
+            this.di.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.di.TextOffset = new System.Drawing.Point(50, 0);
+            this.di.Click += new System.EventHandler(this.viewDeductIngredient);
+            // 
+            // ri
+            // 
+            this.ri.BackColor = System.Drawing.Color.White;
+            this.ri.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ri.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ri.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ri.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ri.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ri.FillColor = System.Drawing.Color.White;
+            this.ri.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ri.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.ri.Location = new System.Drawing.Point(0, 33);
+            this.ri.Name = "ri";
+            this.ri.Size = new System.Drawing.Size(206, 33);
+            this.ri.TabIndex = 18;
+            this.ri.Text = "Re-stock Ingredient";
+            this.ri.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ri.TextOffset = new System.Drawing.Point(50, 0);
+            this.ri.Click += new System.EventHandler(this.viewRestockIngredient);
+            // 
+            // ai
+            // 
+            this.ai.BackColor = System.Drawing.Color.White;
+            this.ai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ai.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ai.FillColor = System.Drawing.Color.White;
+            this.ai.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.ai.Location = new System.Drawing.Point(0, 0);
+            this.ai.Name = "ai";
+            this.ai.Size = new System.Drawing.Size(206, 33);
+            this.ai.TabIndex = 17;
+            this.ai.Text = "Add Ingredient";
+            this.ai.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ai.TextOffset = new System.Drawing.Point(50, 0);
+            this.ai.Click += new System.EventHandler(this.viewAddIngredients);
             // 
             // b8
             // 
@@ -494,6 +438,77 @@
             this.b8.TextOffset = new System.Drawing.Point(20, 0);
             this.b8.Click += new System.EventHandler(this.viewStaff);
             this.b8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.primaryButtonClickedSide);
+            // 
+            // b4
+            // 
+            this.b4.Controls.Add(this.md);
+            this.b4.Controls.Add(this.nb);
+            this.b4.Controls.Add(this.nm);
+            this.b4.Location = new System.Drawing.Point(70, 237);
+            this.b4.Name = "b4";
+            this.b4.Size = new System.Drawing.Size(206, 102);
+            this.b4.TabIndex = 8;
+            this.b4.Visible = false;
+            // 
+            // md
+            // 
+            this.md.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.md.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.md.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.md.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.md.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.md.Dock = System.Windows.Forms.DockStyle.Top;
+            this.md.FillColor = System.Drawing.Color.White;
+            this.md.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.md.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.md.Location = new System.Drawing.Point(0, 66);
+            this.md.Name = "md";
+            this.md.Size = new System.Drawing.Size(206, 33);
+            this.md.TabIndex = 16;
+            this.md.Text = "Menu Discount";
+            this.md.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.md.TextOffset = new System.Drawing.Point(50, 0);
+            this.md.Click += new System.EventHandler(this.menuDiscount);
+            // 
+            // nb
+            // 
+            this.nb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.nb.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.nb.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.nb.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.nb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.nb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.nb.FillColor = System.Drawing.Color.White;
+            this.nb.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.nb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.nb.Location = new System.Drawing.Point(0, 33);
+            this.nb.Name = "nb";
+            this.nb.Size = new System.Drawing.Size(206, 33);
+            this.nb.TabIndex = 15;
+            this.nb.Text = "New Bundle";
+            this.nb.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.nb.TextOffset = new System.Drawing.Point(50, 0);
+            this.nb.Click += new System.EventHandler(this.bundleMenu);
+            // 
+            // nm
+            // 
+            this.nm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.nm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.nm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.nm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.nm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.nm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.nm.FillColor = System.Drawing.Color.White;
+            this.nm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.nm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.nm.Location = new System.Drawing.Point(0, 0);
+            this.nm.Name = "nm";
+            this.nm.Size = new System.Drawing.Size(206, 33);
+            this.nm.TabIndex = 14;
+            this.nm.Text = "New Menu";
+            this.nm.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.nm.TextOffset = new System.Drawing.Point(50, 0);
+            this.nm.Click += new System.EventHandler(this.newMenu);
             // 
             // b7
             // 
@@ -659,31 +674,10 @@
             this.b1.Click += new System.EventHandler(this.dashboard);
             this.b1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.primaryButtonClickedSide);
             // 
-            // guna2PictureBox2
+            // dts
             // 
-            this.guna2PictureBox2.AutoRoundedCorners = true;
-            this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(49, -1);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(124, 91);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 5;
-            this.guna2PictureBox2.TabStop = false;
-            // 
-            // image
-            // 
-            this.image.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.image.AutoRoundedCorners = true;
-            this.image.BackColor = System.Drawing.Color.Transparent;
-            this.image.ImageRotate = 0F;
-            this.image.Location = new System.Drawing.Point(1027, 7);
-            this.image.Name = "image";
-            this.image.Size = new System.Drawing.Size(40, 40);
-            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.image.TabIndex = 0;
-            this.image.TabStop = false;
-            this.image.Click += new System.EventHandler(this.image_Click);
+            this.dts.Interval = 10000;
+            this.dts.Tick += new System.EventHandler(this.dts_Tick);
             // 
             // CashierLayout
             // 
@@ -698,15 +692,15 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.guna2Panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            this.guna2Panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
+            this.guna2Panel2.ResumeLayout(false);
             this.mm.ResumeLayout(false);
             this.b6.ResumeLayout(false);
             this.b4.ResumeLayout(false);
-            this.guna2Panel4.ResumeLayout(false);
-            this.guna2Panel4.PerformLayout();
-            this.guna2Panel3.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -741,7 +735,6 @@
         private System.Windows.Forms.Timer dts;
         private Guna.UI2.WinForms.Guna2Button md;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2ComboBox drop;
         private Guna.UI2.WinForms.Guna2Button b1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;

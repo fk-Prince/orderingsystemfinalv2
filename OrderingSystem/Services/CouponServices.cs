@@ -17,7 +17,7 @@ namespace OrderingSystem.Services
         {
             couponRepository = new CouponRepository();
         }
-        public DataView saveAction(string rate, DateTime dateTime, string numberofTimes, string description, string type, string minC)
+        public DataView saveCoupon(string rate, DateTime dateTime, string numberofTimes, string description, string type, string minC)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace OrderingSystem.Services
                 if (!int.TryParse(numberofTimes, out int times) || times <= 0)
                     throw new InvalidInput("Number of times must be a positive whole number.");
 
-                CouponModel cc = new CouponModel(dRate, dateTime, description, times, type, min);
+                CouponModel cc = new CouponModel(dRate, dateTime, description, times, CouponModel.getType(type), min);
                 return couponRepository.generateCoupon(cc);
             }
             catch (Exception)

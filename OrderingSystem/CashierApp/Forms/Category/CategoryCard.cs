@@ -24,7 +24,7 @@ namespace OrderingSystem.CashierApp.Components
 
         private void click(Control c)
         {
-            if (SessionStaffData.Role.ToLower() != "cashier")
+            if (SessionStaffData.Role != StaffModel.StaffRole.Cashier)
                 c.Click += update;
             c.Cursor = Cursors.Hand;
 

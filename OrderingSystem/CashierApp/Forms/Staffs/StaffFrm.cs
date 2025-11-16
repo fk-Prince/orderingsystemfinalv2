@@ -20,7 +20,7 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
             staffServices = new StaffServices();
 
             refreshList(null, EventArgs.Empty);
-            if (SessionStaffData.Role.ToLower() == "cashier")
+            if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
                 b1.Visible = false;
 
         }

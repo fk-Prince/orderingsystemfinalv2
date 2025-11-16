@@ -18,7 +18,7 @@ namespace OrderingSystem.CashierApp.Forms.Category
         {
             InitializeComponent();
             this.categoryServices = categoryServices;
-            b1.Visible = SessionStaffData.Role.ToLower() != "cashier";
+            b1.Visible = SessionStaffData.Role != StaffModel.StaffRole.Cashier;
             loadCategory();
         }
 

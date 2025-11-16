@@ -40,6 +40,7 @@
             this.total = new Guna.UI2.WinForms.Guna2TextBox();
             this.l2 = new System.Windows.Forms.Label();
             this.t2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.fee = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +85,7 @@
             this.cb.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cb.ItemHeight = 30;
-            this.cb.Location = new System.Drawing.Point(127, 97);
+            this.cb.Location = new System.Drawing.Point(129, 131);
             this.cb.Name = "cb";
             this.cb.Size = new System.Drawing.Size(268, 36);
             this.cb.TabIndex = 8;
@@ -97,9 +98,10 @@
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(29)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(158, 272);
+            this.guna2Button1.Location = new System.Drawing.Point(160, 306);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(195, 50);
             this.guna2Button1.TabIndex = 9;
@@ -118,7 +120,7 @@
             this.t1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.t1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.t1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.t1.Location = new System.Drawing.Point(200, 188);
+            this.t1.Location = new System.Drawing.Point(202, 222);
             this.t1.Name = "t1";
             this.t1.PlaceholderText = "0.00";
             this.t1.SelectedText = "";
@@ -132,7 +134,7 @@
             // 
             this.l1.AutoSize = true;
             this.l1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l1.Location = new System.Drawing.Point(123, 191);
+            this.l1.Location = new System.Drawing.Point(125, 225);
             this.l1.Name = "l1";
             this.l1.Size = new System.Drawing.Size(40, 20);
             this.l1.TabIndex = 11;
@@ -143,7 +145,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(123, 152);
+            this.label3.Location = new System.Drawing.Point(125, 186);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 20);
             this.label3.TabIndex = 13;
@@ -161,7 +163,7 @@
             this.total.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.total.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.total.Location = new System.Drawing.Point(200, 149);
+            this.total.Location = new System.Drawing.Point(202, 183);
             this.total.Name = "total";
             this.total.PlaceholderText = "0.00";
             this.total.ReadOnly = true;
@@ -174,7 +176,7 @@
             // 
             this.l2.AutoSize = true;
             this.l2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l2.Location = new System.Drawing.Point(121, 225);
+            this.l2.Location = new System.Drawing.Point(123, 259);
             this.l2.Name = "l2";
             this.l2.Size = new System.Drawing.Size(59, 20);
             this.l2.TabIndex = 15;
@@ -193,7 +195,7 @@
             this.t2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.t2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.t2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.t2.Location = new System.Drawing.Point(200, 225);
+            this.t2.Location = new System.Drawing.Point(202, 259);
             this.t2.Name = "t2";
             this.t2.PlaceholderText = "0.00";
             this.t2.ReadOnly = true;
@@ -203,11 +205,23 @@
             this.t2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.t2.Visible = false;
             // 
+            // fee
+            // 
+            this.fee.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fee.Location = new System.Drawing.Point(259, 105);
+            this.fee.Name = "fee";
+            this.fee.Size = new System.Drawing.Size(138, 23);
+            this.fee.TabIndex = 16;
+            this.fee.Text = "Fee %";
+            this.fee.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.fee.Visible = false;
+            // 
             // PaymentMethod
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            this.ClientSize = new System.Drawing.Size(504, 358);
+            this.ClientSize = new System.Drawing.Size(504, 392);
+            this.Controls.Add(this.fee);
             this.Controls.Add(this.l2);
             this.Controls.Add(this.t2);
             this.Controls.Add(this.label3);
@@ -240,5 +254,6 @@
         private Guna.UI2.WinForms.Guna2TextBox total;
         private System.Windows.Forms.Label l2;
         private Guna.UI2.WinForms.Guna2TextBox t2;
+        private System.Windows.Forms.Label fee;
     }
 }

@@ -9,43 +9,18 @@ namespace OrderingSystem.Model
         public double Rate { get; protected set; }
         public DateTime UntilDate { get; protected set; }
         public string DisplayText { get; set; }
-
-        public static DiscountBuilder Builder() => new DiscountBuilder();
-
-        public interface IDiscountBuilder
+        public DiscountModel(int discountId, double rate, DateTime UntilDate)
         {
-            DiscountBuilder WithDiscountId(int discountId);
-            DiscountBuilder WithRate(double rate);
-            DiscountBuilder WithUntilDate(DateTime untilDate);
+            DiscountId = discountId;
+            Rate = rate;
+            this.UntilDate = UntilDate;
+        }
+        public DiscountModel(int discountId, double rate)
+        {
+            DiscountId = discountId;
+            Rate = rate;
+            this.UntilDate = UntilDate;
         }
 
-        public class DiscountBuilder : IDiscountBuilder
-        {
-            private readonly DiscountModel discountModel;
-            public DiscountBuilder()
-            {
-                discountModel = new DiscountModel();
-            }
-            public DiscountBuilder WithDiscountId(int discountId)
-            {
-                discountModel.DiscountId = discountId;
-                return this;
-            }
-            public DiscountBuilder WithRate(double rate)
-            {
-                discountModel.Rate = rate;
-                return this;
-            }
-            public DiscountBuilder WithUntilDate(DateTime untilDate)
-            {
-                discountModel.UntilDate = untilDate;
-                return this;
-            }
-            public DiscountModel Build()
-            {
-                return discountModel;
-            }
-
-        }
     }
 }

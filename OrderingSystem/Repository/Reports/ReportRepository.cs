@@ -545,7 +545,5 @@ namespace OrderingSystem.Repository.Reports
             }
             return result;
         }
-
-
     }
 }

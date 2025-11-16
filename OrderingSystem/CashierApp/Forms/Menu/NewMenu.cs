@@ -15,7 +15,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
 {
     public partial class NewMenu : Form
     {
-        private List<MenuModel> variantList;
+        private List<MenuDetailModel> variantList;
         private DataTable table;
         private MenuService menuService;
         private readonly IngredientServices ingredientServices;
@@ -25,7 +25,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
             InitializeComponent();
             this.menuService = menuService;
             this.ingredientServices = ingredientServices;
-            variantList = new List<MenuModel>();
+            variantList = new List<MenuDetailModel>();
             initTable();
         }
         private void initTable()
@@ -125,7 +125,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
                 byte[] image = ImageHelper.GetImageFromFile(pictureBox.Image);
 
 
-                MenuModel md = MenuModel.Builder()
+                MenuDetailModel md = MenuDetailModel.Builder()
                     .WithMenuName(name)
                     .WithVariant(variantList)
                     .WithMenuDescription(desc)

@@ -156,6 +156,7 @@
             this.b1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.b1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.b1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.b1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.b1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.b1.ForeColor = System.Drawing.Color.White;
             this.b1.Location = new System.Drawing.Point(90, 405);

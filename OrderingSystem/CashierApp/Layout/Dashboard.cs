@@ -60,8 +60,8 @@ namespace OrderingSystem.CashierApp.Layout
                 display(coT, coP, coI, totalCancelled, true);
 
                 Tuple<string, string> totalPending = ir.getTotalOrderByType(DateTime.Now, "pending");
-                display(poT, poP, poI, totalPending);
-
+                //display(poT, totalPending);
+                poT.Text = totalPending.Item1.ToString();
                 loadChart();
             }
             catch (Exception ex)
@@ -231,5 +231,6 @@ namespace OrderingSystem.CashierApp.Layout
         {
             fetchData();
         }
+
     }
 }

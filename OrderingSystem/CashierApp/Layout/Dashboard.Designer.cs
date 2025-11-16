@@ -61,8 +61,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.poP = new System.Windows.Forms.Label();
-            this.poI = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.poT = new System.Windows.Forms.Label();
             this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -86,7 +84,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.coI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.guna2Panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.poI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).BeginInit();
             this.guna2Panel6.SuspendLayout();
             this.SuspendLayout();
@@ -241,7 +238,7 @@
             this.orderP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.orderP.Location = new System.Drawing.Point(190, 63);
             this.orderP.Name = "orderP";
-            this.orderP.Size = new System.Drawing.Size(38, 25);
+            this.orderP.Size = new System.Drawing.Size(77, 25);
             this.orderP.TabIndex = 7;
             this.orderP.Text = "0";
             // 
@@ -336,7 +333,7 @@
             this.comP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.comP.Location = new System.Drawing.Point(190, 63);
             this.comP.Name = "comP";
-            this.comP.Size = new System.Drawing.Size(38, 25);
+            this.comP.Size = new System.Drawing.Size(77, 25);
             this.comP.TabIndex = 9;
             this.comP.Text = "0";
             // 
@@ -409,7 +406,7 @@
             this.coP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.coP.Location = new System.Drawing.Point(190, 63);
             this.coP.Name = "coP";
-            this.coP.Size = new System.Drawing.Size(38, 25);
+            this.coP.Size = new System.Drawing.Size(77, 25);
             this.coP.TabIndex = 12;
             this.coP.Text = "0";
             // 
@@ -472,8 +469,6 @@
             this.guna2Panel5.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel5.BorderRadius = 10;
             this.guna2Panel5.BorderThickness = 1;
-            this.guna2Panel5.Controls.Add(this.poP);
-            this.guna2Panel5.Controls.Add(this.poI);
             this.guna2Panel5.Controls.Add(this.label5);
             this.guna2Panel5.Controls.Add(this.poT);
             this.guna2Panel5.Controls.Add(this.guna2PictureBox5);
@@ -485,27 +480,6 @@
             this.guna2Panel5.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2, 2, 4, 4);
             this.guna2Panel5.Size = new System.Drawing.Size(270, 140);
             this.guna2Panel5.TabIndex = 13;
-            // 
-            // poP
-            // 
-            this.poP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.poP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.poP.Location = new System.Drawing.Point(190, 63);
-            this.poP.Name = "poP";
-            this.poP.Size = new System.Drawing.Size(38, 25);
-            this.poP.TabIndex = 10;
-            this.poP.Text = "%";
-            // 
-            // poI
-            // 
-            this.poI.Image = global::OrderingSystem.Properties.Resources.even;
-            this.poI.ImageRotate = 0F;
-            this.poI.Location = new System.Drawing.Point(162, 57);
-            this.poI.Name = "poI";
-            this.poI.Size = new System.Drawing.Size(27, 33);
-            this.poI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.poI.TabIndex = 11;
-            this.poI.TabStop = false;
             // 
             // label5
             // 
@@ -625,7 +599,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.poI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).EndInit();
             this.guna2Panel6.ResumeLayout(false);
             this.guna2Panel6.PerformLayout();
@@ -667,10 +640,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox orderI;
         private System.Windows.Forms.Label comP;
         private Guna.UI2.WinForms.Guna2PictureBox comI;
-        private System.Windows.Forms.Label coP;
-        private Guna.UI2.WinForms.Guna2PictureBox coI;
-        private System.Windows.Forms.Label poP;
-        private Guna.UI2.WinForms.Guna2PictureBox poI;
         private System.Windows.Forms.Label poT;
         private Guna.UI2.WinForms.Guna2RatingStar rating;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
@@ -678,5 +647,7 @@
         private System.Windows.Forms.Timer refresh;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label coP;
+        private Guna.UI2.WinForms.Guna2PictureBox coI;
     }
 }

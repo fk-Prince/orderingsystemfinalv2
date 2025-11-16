@@ -10,14 +10,14 @@ namespace OrderingSystem.KioskApplication
     {
 
         private List<OrderItemModel> checkList;
-        public FrequentlyOrderedLayout(List<MenuModel> menus)
+        public FrequentlyOrderedLayout(List<MenuDetailModel> menus)
         {
             InitializeComponent();
             checkList = new List<OrderItemModel>();
 
             displayFrequentlyOrdered(menus);
         }
-        private void displayFrequentlyOrdered(List<MenuModel> menu)
+        private void displayFrequentlyOrdered(List<MenuDetailModel> menu)
         {
             int y = 30;
 

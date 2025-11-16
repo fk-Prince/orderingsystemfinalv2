@@ -75,13 +75,13 @@ namespace OrderingSystem.Repository.Staff
                             list.Add(StaffModel.Builder()
                                 .WithStaffId(reader.GetInt32("staff_id"))
                                 .WithUsername(reader.GetString("username"))
-                                .WithRole(reader.GetString("role"))
+                                .WithRole(StaffModel.getRole(reader.GetString("role")))
                                 .WithFirstName(reader.GetString("firstName"))
                                 .WithImage(ImageHelper.GetImageFromBlob(reader, "staff"))
                                 .WithLastName(reader.GetString("lastname"))
                                 .WithPhoneNumber(!reader.IsDBNull(reader.GetOrdinal("phone")) ? reader.GetString("phone") : "")
                                 .WithHiredDate(reader.GetDateTime("hire_date"))
-                                .WithStatus(reader.GetString("status"))
+                                .WithStatus(StaffModel.getStatus(reader.GetString("status")))
                                 .Build());
                         }
                     }
@@ -115,13 +115,13 @@ namespace OrderingSystem.Repository.Staff
                             return StaffModel.Builder()
                                 .WithStaffId(reader.GetInt32("staff_id"))
                                 .WithUsername(reader.GetString("username"))
-                                .WithRole(reader.GetString("role"))
+                                .WithRole(StaffModel.getRole(reader.GetString("role")))
                                 .WithFirstName(reader.GetString("firstName"))
                                 .WithImage(ImageHelper.GetImageFromBlob(reader, "staff"))
                                 .WithLastName(reader.GetString("lastname"))
                                 .WithPhoneNumber(!reader.IsDBNull(reader.GetOrdinal("phone")) ? reader.GetString("phone") : "")
                                 .WithHiredDate(reader.GetDateTime("hire_date"))
-                                .WithStatus(reader.GetString("status"))
+                                    .WithStatus(StaffModel.getStatus(reader.GetString("status")))
                                 .Build();
                         }
                     }
@@ -163,7 +163,6 @@ namespace OrderingSystem.Repository.Staff
                 throw;
             }
         }
-
         public bool usernameExists(StaffModel staff)
         {
             var db = DatabaseHandler.getInstance();

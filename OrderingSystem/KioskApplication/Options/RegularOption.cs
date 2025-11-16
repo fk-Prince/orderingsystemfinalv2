@@ -17,13 +17,13 @@ namespace OrderingSystem.KioskApplication.Options
         private readonly FrequentlyOrderedOption frequentlyOrderedOption;
 
         private SizeLayout sc;
-        private MenuModel menu;
+        private MenuDetailModel menu;
 
-        private MenuModel selectedFlavor;
-        private MenuModel selectedSize;
+        private MenuDetailModel selectedFlavor;
+        private MenuDetailModel selectedSize;
         private string titleOption;
         private string subTitle;
-        private List<MenuModel> menuDetails;
+        private List<MenuDetailModel> menuDetails;
 
         public RegularOption(KioskMenuServices kioskMenuServices, FlowLayoutPanel flowPanel)
         {
@@ -31,7 +31,7 @@ namespace OrderingSystem.KioskApplication.Options
             this.flowPanel = flowPanel;
             frequentlyOrderedOption = new FrequentlyOrderedOption(kioskMenuServices, flowPanel);
         }
-        public void displayMenuOptions(MenuModel menu)
+        public void displayMenuOptions(MenuDetailModel menu)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace OrderingSystem.KioskApplication.Options
                 throw;
             }
         }
-        private void displayFlavor(List<MenuModel> menuDetails)
+        private void displayFlavor(List<MenuDetailModel> menuDetails)
         {
             string t = "Select Your Menu.";
             titleOption = "Option A";
@@ -75,16 +75,16 @@ namespace OrderingSystem.KioskApplication.Options
 
 
         }
-        private void filterSizeByFlavor(List<MenuModel> menuDetails, int menuid, string flavor)
+        private void filterSizeByFlavor(List<MenuDetailModel> menuDetails, int menuid, string flavor)
         {
-            List<MenuModel> l = string.IsNullOrWhiteSpace(flavor) ? menuDetails.FindAll(x => menuid == x.MenuId) : menuDetails.FindAll(x => menuid == x.MenuId && x.FlavorName == flavor);
+            List<MenuDetailModel> l = string.IsNullOrWhiteSpace(flavor) ? menuDetails.FindAll(x => menuid == x.MenuId) : menuDetails.FindAll(x => menuid == x.MenuId && x.FlavorName == flavor);
             displaySize(l);
         }
-        public int getSizeCount(List<MenuModel> menuDetails, int menuid, string flavor)
+        public int getSizeCount(List<MenuDetailModel> menuDetails, int menuid, string flavor)
         {
             return string.IsNullOrWhiteSpace(flavor) ? menuDetails.FindAll(x => menuid == x.MenuId).Count : menuDetails.FindAll(x => menuid == x.MenuId && x.FlavorName == flavor).Count;
         }
-        private void flavorSelected(object sender, MenuModel e)
+        private void flavorSelected(object sender, MenuDetailModel e)
         {
             if (e != null)
             {
@@ -92,7 +92,7 @@ namespace OrderingSystem.KioskApplication.Options
                 selectedFlavor = e;
             }
         }
-        private void displaySize(List<MenuModel> menuDetails)
+        private void displaySize(List<MenuDetailModel> menuDetails)
         {
             if (sc != null) flowPanel.Controls.Remove(sc);
 
@@ -140,9 +140,9 @@ namespace OrderingSystem.KioskApplication.Options
             return new List<OrderItemModel> { purchaseMenu };
 
         }
-        public OrderItemModel getMenuPurchase(MenuModel selectedMenu)
+        public OrderItemModel getMenuPurchase(MenuDetailModel selectedMenu)
         {
-            var m = MenuModel.Builder()
+            var m = MenuDetailModel.Builder()
                          .WithMenuName(selectedMenu.MenuName)
                          .WithMenuId(selectedMenu.MenuId)
                          .WithMenuDetailId(selectedMenu.MenuDetailId)
@@ -154,17 +154,9 @@ namespace OrderingSystem.KioskApplication.Options
                          .WithDiscount(selectedMenu.Discount)
                          .Build();
 
-            OrderItemModel om = OrderItemModel.Builder()
-                         .WithPurchaseMenu(m)
-                         .WithPurchaseQty(1)
-                         .Build();
+            OrderItemModel om = new OrderItemModel(1, m);
+
             return om;
-        }
-        public void displayOrderNotice()
-        {
-            //n = new Note();
-            //n.Margin = new Padding(20, 0, 0, 30);
-            //flowPanel.Controls.Add(n);
         }
     }
 }

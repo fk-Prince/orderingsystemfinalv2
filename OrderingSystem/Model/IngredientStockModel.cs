@@ -2,9 +2,11 @@
 
 namespace OrderingSystem.Model
 {
-    public class IngredientStockModel : IngredientModel
+    public class IngredientStockModel
     {
         public int IngredientStockId { get; protected set; }
+        public string IngredientName { get; protected set; }
+        public int IngredientQuantity { get; protected set; }
         public string Reason { get; protected set; }
         public Supplier Supplier { get; protected set; }
         public double BatchCost { get; protected set; }
@@ -16,7 +18,6 @@ namespace OrderingSystem.Model
             IngredientStockBuilder WithIngredientStockId(int id);
             IngredientStockBuilder WithIngredientQTy(int ingredientQuantity);
             IngredientStockBuilder WithReason(string r);
-            IngredientStockBuilder WithUnit(string r);
             IngredientStockBuilder WithSupplier(Supplier id);
             IngredientStockBuilder WithBatchCost(double b);
             IngredientStockBuilder WithExpiryDate(DateTime b);
@@ -31,17 +32,16 @@ namespace OrderingSystem.Model
             private IngredientStockModel ingredientStock = new IngredientStockModel();
             public IngredientStockBuilder WithIngredientName(string ingredientName)
             {
-                ingredientStock.ingredientName = ingredientName;
+                ingredientStock.IngredientName = ingredientName;
                 return this;
             }
-
             public IngredientStockModel Build()
             {
                 return ingredientStock;
             }
             public IngredientStockBuilder WithIngredientQTy(int ingredientQuantity)
             {
-                ingredientStock.ingredientQuantity = ingredientQuantity;
+                ingredientStock.IngredientQuantity = ingredientQuantity;
                 return this;
             }
             public IngredientStockBuilder WithIngredientStockId(int id)
@@ -71,12 +71,6 @@ namespace OrderingSystem.Model
             public IngredientStockBuilder WithExpiryDate(DateTime b)
             {
                 ingredientStock.ExpiryDate = b;
-                return this;
-            }
-
-            public IngredientStockBuilder WithUnit(string r)
-            {
-                ingredientStock.ingredientUnit = r;
                 return this;
             }
         }

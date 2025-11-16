@@ -108,7 +108,7 @@
             this.updateButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.updateButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.updateButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.updateButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
+            this.updateButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.updateButton.ForeColor = System.Drawing.Color.White;
             this.updateButton.Location = new System.Drawing.Point(269, 35);
@@ -127,7 +127,7 @@
             this.confirmButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.confirmButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.confirmButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.confirmButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(206)))));
+            this.confirmButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.confirmButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.confirmButton.ForeColor = System.Drawing.Color.White;
             this.confirmButton.Location = new System.Drawing.Point(401, 35);

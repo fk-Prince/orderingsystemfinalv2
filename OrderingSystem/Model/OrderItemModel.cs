@@ -5,54 +5,24 @@
 
         public int OrderItemId { get; protected set; }
         public int PurchaseQty { get; set; }
-        public MenuModel PurchaseMenu { get; protected set; }
+        public MenuDetailModel PurchaseMenu { get; protected set; }
 
-        public double getTotal()
+
+        public OrderItemModel(int orderItemId, int purchaseQty, MenuDetailModel purchaseMenu)
         {
-            return PurchaseMenu.getPriceAfterDiscount() * PurchaseQty;
+            OrderItemId = orderItemId;
+            PurchaseQty = purchaseQty;
+            PurchaseMenu = purchaseMenu;
+        }
+
+        public OrderItemModel(int purchaseQty, MenuDetailModel purchaseMenu)
+        {
+            PurchaseQty = purchaseQty;
+            PurchaseMenu = purchaseMenu;
         }
         public double getSubtotal()
         {
             return PurchaseMenu.getPriceAfterVatWithDiscount() * PurchaseQty;
-        }
-
-        public static OrderItemBuilder Builder() => new OrderItemBuilder();
-        public interface IOrderItemBuilder
-        {
-            OrderItemBuilder WithOrderItemId(int id);
-            OrderItemBuilder WithPurchaseMenu(MenuModel meni);
-            OrderItemBuilder WithPurchaseQty(int qty);
-            OrderItemModel Build();
-        }
-
-        public class OrderItemBuilder : IOrderItemBuilder
-        {
-            public OrderItemModel oim;
-            public OrderItemBuilder()
-            {
-                oim = new OrderItemModel();
-            }
-
-            public OrderItemModel Build()
-            {
-                return oim;
-            }
-            public OrderItemBuilder WithOrderItemId(int id)
-            {
-                oim.OrderItemId = id;
-                return this;
-            }
-            public OrderItemBuilder WithPurchaseMenu(MenuModel meni)
-            {
-                oim.PurchaseMenu = meni;
-                return this;
-            }
-            public OrderItemBuilder WithPurchaseQty(int qty)
-            {
-                oim.PurchaseQty = qty;
-                return this;
-            }
-
         }
     }
 }

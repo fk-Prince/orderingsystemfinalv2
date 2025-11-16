@@ -10,11 +10,11 @@ namespace OrderingSystem.KioskApplication.Cards
 {
     public partial class MenuCard : UserControl
     {
-        public readonly MenuModel menu;
+        public readonly MenuDetailModel menu;
         private readonly KioskMenuServices kioskMenuServices;
         public event EventHandler<List<OrderItemModel>> orderListEvent;
 
-        public MenuCard(KioskMenuServices kioskMenuServices, MenuModel menu)
+        public MenuCard(KioskMenuServices kioskMenuServices, MenuDetailModel menu)
         {
             InitializeComponent();
             this.kioskMenuServices = kioskMenuServices;

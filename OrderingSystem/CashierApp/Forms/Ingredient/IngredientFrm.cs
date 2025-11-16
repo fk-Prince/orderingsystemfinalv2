@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using OrderingSystem.CashierApp.Forms.FactoryForm;
 using OrderingSystem.CashierApp.SessionData;
 using OrderingSystem.Exceptions;
+using OrderingSystem.Model;
 using OrderingSystem.Repository.Ingredients;
 using OrderingSystem.Services;
 
@@ -20,7 +21,7 @@ namespace OrderingSystem.CashierApp.Forms
             ingredientServices = new IngredientServices(new IngredientRepository());
             updateTable();
 
-            if (SessionStaffData.Role.ToLower() == "cashier")
+            if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
             {
                 bb.Visible = false;
                 dataGrid.CellClick -= dataGrid_CellClick;

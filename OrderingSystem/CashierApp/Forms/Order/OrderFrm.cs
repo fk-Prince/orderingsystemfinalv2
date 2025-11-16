@@ -6,6 +6,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using OrderingSystem.CashierApp.Forms.Order;
+using OrderingSystem.CashierApp.Payment;
+using OrderingSystem.CashierApp.SessionData;
 using OrderingSystem.Exceptions;
 using OrderingSystem.KioskApplication.Services;
 using OrderingSystem.Model;
@@ -43,7 +45,7 @@ namespace OrderingSystem.CashierApp.Forms
         {
             try
             {
-                om = orderServices.getAllOrders(orderId);
+                om = orderServices.getOrders(orderId);
                 if (om.OrderItemList.Count > 0)
                     foreach (var order in om.OrderItemList)
                         table.Rows.Add(om.OrderId, order.PurchaseMenu.MenuName, order.PurchaseMenu.getPriceAfterVatWithDiscount().ToString("N2"), order.PurchaseQty, order.getSubtotal().ToString("N2"));
@@ -98,10 +100,18 @@ namespace OrderingSystem.CashierApp.Forms
 
                     if (rs == DialogResult.OK)
                     {
-                        Tuple<TimeSpan, string> xd = orderServices.getTimeInvoiceWaiting(om.OrderId);
+                        Tuple<TimeSpan, string, string> xd = orderServices.getTimeInvoiceWaiting(om.OrderId);
                         OrderReceipt or = new OrderReceipt(om);
-                        or.Cash(p.CashAmount);
-                        or.Message("Wait for your Order", xd.Item1.ToString(@"hh\:mm\:ss"), xd.Item2);
+                        or.Cash(p.Cash);
+                        IPayment pm = p.paymentT;
+                        double fee = 0;
+                        if (pm is IFeeCalculator f)
+                            fee = f.feePercent;
+
+                        InvoiceModel i = new InvoiceModel(xd.Item2, om, SessionStaffData.StaffData, pm, om.GetTotalWithVAT() + (1 * fee));
+                        or.setInvoice(i);
+
+                        or.receiptMessages("Wait for your Order", xd.Item1.ToString(@"hh\:mm\:ss"), xd.Item2, xd.Item3);
                         or.print();
                         p.Hide();
                         clear();
@@ -148,7 +158,7 @@ namespace OrderingSystem.CashierApp.Forms
         {
             try
             {
-                bool suc = orderServices.adjustTime();
+                bool suc = orderServices.adjustOrderingTime();
                 if (suc)
                     MessageBox.Show("Successfully Adjusted the pending orders", "TIME", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
@@ -159,8 +169,6 @@ namespace OrderingSystem.CashierApp.Forms
                 MessageBox.Show("Internal Server Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || om == null || om.OrderItemList == null || om.OrderItemList.Count == 0)

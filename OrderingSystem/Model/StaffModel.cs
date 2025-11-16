@@ -5,6 +5,18 @@ namespace OrderingSystem.Model
 {
     public class StaffModel
     {
+
+        public enum StaffRole
+        {
+            Cashier,
+            Manager
+        }
+        public enum StaffStatus
+        {
+            Active,
+            InActive
+        }
+
         public int StaffId { get; set; }
         public string Username { get; protected set; }
         public string FirstName { get; protected set; }
@@ -12,10 +24,23 @@ namespace OrderingSystem.Model
         public string PhoneNumber { get; protected set; }
         public DateTime HiredDate { get; protected set; }
         public string Password { get; protected set; }
-        public string Role { get; protected set; }
-        public string Status { get; protected set; }
+        public StaffRole Role { get; protected set; }
+        public StaffStatus Status { get; protected set; }
         public Image Image { get; protected set; }
         public static StaffBuilder Builder() => new StaffBuilder();
+
+        public static StaffRole getRole(string s)
+        {
+            return s.ToLower() == "cashier" ? StaffRole.Cashier : StaffRole.Manager;
+        }
+        public static StaffStatus getStatus(string s)
+        {
+            return s.ToLower() == "active" ? StaffStatus.Active : StaffStatus.InActive;
+        }
+        public string getFullName()
+        {
+            return FirstName.Substring(0, 1).ToUpper() + FirstName.Substring(1).ToLower() + "  " + LastName.Substring(0, 1).ToUpper() + LastName.Substring(1).ToLower();
+        }
         public interface IStaffBuilder
         {
             StaffBuilder WithStaffId(int txt);
@@ -26,8 +51,8 @@ namespace OrderingSystem.Model
             StaffBuilder WithPhoneNumber(string txt);
             StaffBuilder WithHiredDate(DateTime txt);
             StaffBuilder WithPassword(string txt);
-            StaffBuilder WithRole(string txt);
-            StaffBuilder WithStatus(string txt);
+            StaffBuilder WithRole(StaffRole txt);
+            StaffBuilder WithStatus(StaffStatus txt);
             StaffModel Build();
         }
         public class StaffBuilder : IStaffBuilder
@@ -61,7 +86,7 @@ namespace OrderingSystem.Model
                 return this;
             }
 
-            public StaffBuilder WithRole(string txt)
+            public StaffBuilder WithRole(StaffRole txt)
             {
                 this.staff.Role = txt;
                 return this;
@@ -91,7 +116,7 @@ namespace OrderingSystem.Model
                 return this;
             }
 
-            public StaffBuilder WithStatus(string txt)
+            public StaffBuilder WithStatus(StaffStatus txt)
             {
                 this.staff.Status = txt;
                 return this;

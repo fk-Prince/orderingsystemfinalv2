@@ -12,8 +12,18 @@ namespace OrderingSystem.Services
         {
             this.menuRepository = menuRepository;
         }
+        public List<string> getSizeFlavor(string type)
+        {
+            List<string> s = null;
+            if (type.ToLower() == "size")
 
-        public bool saveMenu(MenuModel md, string type)
+                s = menuRepository.getSize();
+            else
+                s = menuRepository.getFlavor();
+
+            return s;
+        }
+        public bool saveMenu(MenuDetailModel md, string type)
         {
             if (type.ToLower() == "regular")
                 return menuRepository.createRegularMenu(md);
@@ -22,7 +32,7 @@ namespace OrderingSystem.Services
             else
                 throw new NotSupportedException("Not Supported.");
         }
-        public bool updateMenu(MenuModel menu, string type)
+        public bool updateMenu(MenuDetailModel menu, string type)
         {
             if (menu is MenuPackageModel mp && type.ToLower() == "bundle")
                 return menuRepository.updatePackageMenu(mp);
@@ -35,34 +45,33 @@ namespace OrderingSystem.Services
         {
             return menuRepository.isMenuNameExist(name);
         }
-        public List<MenuModel> getMenus()
+        public List<MenuDetailModel> getMenus()
         {
             return menuRepository.getMenu();
         }
-        public List<MenuModel> getMenuDetail()
+        public List<MenuDetailModel> getMenuDetail()
         {
             return menuRepository.getMenuDetail();
         }
-        public List<MenuModel> getBundled(MenuModel menu)
+        public List<MenuDetailModel> getBundled(MenuDetailModel menu)
         {
             return menuRepository.getBundled(menu);
         }
-        public bool isMenuPackage(MenuModel menu)
+        public bool isMenuPackage(MenuDetailModel menu)
         {
             return menuRepository.isMenuPackage(menu);
         }
-        public double getBundlePrice(MenuModel menu)
+        public double getBundlePrice(MenuDetailModel menu)
         {
             return menuRepository.getBundlePrice(menu);
         }
-        public bool newMenuVariant(int id, List<MenuModel> m)
+        public bool newMenuVariant(int id, List<MenuDetailModel> m)
         {
             return menuRepository.newMenuVariant(id, m);
         }
-
-        public bool updateBundle2(int id, List<MenuModel> included)
+        public bool updateBundle(int id, List<MenuDetailModel> included)
         {
-            return menuRepository.updateBundle2(id, included);
+            return menuRepository.updateBundle(id, included);
         }
     }
 }

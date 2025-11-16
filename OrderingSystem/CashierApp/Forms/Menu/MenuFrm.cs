@@ -31,7 +31,7 @@ namespace OrderingSystem.CashierApp.Forms
             try
             {
                 flowMenu.Controls.Clear();
-                List<MenuModel> list = menuService.getMenus();
+                List<MenuDetailModel> list = menuService.getMenus();
                 foreach (var i in list)
                 {
                     MenuCard m = new MenuCard(i);
@@ -50,7 +50,7 @@ namespace OrderingSystem.CashierApp.Forms
                 MessageBox.Show("Internal Server Error.", "Server Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void hover(Control c, MenuModel i)
+        private void hover(Control c, MenuDetailModel i)
         {
             c.Click += (s, e) =>
             {
@@ -104,7 +104,7 @@ namespace OrderingSystem.CashierApp.Forms
             {
                 if (control is MenuCard card)
                 {
-                    MenuModel cz = (MenuModel)card?.Tag;
+                    MenuDetailModel cz = (MenuDetailModel)card?.Tag;
                     card.Visible = string.IsNullOrEmpty(txtx) ? true : cz.MenuName.ToLower().StartsWith(txtx);
                 }
             }

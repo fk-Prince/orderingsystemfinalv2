@@ -19,11 +19,6 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
         {
             InitializeComponent();
             this.staffServices = staffServices;
-            if (SessionStaffData.Role.ToLower() == "cashier")
-            {
-                fb.Visible = false;
-                b1.Visible = false;
-            }
         }
         private void allowType(bool isEditMode)
         {
@@ -63,14 +58,13 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
                     }
                 }
             }
-            cRole.SelectedItem = viewingStaff.Role.Substring(0, 1).ToUpper() + viewingStaff.Role.Substring(1).ToLower();
-
+            cRole.SelectedItem = viewingStaff.Role.ToString();
         }
         public void displayStaff(StaffModel viewingStaff)
         {
             this.viewingStaff = viewingStaff;
-            role.Text = viewingStaff.Role;
-            fName.Text = viewingStaff.FirstName.Substring(0, 1).ToUpper() + viewingStaff.FirstName.Substring(1).ToLower() + "  " + viewingStaff.LastName.Substring(0, 1).ToUpper() + viewingStaff.LastName.Substring(1).ToLower();
+            role.Text = viewingStaff.Role.ToString();
+            fName.Text = viewingStaff.getFullName();
             image.Image = viewingStaff.Image;
             phone.Text = string.IsNullOrWhiteSpace(viewingStaff.PhoneNumber) ? "N/A" : viewingStaff.PhoneNumber;
             hired.Text = viewingStaff.HiredDate.ToString("yyyy, MMMM dd");
@@ -78,15 +72,25 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
             password.Text = "passwordplaceholder";
             firstName.Text = viewingStaff.FirstName;
             lastName.Text = viewingStaff.LastName;
-            cRole.SelectedItem = viewingStaff.Role.Substring(0, 1).ToUpper() + viewingStaff.Role.Substring(1).ToLower();
+            cRole.SelectedItem = viewingStaff.Role.ToString();
 
 
-            if (viewingStaff.Status.ToLower() == "inactive")
+            if (viewingStaff.Status == StaffModel.StaffStatus.InActive)
             {
                 fb.Text = "Fired";
                 fb.Click -= b1_Click;
                 fb.Enabled = false;
             }
+            if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
+            {
+                fb.Visible = false;
+                b1.Visible = false;
+                ul.Visible = false;
+                up.Visible = false;
+                username.Visible = false;
+                password.Visible = false;
+            }
+
             if (viewingStaff.Image != null) image.BorderStyle = BorderStyle.None;
 
             allowType(isEditMode);
@@ -114,13 +118,12 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
                 isEditMode = !isEditMode;
                 if (isEditMode) b1.Text = "Save";
                 else b1.Text = "Update";
-                allowType(isEditMode);
 
                 if (!isEditMode)
                 {
                     StaffModel ss = StaffModel.Builder()
                          .WithStaffId(viewingStaff.StaffId)
-                         .WithRole(cRole.Text)
+                         .WithRole(StaffModel.getRole(cRole.Text))
                          .WithFirstName(firstName.Text)
                          .WithLastName(lastName.Text)
                          .WithPhoneNumber(phone.Text == "N/A" ? "" : phone.Text)
@@ -136,13 +139,14 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
                         bool upSuc = staffServices.updateStaff(ss);
                         if (upSuc)
                         {
-                            fName.Text = firstName.Text.Substring(0, 1).ToUpper() + firstName.Text.Substring(1).ToLower() + "  " + lastName.Text.Substring(0, 1).ToUpper() + lastName.Text.Substring(1).ToLower();
+                            fName.Text = ss.getFullName();
                             MessageBox.Show("Successfully updated", "Information Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             staffUpdated.Invoke(this, EventArgs.Empty);
                         }
 
                     }
                 }
+                allowType(isEditMode);
             }
             catch (InvalidInput ex)
             {
@@ -173,7 +177,7 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
                     }
                 }
                 StaffModel ss = StaffModel.Builder()
-                         .WithRole(cRole.Text)
+                         .WithRole(StaffModel.getRole(cRole.Text))
                          .WithFirstName(firstName.Text)
                          .WithLastName(lastName.Text)
                          .WithPhoneNumber(phone.Text)

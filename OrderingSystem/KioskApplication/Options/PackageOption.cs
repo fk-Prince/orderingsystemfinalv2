@@ -18,7 +18,7 @@ namespace OrderingSystem.KioskApplication.Options
         private readonly FrequentlyOrderedOption frequentlyOrderedOption;
         private readonly List<PackageLayout> orderList;
 
-        private MenuModel menu;
+        private MenuDetailModel menu;
         public PackageOption(KioskMenuServices kioskMenuServices, FlowLayoutPanel flowPanel)
         {
             this.kioskMenuServices = kioskMenuServices;
@@ -26,12 +26,12 @@ namespace OrderingSystem.KioskApplication.Options
             orderList = new List<PackageLayout>();
             frequentlyOrderedOption = new FrequentlyOrderedOption(kioskMenuServices, flowPanel);
         }
-        public void displayMenuOptions(MenuModel menu)
+        public void displayMenuOptions(MenuDetailModel menu)
         {
             try
             {
                 this.menu = menu;
-                List<MenuModel> menuList = kioskMenuServices.getIncludedMenu(menu);
+                List<MenuDetailModel> menuList = kioskMenuServices.getIncludedMenu(menu);
                 foreach (MenuPackageModel item in menuList)
                 {
                     var pakage = new PackageLayout(kioskMenuServices, item);
@@ -75,7 +75,7 @@ namespace OrderingSystem.KioskApplication.Options
                     .WithEstimatedTime(menu.EstimatedTime)
                     .Build();
 
-                var om = OrderItemModel.Builder().WithPurchaseQty(1).WithPurchaseMenu(packageBundle).Build();
+                var om = new OrderItemModel(1, packageBundle);
 
                 return new List<OrderItemModel> { om };
             }

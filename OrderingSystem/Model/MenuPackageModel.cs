@@ -4,11 +4,11 @@ using System.Drawing;
 
 namespace OrderingSystem.Model
 {
-    public class MenuPackageModel : MenuModel
+    public class MenuPackageModel : MenuDetailModel
     {
         public bool isFixed { get; protected set; }
         public int PackageId { get; protected set; }
-        public List<MenuModel> MenuIncluded { get; protected set; }
+        public List<MenuDetailModel> MenuIncluded { get; protected set; }
         public int Quantity { get; protected set; }
         public interface IMenuPackageBuilder
         {
@@ -18,7 +18,7 @@ namespace OrderingSystem.Model
             MenuPackageBuilder WithDiscount(DiscountModel ts);
             MenuPackageBuilder WithQuantity(int ts);
             MenuPackageBuilder WithPackageId(int ts);
-            MenuPackageBuilder WithPackageIncluded(List<MenuModel> included);
+            MenuPackageBuilder WithPackageIncluded(List<MenuDetailModel> included);
             MenuPackageBuilder WithCategory(CategoryModel cat);
             MenuPackageBuilder WithCategoryId(int cat);
             MenuPackageBuilder WithMenuImage(Image image);
@@ -37,7 +37,6 @@ namespace OrderingSystem.Model
         }
 
         public static new MenuPackageBuilder Builder() => new MenuPackageBuilder();
-
         public class MenuPackageBuilder : IMenuPackageBuilder
         {
             private readonly MenuPackageModel _menuModel = new MenuPackageModel();
@@ -121,8 +120,6 @@ namespace OrderingSystem.Model
                 return this;
             }
 
-
-
             public MenuPackageBuilder WithQuantity(int ts)
             {
                 _menuModel.Quantity = ts;
@@ -141,7 +138,7 @@ namespace OrderingSystem.Model
                 return this;
             }
 
-            public MenuPackageBuilder WithPackageIncluded(List<MenuModel> included)
+            public MenuPackageBuilder WithPackageIncluded(List<MenuDetailModel> included)
             {
                 _menuModel.MenuIncluded = included;
                 return this;

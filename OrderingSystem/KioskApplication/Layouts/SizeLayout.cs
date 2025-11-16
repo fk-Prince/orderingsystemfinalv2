@@ -7,11 +7,11 @@ namespace OrderingSystem.KioskApplication.Components
 {
     public partial class SizeLayout : System.Windows.Forms.UserControl
     {
-        public event EventHandler<MenuModel> SizeSelected;
-        private List<MenuModel> menuDetails;
+        public event EventHandler<MenuDetailModel> SizeSelected;
+        private List<MenuDetailModel> menuDetails;
         private List<MyRadioButton> radioSamples;
-        private MenuModel selectedFlavor;
-        public SizeLayout(MenuModel selectedFlavor, List<MenuModel> menuDetails)
+        private MenuDetailModel selectedFlavor;
+        public SizeLayout(MenuDetailModel selectedFlavor, List<MenuDetailModel> menuDetails)
         {
             InitializeComponent();
             this.selectedFlavor = selectedFlavor;
