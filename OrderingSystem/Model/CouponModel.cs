@@ -27,7 +27,7 @@ namespace OrderingSystem.Model
         {
             this.CouponCode = couponCode;
             this.Status = status;
-            this.CouponRate = CouponRate;
+            this.CouponRate = couponRate;
             this.ExpiryDate = expiryDate;
             this.Description = description;
             this.type = type;
@@ -36,7 +36,7 @@ namespace OrderingSystem.Model
 
         public CouponModel(double couponRate, DateTime expiryDate, string description, int numberOfTimes, CouponType type, double min)
         {
-            this.CouponRate = CouponRate;
+            this.CouponRate = couponRate;
             this.ExpiryDate = expiryDate;
             this.Description = description;
             this.NumberOfTimes = numberOfTimes;

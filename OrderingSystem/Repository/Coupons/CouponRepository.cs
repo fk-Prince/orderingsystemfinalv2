@@ -19,14 +19,13 @@ namespace OrderingSystem.Repository.Coupon
 
                 MySqlCommand cmd = new MySqlCommand("p_GenerateCoupon", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                MessageBox.Show(co.NumberOfTimes.ToString());
                 cmd.Parameters.AddWithValue("p_times", co.NumberOfTimes);
                 cmd.Parameters.AddWithValue("p_rate", co.CouponRate);
                 cmd.Parameters.AddWithValue("p_expiry_date", co.ExpiryDate);
                 cmd.Parameters.AddWithValue("p_description", co.Description);
                 cmd.Parameters.AddWithValue("p_type", co.getType());
                 cmd.Parameters.AddWithValue("p_min", co.CouponMin);
-                cmd.ExecuteNonQuery();
-
                 using (var adapter = new MySqlDataAdapter(cmd))
                 {
                     adapter.Fill(dt);

@@ -24,7 +24,7 @@ namespace OrderingSystem.Model
             IngredientStockModel Build();
         }
 
-        public static new IngredientStockBuilder Builder() => new IngredientStockBuilder();
+        public static IngredientStockBuilder Builder() => new IngredientStockBuilder();
 
 
         public class IngredientStockBuilder : IIngredientStockModel

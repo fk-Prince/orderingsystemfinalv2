@@ -29,6 +29,7 @@ namespace OrderingSystem.Services
                 if (!Enum.TryParse(type?.Trim(), true, out CouponType couponType))
                     throw new InvalidInput("Invalid coupon type.");
 
+
                 if (couponType == CouponType.PERCENTAGE)
                 {
                     if (dRate < 0 || dRate > 100)
