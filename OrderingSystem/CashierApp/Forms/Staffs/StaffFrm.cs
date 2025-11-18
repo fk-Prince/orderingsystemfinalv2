@@ -13,11 +13,11 @@ namespace OrderingSystem.CashierApp.Forms.Staffs
     {
         private readonly StaffServices staffServices;
         private readonly IForms iForms;
-        public StaffFrm()
+        public StaffFrm(StaffServices staffServices)
         {
             InitializeComponent();
             iForms = new FormFactory();
-            staffServices = new StaffServices();
+            this.staffServices = staffServices;
 
             refreshList(null, EventArgs.Empty);
             if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)

@@ -5,6 +5,6 @@ namespace OrderingSystem.CashierApp.Payment
     public interface IPayment
     {
         string PaymentName { get; }
-        bool processPayment(OrderModel order);
+        InvoiceModel processPayment(OrderModel order);
     }
 }

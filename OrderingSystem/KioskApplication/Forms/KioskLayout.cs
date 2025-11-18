@@ -428,16 +428,7 @@ namespace OrderingSystem
                 var b = buttonListTop.FirstOrDefault(btn => (int)btn.Tag == categoryId);
                 if (b != null && b != lastClickedTop)
                 {
-                    if (lastClickedTop != null)
-                    {
-                        lastClickedTop.FillColor = ColorTranslator.FromHtml("#DBEAFE");
-                        lastClickedTop.ForeColor = Color.FromArgb(34, 34, 34);
-                    }
-
-                    b.FillColor = ColorTranslator.FromHtml("#689FF9");
-                    b.ForeColor = Color.White;
-
-                    lastClickedTop = b;
+                    lastButton(b);
                 }
             }
         }

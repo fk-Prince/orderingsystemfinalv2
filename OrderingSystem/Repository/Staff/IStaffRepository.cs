@@ -6,10 +6,10 @@ namespace OrderingSystem.Repository.Staff
     public interface IStaffRepository
     {
         List<StaffModel> getStaff();
-        StaffModel successfullyLogin(StaffModel staff);
+        StaffModel loginStaff(string username, string password);
         bool updateStaff(StaffModel staff);
         bool fireStaff(int staffId);
         bool addStaff(StaffModel staff);
-        bool usernameExists(StaffModel staff);
+        bool isUsernameExists(StaffModel staff);
     }
 }

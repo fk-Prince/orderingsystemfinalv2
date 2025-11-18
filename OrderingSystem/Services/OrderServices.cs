@@ -38,7 +38,7 @@ namespace OrderingSystem.KioskApplication.Services
             if (payed)
                 throw new OrderInvalid("This order is already process.");
 
-            bool isAvalable = orderRepository.getOrderAvailable(order_id);
+            bool isAvalable = orderRepository.isOrderAvailable(order_id);
             if (!isAvalable)
                 throw new OrderInvalid("Order-ID expired.");
 

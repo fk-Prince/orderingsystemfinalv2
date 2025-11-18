@@ -21,7 +21,6 @@ namespace OrderingSystem.Receipt
         private string message;
         private string type;
         private double cash;
-        private string invoice_id;
         private string estimated_date;
 
         public OrderReceipt(OrderModel om)
@@ -52,11 +51,10 @@ namespace OrderingSystem.Receipt
             printPreviewDialog.ShowDialog();
         }
 
-        public void receiptMessages(string message, string estimated_date, string invoice_id, string type)
+        public void receiptMessages(string message, string estimated_date, string type)
         {
             this.message = message;
             this.estimated_date = estimated_date;
-            this.invoice_id = invoice_id;
             this.type = type;
         }
 

@@ -94,7 +94,7 @@ namespace OrderingSystem.Repository.Staff
 
             return list;
         }
-        public StaffModel successfullyLogin(StaffModel staff)
+        public StaffModel loginStaff(string username, string password)
         {
             var db = DatabaseHandler.getInstance();
             try
@@ -106,8 +106,8 @@ namespace OrderingSystem.Repository.Staff
                 using (var cmd = new MySqlCommand(query, conn))
                 {
 
-                    cmd.Parameters.AddWithValue("@username", staff.Username);
-                    cmd.Parameters.AddWithValue("@password", staff.Password);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -121,7 +121,7 @@ namespace OrderingSystem.Repository.Staff
                                 .WithLastName(reader.GetString("lastname"))
                                 .WithPhoneNumber(!reader.IsDBNull(reader.GetOrdinal("phone")) ? reader.GetString("phone") : "")
                                 .WithHiredDate(reader.GetDateTime("hire_date"))
-                                    .WithStatus(StaffModel.getStatus(reader.GetString("status")))
+                                .WithStatus(StaffModel.getStatus(reader.GetString("status")))
                                 .Build();
                         }
                     }
@@ -163,7 +163,7 @@ namespace OrderingSystem.Repository.Staff
                 throw;
             }
         }
-        public bool usernameExists(StaffModel staff)
+        public bool isUsernameExists(StaffModel staff)
         {
             var db = DatabaseHandler.getInstance();
             try

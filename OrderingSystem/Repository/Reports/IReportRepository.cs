@@ -18,7 +18,6 @@ namespace OrderingSystem.Repository.Reports
 
         Tuple<string, string> getTransactions(DateTime now);
         Tuple<string, string> getOrders(DateTime now, string query);
-
         Tuple<string, string> getTotalOrders(DateTime now, string x);
         List<Tuple<DateTime, int, int, int>> getOrderMonthly();
     }

@@ -13,7 +13,7 @@ namespace OrderingSystem.CashierApp.Forms.Order
         private readonly OrderServices orderServices;
 
         public double Cash;
-        public IPayment paymentT;
+        public Payment.Payment paymentT;
 
         public PaymentMethod(OrderServices orderServices)
         {
@@ -80,14 +80,14 @@ namespace OrderingSystem.CashierApp.Forms.Order
                     cashPayment.setCashReceieved(cashAmount);
                 }
 
-                bool success = payment.processPayment(om);
-
+                InvoiceModel invoice = payment.processPayment(om);
+                bool success = orderServices.payOrder(invoice);
                 if (success)
                 {
                     MessageBox.Show("Payment successful!", "Payment Method",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
-                    paymentT = payment;
+                    paymentT = (Payment.Payment)payment;
                 }
                 else
                 {

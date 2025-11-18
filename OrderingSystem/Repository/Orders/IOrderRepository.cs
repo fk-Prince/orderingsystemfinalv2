@@ -7,7 +7,7 @@ namespace OrderingSystem.Repository
 {
     public interface IOrderRepository
     {
-        bool getOrderAvailable(string order_id);
+        bool isOrderAvailable(string order_id);
         bool isOrderExists(string order_id);
         OrderModel getOrders(string order_id);
         bool isOrderPaid(string order_id);

@@ -1,18 +1,13 @@
 ﻿using OrderingSystem.Exceptions;
-using OrderingSystem.KioskApplication.Services;
 using OrderingSystem.Model;
 
 namespace OrderingSystem.CashierApp.Payment
 {
-    public class CashPayment : BasePayment, ICashHandling
+    public class CashPayment : Payment, ICashHandling
     {
         private double cashReceived;
         public override string PaymentName => "Cash";
 
-        public CashPayment(OrderServices orderServices)
-           : base(orderServices)
-        {
-        }
         public virtual void validateCashAmount(double cashReceived, double totalAmount)
         {
             if (cashReceived <= 0)
@@ -22,13 +17,13 @@ namespace OrderingSystem.CashierApp.Payment
                 throw new InsuffiecientAmount("The cash amount is insufficient to process the payment.");
         }
 
-        public override bool processPayment(OrderModel order)
+        public override InvoiceModel processPayment(OrderModel order)
         {
             validateOrder(order);
             double totalAmount = order.GetTotalWithVAT();
             validateCashAmount(cashReceived, totalAmount);
 
-            return payOrder(order);
+            return finalizeOrder(order);
         }
         public void setCashReceieved(double cashReceived)
         {

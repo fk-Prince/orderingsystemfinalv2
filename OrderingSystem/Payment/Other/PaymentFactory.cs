@@ -14,9 +14,9 @@ namespace OrderingSystem.CashierApp.Payment
         public IPayment paymentType(string type)
         {
             if (type.ToLower() == "cash")
-                return new CashPayment(orderServices);
+                return new CashPayment();
             else if (type.ToLower() == "g-cash" || type.ToLower() == "gcash")
-                return new GCashPayment(orderServices);
+                return new GCashPayment();
             else if (type.ToLower() == "debitcard" || type.ToLower() == "debit-card")
                 return new DebitCardPayment(orderServices);
             else

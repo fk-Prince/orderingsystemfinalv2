@@ -17,7 +17,17 @@ namespace OrderingSystem.Repository.Ingredients
             List<IngredientModel> im = new List<IngredientModel>();
             var db = DatabaseHandler.getInstance();
             string query = @"
-                        SELECT i.ingredient_id, i.ingredient_name, i.unit  FROM ingredients i
+                   SELECT 
+                          i.ingredient_id ,
+                          i.ingredient_name,
+                          i.unit,
+                          ROUND(SUM(COALESCE(oss.batch_cost,0)) / SUM(COALESCE(mi.quantity,0)),2) as cost_per_unit
+                    FROM ingredients i
+                    INNER JOIN ingredient_stock oss ON oss.ingredient_id = i.ingredient_id
+                    INNER JOIN monitor_inventory mi ON mi.ingredient_stock_id = oss.ingredient_stock_id
+                    GROUP BY i.ingredient_id ,
+                          i.ingredient_name,
+                          i.unit
                         ";
             try
             {
@@ -32,6 +42,7 @@ namespace OrderingSystem.Repository.Ingredients
                                 .WithIngredientID(reader.GetInt32("ingredient_id"))
                                 .WithIngredientName(reader.GetString("ingredient_name"))
                                 .WithIngredientUnit(reader.GetString("unit"))
+                                .WithIngredientCost(reader.GetDouble("cost_per_unit"))
                                 .Build();
                             im.Add(i);
                         }
@@ -58,15 +69,23 @@ namespace OrderingSystem.Repository.Ingredients
                 if (menu.MenuDetailId != 0)
                 {
                     query = @"
-                    SELECT i.ingredient_id, i.ingredient_name,i.unit, COALESCE(SUM(mi.quantity), 0) quantity FROM ingredients i
-                    LEFT JOIN menu_ingredient mi ON mi.ingredient_id = i.ingredient_id AND mi.menu_detail_id = @menu_detail_id
+                    SELECT i.ingredient_id, i.ingredient_name,i.unit, COALESCE(SUM(mi.quantity), 0) quantity, 
+                    ROUND(SUM(COALESCE(oss.batch_cost,0)) / SUM(COALESCE(mmi.quantity,0)),2) as cost_per_unit
+                    FROM ingredients i
+                LEFT JOIN menu_ingredient mi ON mi.ingredient_id = i.ingredient_id AND mi.menu_detail_id = @menu_detail_id
+                    INNER JOIN ingredient_stock oss ON oss.ingredient_id = i.ingredient_id
+                    INNER JOIN monitor_inventory mmi ON mmi.ingredient_stock_id = oss.ingredient_stock_id
                     GROUP BY  i.ingredient_id, i.ingredient_name";
                 }
                 else
                 {
                     query = @"
-                    SELECT i.ingredient_id, i.ingredient_name, i.unit, COALESCE(SUM(CASE WHEN m.menu_id = @menu_id THEN mi.quantity ELSE 0 END), 0) quantity 
+                    SELECT i.ingredient_id, i.ingredient_name, i.unit, COALESCE(SUM(CASE WHEN m.menu_id = @menu_id THEN mi.quantity ELSE 0 END), 0) quantity ,
+                    ROUND(SUM(COALESCE(oss.batch_cost,0)) / SUM(COALESCE(mmi.quantity,0)),2) as cost_per_unit
+                  
                     FROM ingredients i
+                    INNER JOIN ingredient_stock oss ON oss.ingredient_id = i.ingredient_id
+                    INNER JOIN monitor_inventory mmi ON mmi.ingredient_stock_id = oss.ingredient_stock_id
                     LEFT JOIN menu_ingredient mi ON mi.ingredient_id = i.ingredient_id
                     LEFT JOIN menu_detail md ON md.menu_detail_id = mi.menu_detail_id
                     LEFT JOIN menu m ON m.menu_id = md.menu_id
@@ -88,6 +107,7 @@ namespace OrderingSystem.Repository.Ingredients
                                 .WithIngredientName(reader.GetString("ingredient_name"))
                                 .WithInredeintQty(reader.GetInt32("quantity"))
                                 .WithIngredientUnit(reader.GetString("unit"))
+                                .WithIngredientCost(reader.GetDouble("cost_per_unit"))
                                 .Build();
                             im.Add(i);
                         }

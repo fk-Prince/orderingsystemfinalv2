@@ -8,12 +8,14 @@ namespace OrderingSystem.Model
         protected int ingredientQuantity;
         protected string ingredientName;
         protected string ingredientUnit;
+        protected double ingredientCostPerunit;
         protected List<IngredientStockModel> os;
 
 
         public string IngredientName { get => ingredientName; }
         public int IngredientQuantity { get => ingredientQuantity; }
         public string IngredientUnit { get => ingredientUnit; }
+        public double IngredientCostPerUnit { get => ingredientCostPerunit; }
         public List<IngredientStockModel> IngredientStockModel { get => os; }
         public int Ingredient_id { get => ingredientId; }
 
@@ -23,6 +25,7 @@ namespace OrderingSystem.Model
             IngredientBuilder WithIngredientID(int ingredient_id);
             IngredientBuilder WithInredeintQty(int ingredientQuantity);
             IngredientBuilder WithIngredientUnit(string ingredientUnit);
+            IngredientBuilder WithIngredientCost(double dd);
             IngredientBuilder WithStock(List<IngredientStockModel> os);
             IngredientModel Build();
         }
@@ -61,6 +64,12 @@ namespace OrderingSystem.Model
             public IngredientBuilder WithStock(List<IngredientStockModel> os)
             {
                 ingredientModel.os = os;
+                return this;
+            }
+
+            public IngredientBuilder WithIngredientCost(double dd)
+            {
+                ingredientModel.ingredientCostPerunit = dd;
                 return this;
             }
         }

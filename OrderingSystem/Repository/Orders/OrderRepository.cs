@@ -9,7 +9,7 @@ namespace OrderingSystem.Repository.Order
 {
     public class OrderRepository : IOrderRepository
     {
-        public bool getOrderAvailable(string order_id)
+        public bool isOrderAvailable(string order_id)
         {
             var db = DatabaseHandler.getInstance();
             try

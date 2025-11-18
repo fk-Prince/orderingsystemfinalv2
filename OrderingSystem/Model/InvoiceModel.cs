@@ -7,9 +7,9 @@ namespace OrderingSystem.Model
         public string InvoiceId { get; }
         public OrderModel Order { get; }
         public StaffModel Staff { get; }
-        public IPayment payment { get; }
+        public Payment payment { get; }
         public double totalAmount { get; }
-        public InvoiceModel(string InvoiceId, OrderModel Order, StaffModel Staff, IPayment payment, double totalAmount)
+        public InvoiceModel(string InvoiceId, OrderModel Order, StaffModel Staff, Payment payment, double totalAmount)
         {
             this.InvoiceId = InvoiceId;
             this.Order = Order;

@@ -7,6 +7,7 @@ using OrderingSystem.CashierApp.SessionData;
 using OrderingSystem.Exceptions;
 using OrderingSystem.Model;
 using OrderingSystem.Repository.Staff;
+using OrderingSystem.Services;
 
 namespace OrderingSystem.CashierApp.Layout
 {
@@ -34,19 +35,7 @@ namespace OrderingSystem.CashierApp.Layout
             }
         }
 
-        private void pass_MouseDown(object sender, MouseEventArgs e)
-        {
-            var txt = sender as Guna2TextBox;
-            Rectangle iconBounds = new Rectangle(pass.Width - 25 - pass.Padding.Right, (pass.Height - 20) / 2, 20, 20);
 
-            if (iconBounds.Contains(e.Location))
-            {
-                if (!isShowing) pass.IconRight = Properties.Resources.eyeclosed;
-                else pass.IconRight = Properties.Resources.eye;
-                pass.UseSystemPasswordChar = !pass.UseSystemPasswordChar;
-                isShowing = !isShowing;
-            }
-        }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
@@ -56,21 +45,15 @@ namespace OrderingSystem.CashierApp.Layout
                 {
                     throw new IncorrectCredentials("Incorrect Username or Password.");
                 }
-
-                StaffModel staff = StaffModel.Builder()
-                    .WithUsername(user.Text.Trim())
-                    .WithPassword(pass.Text.Trim())
-                    .Build();
-                IStaffRepository staffRepository = new StaffRepository();
-                StaffModel loginStaff = staffRepository.successfullyLogin(staff);
-
+                StaffServices staffService = new StaffServices(new StaffRepository());
+                StaffModel loginStaff = staffService.loginStaff(user.Text.Trim(), pass.Text.Trim());
                 if (loginStaff != null)
                 {
                     SessionStaffData.setSessionData(loginStaff);
                     MessageBox.Show("Successfully Login", "Authorized", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                     isLogin = true;
-                    CashierLayout ca = new CashierLayout();
+                    CashierLayout ca = new CashierLayout(staffService);
                     Hide();
                     ca.Show();
                 }
@@ -92,6 +75,19 @@ namespace OrderingSystem.CashierApp.Layout
             Hide();
             KioskApplication.Forms.Dashboard d = new KioskApplication.Forms.Dashboard();
             d.Show();
+        }
+        private void pass_MouseDown(object sender, MouseEventArgs e)
+        {
+            var txt = sender as Guna2TextBox;
+            Rectangle iconBounds = new Rectangle(pass.Width - 25 - pass.Padding.Right, (pass.Height - 20) / 2, 20, 20);
+
+            if (iconBounds.Contains(e.Location))
+            {
+                if (!isShowing) pass.IconRight = Properties.Resources.eyeclosed;
+                else pass.IconRight = Properties.Resources.eye;
+                pass.UseSystemPasswordChar = !pass.UseSystemPasswordChar;
+                isShowing = !isShowing;
+            }
         }
     }
 }

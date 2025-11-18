@@ -110,7 +110,7 @@ namespace OrderingSystem.CashierApp.Forms
                         Tuple<TimeSpan, string, string> xd = orderServices.getTimeInvoiceWaiting(om.OrderId);
                         OrderReceipt or = new OrderReceipt(om);
                         or.Cash(p.Cash);
-                        IPayment pm = p.paymentT;
+                        Payment.Payment pm = p.paymentT;
                         double fee = 0;
                         if (pm is IFeeCalculator f)
                             fee = f.feePercent;
@@ -118,7 +118,7 @@ namespace OrderingSystem.CashierApp.Forms
                         InvoiceModel i = new InvoiceModel(xd.Item2, om, SessionStaffData.StaffData, pm, om.GetTotalWithVAT() + (1 * fee));
                         or.setInvoice(i);
 
-                        or.receiptMessages("Wait for your Order", xd.Item1.ToString(@"hh\:mm\:ss"), xd.Item2, xd.Item3);
+                        or.receiptMessages("Wait for your Order", xd.Item1.ToString(@"hh\:mm\:ss"), xd.Item3);
                         or.print();
                         p.Hide();
                         clear();

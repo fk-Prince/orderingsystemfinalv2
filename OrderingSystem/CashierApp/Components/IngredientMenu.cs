@@ -57,8 +57,9 @@ namespace OrderingSystem.CashierApp.Components
             table.Columns.Add("Ingredient Name");
             table.Columns.Add("Quantity");
             table.Columns.Add("Unit");
+            table.Columns.Add("Cost per Unit");
 
-            ingredientList.ForEach(e => table.Rows.Add(e.IngredientName, e.IngredientQuantity, e.IngredientUnit));
+            ingredientList.ForEach(e => table.Rows.Add(e.IngredientName, e.IngredientQuantity, e.IngredientUnit, e.IngredientCostPerUnit.ToString("N2")));
             view = new DataView(table);
             dataGrid.DataSource = view;
             dataGrid.Enabled = false;
@@ -90,8 +91,10 @@ namespace OrderingSystem.CashierApp.Components
             table.Columns.Add("Ingredient Name");
             table.Columns.Add("Unit");
             table.Columns.Add("Quantity");
+            table.Columns.Add("Cost per Unit");
 
-            ingredientList.ForEach(e => table.Rows.Add(e.IngredientQuantity != 0, e.IngredientName, e.IngredientUnit, e.IngredientQuantity == 0 ? DBNull.Value : (object)e.IngredientQuantity));
+            ingredientList.ForEach(e => table.Rows.Add(e.IngredientQuantity != 0, e.IngredientName,
+                e.IngredientUnit, e.IngredientQuantity == 0 ? DBNull.Value : (object)e.IngredientQuantity, e.IngredientCostPerUnit.ToString("N2")));
             view = new DataView(table);
             dataGrid.DataSource = view;
 

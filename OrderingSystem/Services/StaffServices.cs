@@ -10,11 +10,15 @@ namespace OrderingSystem.Services
     public class StaffServices
     {
         private readonly IStaffRepository staffRepository;
-        public StaffServices()
+        public StaffServices(IStaffRepository staffRepository)
         {
-            staffRepository = new StaffRepository();
+            this.staffRepository = staffRepository;
         }
 
+        public StaffModel loginStaff(string username, string password)
+        {
+            return staffRepository.loginStaff(username, password);
+        }
         public bool isInputValidated(StaffModel staff)
         {
             string numberRegex = @"^09\d{9}$";
@@ -48,7 +52,7 @@ namespace OrderingSystem.Services
         }
         public bool isUsernameExists(StaffModel staff)
         {
-            return staffRepository.usernameExists(staff);
+            return staffRepository.isUsernameExists(staff);
         }
         public List<StaffModel> getStaffs()
         {

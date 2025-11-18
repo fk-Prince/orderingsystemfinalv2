@@ -61,7 +61,7 @@ namespace OrderingSystem.KioskApplication.Forms
                 {
                     OrderReceipt or = new OrderReceipt(om);
                     or.receiptMessages("Proceed to the cashier \n    Within 30 minutes",
-                        DateTime.Now.AddMinutes(30).ToString("hh:mm:ss tt"), "",
+                        DateTime.Now.AddMinutes(30).ToString("hh:mm:ss tt"),
                         om.Type.ToString());
                     or.print();
                     successfulPayment?.Invoke(this, EventArgs.Empty);

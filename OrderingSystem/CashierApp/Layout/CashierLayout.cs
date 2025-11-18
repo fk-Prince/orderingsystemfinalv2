@@ -25,12 +25,14 @@ namespace OrderingSystem.CashierApp.Forms
         private MenuFrm menuIntance;
         private Guna2Button lastClicked;
 
+        private StaffServices staffService;
         private readonly IForms iForms;
-        public CashierLayout()
+        public CashierLayout(StaffServices staffService)
         {
             InitializeComponent();
             dts.Start();
             iForms = new FormFactory();
+            this.staffService = staffService;
             ingredientPanel = new IngredientPanel(iForms);
 
             addB();
@@ -63,6 +65,14 @@ namespace OrderingSystem.CashierApp.Forms
                 ai.Visible = false;
                 ri.Visible = false;
                 md.Visible = false;
+                b3.Visible = false;
+                b4.Visible = false;
+                b5.Visible = false;
+                b6.Visible = false;
+                b7.Visible = false;
+                b8.Visible = false;
+                b9.Visible = false;
+                b10.Visible = false;
             }
             image.Image = SessionStaffData.Image;
             name.Text = SessionStaffData.getFullName();
@@ -164,7 +174,7 @@ namespace OrderingSystem.CashierApp.Forms
         private void viewStaff(object sender, System.EventArgs e)
         {
             hideSubPanel();
-            loadForm(new StaffFrm());
+            loadForm(new StaffFrm(staffService));
         }
         private void signoutUser(object sender, System.EventArgs e)
         {

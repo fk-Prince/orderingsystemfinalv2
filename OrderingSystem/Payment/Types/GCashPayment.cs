@@ -1,18 +1,15 @@
-﻿using OrderingSystem.KioskApplication.Services;
-using OrderingSystem.Model;
+﻿using OrderingSystem.Model;
 
 namespace OrderingSystem.CashierApp.Payment
 {
-    public class GCashPayment : BasePayment
+    public class GCashPayment : Payment
     {
         public override string PaymentName => "G-Cash";
-        public GCashPayment(OrderServices orderServices) : base(orderServices)
-        {
-        }
-        public override bool processPayment(OrderModel order)
+
+        public override InvoiceModel processPayment(OrderModel order)
         {
             validateOrder(order);
-            return payOrder(order);
+            return finalizeOrder(order);
         }
     }
 }

@@ -401,7 +401,7 @@
       <DependentUpon>LoginLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\InvoiceModel.cs" />
-    <Compile Include="Payment\Types\BasePayment.cs" />
+    <Compile Include="Payment\Types\Payment.cs" />
     <Compile Include="Payment\Other\FeeCalculator.cs" />
     <Compile Include="Payment\Types\CashPayment.cs" />
     <Compile Include="Payment\Types\GCashPayment.cs" />
