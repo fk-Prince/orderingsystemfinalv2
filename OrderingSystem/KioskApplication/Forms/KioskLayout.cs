@@ -255,10 +255,14 @@ namespace OrderingSystem
                 IOrderRepository orderRepository = new OrderRepository();
                 OrderServices orderServices = new OrderServices(orderRepository);
                 string orderId = orderServices.getLastestOrderID();
-                OrderModel om = new OrderModel(orderId, orderList, couponSelected, OrderModel.getOrderType(type));
 
-
+                OrderModel om;
+                if (!string.IsNullOrEmpty(this.type))
+                    om = new OrderModel(orderId, orderList, couponSelected, OrderModel.getOrderType(type));
+                else
+                    om = new OrderModel(orderId, couponSelected, orderList);
                 OrderLayout l = new OrderLayout(om, orderServices);
+                l.isBrowsing = string.IsNullOrEmpty(this.type);
                 l.AddQuantity += (s, ee) =>
                 {
 

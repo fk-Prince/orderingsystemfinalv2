@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.mm = new Guna.UI2.WinForms.Guna2Panel();
             this.bb = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.Typing = new System.Windows.Forms.Label();
             this.lblTyping = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.b2 = new Guna.UI2.WinForms.Guna2Button();
             this.b1 = new Guna.UI2.WinForms.Guna2Button();
             this.typingTimer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.mm.SuspendLayout();
             this.bb.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -105,6 +107,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.Controls.Add(this.guna2Button1);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.Typing);
             this.guna2Panel1.Controls.Add(this.lblTyping);
@@ -119,6 +122,14 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1276, 676);
             this.guna2Panel1.TabIndex = 2;
             this.guna2Panel1.UseTransparentBackground = true;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(3, 1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(191, 134);
+            this.label1.TabIndex = 5;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Typing
             // 
@@ -168,7 +179,7 @@
             this.b2.Image = global::OrderingSystem.Properties.Resources.dinein;
             this.b2.ImageOffset = new System.Drawing.Point(30, -20);
             this.b2.ImageSize = new System.Drawing.Size(130, 130);
-            this.b2.Location = new System.Drawing.Point(672, 360);
+            this.b2.Location = new System.Drawing.Point(460, 346);
             this.b2.Name = "b2";
             this.b2.ShadowDecoration.BorderRadius = 20;
             this.b2.ShadowDecoration.Color = System.Drawing.Color.Silver;
@@ -197,7 +208,7 @@
             this.b1.Image = global::OrderingSystem.Properties.Resources.takeout;
             this.b1.ImageOffset = new System.Drawing.Point(39, -20);
             this.b1.ImageSize = new System.Drawing.Size(130, 130);
-            this.b1.Location = new System.Drawing.Point(260, 360);
+            this.b1.Location = new System.Drawing.Point(19, 346);
             this.b1.Name = "b1";
             this.b1.ShadowDecoration.BorderRadius = 20;
             this.b1.ShadowDecoration.Color = System.Drawing.Color.Silver;
@@ -216,13 +227,34 @@
             this.typingTimer.Interval = 30;
             this.typingTimer.Tick += new System.EventHandler(this.typingTimer_Tick);
             // 
-            // label1
+            // guna2Button1
             // 
-            this.label1.Location = new System.Drawing.Point(3, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 134);
-            this.label1.TabIndex = 5;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.guna2Button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(97)))), ((int)(((byte)(29)))));
+            this.guna2Button1.BorderRadius = 20;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Sitka Small", 16.2F, System.Drawing.FontStyle.Bold);
+            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.ImageOffset = new System.Drawing.Point(39, -20);
+            this.guna2Button1.ImageSize = new System.Drawing.Size(250, 200);
+            this.guna2Button1.Location = new System.Drawing.Point(887, 346);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.BorderRadius = 20;
+            this.guna2Button1.ShadowDecoration.Color = System.Drawing.Color.Silver;
+            this.guna2Button1.ShadowDecoration.Depth = 100;
+            this.guna2Button1.ShadowDecoration.Enabled = true;
+            this.guna2Button1.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(5, 5, 10, 10);
+            this.guna2Button1.Size = new System.Drawing.Size(368, 313);
+            this.guna2Button1.TabIndex = 6;
+            this.guna2Button1.Text = "Browse Menu";
+            this.guna2Button1.TextOffset = new System.Drawing.Point(-60, 80);
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // Dashboard
             // 
@@ -260,5 +292,6 @@
         private Guna.UI2.WinForms.Guna2Button b1;
         private System.Windows.Forms.Timer typingTimer;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

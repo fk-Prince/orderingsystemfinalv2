@@ -71,5 +71,12 @@ namespace OrderingSystem.KioskApplication.Forms
             LoginLayout k = new LoginLayout();
             k.Show();
         }
+
+        private void guna2Button1_Click(object sender, System.EventArgs e)
+        {
+            KioskLayout k = new KioskLayout();
+            k.setType("");
+            loadForm(k);
+        }
     }
 }

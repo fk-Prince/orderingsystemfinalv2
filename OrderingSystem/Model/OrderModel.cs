@@ -14,12 +14,10 @@ namespace OrderingSystem.Model
         }
 
         private string order_id;
-
         public List<OrderItemModel> OrderItemList { get; set; }
         public CouponModel Coupon { get; set; }
         public string OrderId { get => order_id; }
         public OrderType Type { get; set; }
-        public string OrderId1 { get; }
         public CouponModel CouponSelected { get; }
         public OrderModel(string orderId, List<OrderItemModel> orderList, CouponModel couponSelected, OrderType orderType)
         {

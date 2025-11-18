@@ -16,6 +16,7 @@ namespace OrderingSystem.KioskApplication.Forms
         public event EventHandler successfulPayment;
         public event EventHandler<OrderItemModel> AddQuantity;
         public event EventHandler<OrderItemModel> DeductQuantity;
+        public bool isBrowsing;
         public OrderLayout(OrderModel om, OrderServices orderServices)
         {
             InitializeComponent();
@@ -55,18 +56,41 @@ namespace OrderingSystem.KioskApplication.Forms
         {
             try
             {
-
-                bool suc = orderServices.confirmOrder(om);
-                if (suc)
+                OrderTypeFrm x = new OrderTypeFrm();
+                x.OrderTypeChanged += (ss, ee) => om.Type = ee;
+                if (!isBrowsing)
                 {
-                    OrderReceipt or = new OrderReceipt(om);
-                    or.receiptMessages("Proceed to the cashier \n    Within 30 minutes",
-                        DateTime.Now.AddMinutes(30).ToString("hh:mm:ss tt"),
-                        om.Type.ToString());
-                    or.print();
-                    successfulPayment?.Invoke(this, EventArgs.Empty);
-                    DialogResult = DialogResult.OK;
+                    bool suc = orderServices.confirmOrder(om);
+                    if (suc)
+                    {
+                        OrderReceipt or = new OrderReceipt(om);
+                        or.receiptMessages("Proceed to the cashier \n    Within 30 minutes",
+                            DateTime.Now.AddMinutes(30).ToString("hh:mm:ss tt"),
+                            om.Type.ToString());
+                        or.print();
+                        successfulPayment?.Invoke(this, EventArgs.Empty);
+                        DialogResult = DialogResult.OK;
+                    }
                 }
+                else
+                {
+                    DialogResult rs = x.ShowDialog(this);
+                    if (rs == DialogResult.OK)
+                    {
+                        bool suc = orderServices.confirmOrder(om);
+                        if (suc)
+                        {
+                            OrderReceipt or = new OrderReceipt(om);
+                            or.receiptMessages("Proceed to the cashier \n    Within 30 minutes",
+                                DateTime.Now.AddMinutes(30).ToString("hh:mm:ss tt"),
+                                om.Type.ToString());
+                            or.print();
+                            successfulPayment?.Invoke(this, EventArgs.Empty);
+                            DialogResult = DialogResult.OK;
+                        }
+                    }
+                }
+                x.Hide();
             }
             catch (OrderInvalid ex)
             {

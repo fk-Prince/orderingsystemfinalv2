@@ -400,6 +400,12 @@
     <Compile Include="CashierApp\Layout\LoginLayout.Designer.cs">
       <DependentUpon>LoginLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="KioskApplication\Component\OrderTypeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KioskApplication\Component\OrderTypeFrm.Designer.cs">
+      <DependentUpon>OrderTypeFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\InvoiceModel.cs" />
     <Compile Include="Payment\Types\Payment.cs" />
     <Compile Include="Payment\Other\FeeCalculator.cs" />
@@ -760,6 +766,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KioskApplication\Component\Note.resx">
       <DependentUpon>Note.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KioskApplication\Component\OrderTypeFrm.resx">
+      <DependentUpon>OrderTypeFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KioskApplication\Component\Title.resx">
       <DependentUpon>Title.cs</DependentUpon>
