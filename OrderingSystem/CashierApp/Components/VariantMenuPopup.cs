@@ -37,7 +37,7 @@ namespace OrderingSystem.CashierApp.Forms.Menu
         {
             if (!isPriceValid(menuPrice.Text.Trim()))
             {
-                MessageBox.Show("Invalid price .");
+                MessageBox.Show("Invalid Price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             string flavor = cmbFlavor.Text.Trim();

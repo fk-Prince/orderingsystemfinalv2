@@ -147,11 +147,11 @@ namespace OrderingSystem.CashierApp.Components
                            x.FlavorName == flavor &&
                            x.SizeName == size);
 
-                    // Find if this was already selected (has a PackageId)
                     MenuPackageModel existingPackage = menuSelected.Find(x =>
                         x.MenuName == menuName &&
                         x.FlavorName == flavor &&
                         x.SizeName == size) as MenuPackageModel;
+
                     MenuPackageModel p = MenuPackageModel.Builder()
                         .WithMenuDetailId(originalMenu.MenuDetailId)
                         .WithPackageId(existingPackage?.PackageId ?? 0)
@@ -166,16 +166,11 @@ namespace OrderingSystem.CashierApp.Components
                 }
             }
             DialogResult = DialogResult.OK;
-            //xx?.Invoke(this, EventArgs.Empty);
         }
 
         public List<MenuDetailModel> getMenuSelected()
         {
             return menuSelected;
-        }
-
-        private void FormClosing1(object sender, FormClosingEventArgs e)
-        {
         }
 
         private void dataGrid_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)

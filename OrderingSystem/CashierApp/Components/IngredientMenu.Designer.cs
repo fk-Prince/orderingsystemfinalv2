@@ -96,7 +96,7 @@
             this.dataGrid.ColumnHeadersHeight = 35;
             this.dataGrid.Location = new System.Drawing.Point(13, 87);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(507, 368);
+            this.dataGrid.Size = new System.Drawing.Size(507, 369);
             this.dataGrid.TabIndex = 9;
             this.dataGrid.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_CellValidating);
             // 
@@ -186,10 +186,10 @@
 
         public Guna.UI2.WinForms.Guna2PictureBox closeButton;
         private Guna.UI2.WinForms.Guna2TextBox search;
-        private System.Windows.Forms.DataGridView dataGrid;
         public Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         public Guna.UI2.WinForms.Guna2Button updateButton;
         public Guna.UI2.WinForms.Guna2Button confirmButton;
+        public System.Windows.Forms.DataGridView dataGrid;
     }
 }

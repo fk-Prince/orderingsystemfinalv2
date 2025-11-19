@@ -196,12 +196,12 @@ namespace OrderingSystem.CashierApp.Components
 
                 if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(desc) || string.IsNullOrEmpty(cat) || (isPackaged && string.IsNullOrEmpty(pricex)))
                 {
-                    MessageBox.Show("Emty Field", "Invalid Input", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    MessageBox.Show("Empty Field", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!isPriceValid(pricex) && isPackaged)
                 {
-                    MessageBox.Show("Invalid price", "Invalid Input", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid price", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

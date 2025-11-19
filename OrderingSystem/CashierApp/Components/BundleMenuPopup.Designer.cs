@@ -137,7 +137,6 @@
             this.Name = "BundleMenuPopup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuListPopup";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormClosing1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -105,7 +105,11 @@ namespace OrderingSystem.CashierApp.Forms.Coupon
 
                 view = new DataView(table);
                 tableLayout.dataGrid.DataSource = view;
+                if (tableLayout.title.Text.ToLower() == "coupon")
+                {
+                    view.RowFilter = "[Status] = 'Not-Used'";
 
+                }
 
                 if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
                     tableLayout.b1.Visible = false;

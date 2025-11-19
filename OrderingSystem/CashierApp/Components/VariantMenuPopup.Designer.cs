@@ -43,6 +43,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.mm = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             this.cmbSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmbSize.FormattingEnabled = true;
             this.cmbSize.ItemHeight = 17;
-            this.cmbSize.Location = new System.Drawing.Point(30, 111);
+            this.cmbSize.Location = new System.Drawing.Point(31, 113);
             this.cmbSize.Name = "cmbSize";
             this.cmbSize.Size = new System.Drawing.Size(215, 25);
             this.cmbSize.TabIndex = 67;
@@ -71,7 +72,7 @@
             this.cmbFlavor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmbFlavor.FormattingEnabled = true;
             this.cmbFlavor.ItemHeight = 17;
-            this.cmbFlavor.Location = new System.Drawing.Point(30, 53);
+            this.cmbFlavor.Location = new System.Drawing.Point(31, 55);
             this.cmbFlavor.Name = "cmbFlavor";
             this.cmbFlavor.Size = new System.Drawing.Size(215, 25);
             this.cmbFlavor.TabIndex = 66;
@@ -82,7 +83,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label6.Location = new System.Drawing.Point(27, 93);
+            this.label6.Location = new System.Drawing.Point(28, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 15);
             this.label6.TabIndex = 64;
@@ -94,7 +95,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label5.Location = new System.Drawing.Point(27, 35);
+            this.label5.Location = new System.Drawing.Point(28, 37);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 15);
             this.label5.TabIndex = 63;
@@ -106,7 +107,7 @@
             this.p.AutoSize = true;
             this.p.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.p.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.p.Location = new System.Drawing.Point(288, 93);
+            this.p.Location = new System.Drawing.Point(289, 95);
             this.p.Name = "p";
             this.p.Size = new System.Drawing.Size(82, 15);
             this.p.TabIndex = 62;
@@ -126,7 +127,7 @@
             this.menuPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.menuPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.menuPrice.Location = new System.Drawing.Point(291, 111);
+            this.menuPrice.Location = new System.Drawing.Point(292, 113);
             this.menuPrice.Name = "menuPrice";
             this.menuPrice.PlaceholderText = "";
             this.menuPrice.SelectedText = "";
@@ -141,7 +142,7 @@
             this.lp.AutoSize = true;
             this.lp.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lp.ForeColor = System.Drawing.Color.IndianRed;
-            this.lp.Location = new System.Drawing.Point(376, 93);
+            this.lp.Location = new System.Drawing.Point(371, 95);
             this.lp.Name = "lp";
             this.lp.Size = new System.Drawing.Size(12, 13);
             this.lp.TabIndex = 65;
@@ -159,9 +160,9 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.label13.Location = new System.Drawing.Point(288, 35);
+            this.label13.Location = new System.Drawing.Point(289, 37);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(156, 15);
+            this.label13.Size = new System.Drawing.Size(157, 15);
             this.label13.TabIndex = 69;
             this.label13.Text = "Prep. Est-Time (HH-MM-SS)";
             // 
@@ -179,7 +180,7 @@
             this.estimatedTime.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estimatedTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.estimatedTime.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.estimatedTime.Location = new System.Drawing.Point(291, 53);
+            this.estimatedTime.Location = new System.Drawing.Point(292, 55);
             this.estimatedTime.Name = "estimatedTime";
             this.estimatedTime.PlaceholderText = "";
             this.estimatedTime.SelectedText = "";
@@ -192,7 +193,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.IndianRed;
-            this.label14.Location = new System.Drawing.Point(448, 33);
+            this.label14.Location = new System.Drawing.Point(448, 73);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(12, 13);
             this.label14.TabIndex = 70;
@@ -205,10 +206,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mm.Location = new System.Drawing.Point(12, 167);
             this.mm.Margin = new System.Windows.Forms.Padding(0);
-            this.mm.MaximumSize = new System.Drawing.Size(542, 414);
-            this.mm.MinimumSize = new System.Drawing.Size(542, 414);
+            this.mm.MaximumSize = new System.Drawing.Size(532, 468);
+            this.mm.MinimumSize = new System.Drawing.Size(532, 468);
             this.mm.Name = "mm";
-            this.mm.Size = new System.Drawing.Size(542, 414);
+            this.mm.Size = new System.Drawing.Size(532, 468);
             this.mm.TabIndex = 71;
             // 
             // guna2PictureBox1
@@ -228,11 +229,24 @@
             this.guna2PictureBox1.UseTransparentBackground = true;
             this.guna2PictureBox1.Click += new System.EventHandler(this.exit);
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.IndianRed;
+            this.label1.Location = new System.Drawing.Point(445, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(12, 13);
+            this.label1.TabIndex = 72;
+            this.label1.Text = "*";
+            // 
             // VariantMenuPopup
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(566, 593);
+            this.ClientSize = new System.Drawing.Size(566, 673);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.mm);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.estimatedTime);
@@ -271,5 +285,6 @@
         private Guna.UI2.WinForms.Guna2TextBox estimatedTime;
         private System.Windows.Forms.Label label14;
         private Guna.UI2.WinForms.Guna2Panel mm;
+        private System.Windows.Forms.Label label1;
     }
 }
