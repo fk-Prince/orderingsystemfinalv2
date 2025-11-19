@@ -15,7 +15,6 @@ namespace OrderingSystem.Repository
         bool payOrder(InvoiceModel i);
         string getLastestOrderID();
         List<string> getAvailablePayments();
-
         Tuple<TimeSpan, string, string> getTimeInvoiceWaiting(string order_id);
         DataView getOrderView(int offSet);
         bool voidOrder(string orderId);

@@ -110,6 +110,12 @@ namespace OrderingSystem.CashierApp.Forms.Order
         private void cb_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb.SelectedIndex == -1) return;
+            if (cb.Text.ToLower() != "cash")
+            {
+                cb.SelectedItem = "Cash";
+                MessageBox.Show("This method is not supported yet.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             IPayment payment = createPayment();
             bool isCash = cb.SelectedItem?.ToString()?.Equals("Cash",
                 StringComparison.OrdinalIgnoreCase) ?? false;
