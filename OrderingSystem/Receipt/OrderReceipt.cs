@@ -89,7 +89,7 @@ namespace OrderingSystem.Receipt
 
             if (!string.IsNullOrEmpty(type))
             {
-                SizeF size2 = e.Graphics.MeasureString(type, new Font("Segoe UI", 14, FontStyle.Regular));
+                SizeF size2 = e.Graphics.MeasureString(type, new Font("Segoe UI", 9, FontStyle.Regular));
                 e.Graphics.DrawString(type.Replace("_", "-").ToUpper(), new Font("Sans-serif", 9), Brushes.Black, e.PageBounds.Width - size2.Width - 10, y);
             }
             y += 50;

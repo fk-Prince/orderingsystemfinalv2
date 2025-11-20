@@ -72,33 +72,42 @@ namespace OrderingSystem.CashierApp.Forms.Order
 
         private void guna2Button1_Click(object sender, System.EventArgs e)
         {
+            bool sucsc = false;
             if (SessionStaffData.Role != StaffModel.StaffRole.Manager)
             {
                 ManagerLogin ml = new ManagerLogin();
                 DialogResult rs1 = ml.ShowDialog(this);
                 if (rs1 == DialogResult.OK)
                 {
-                    DialogResult rs = MessageBox.Show("Are you sure you want to void this Menu Order it cannot be undone.", "Void Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (rs == DialogResult.Yes)
+                    sucsc = true;
+                }
+            }
+            else
+            {
+                sucsc = true;
+            }
+            if (sucsc)
+            {
+                DialogResult rs = MessageBox.Show("Are you sure you want to void this Menu Order it cannot be undone.", "Void Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rs == DialogResult.Yes)
+                {
+                    try
                     {
-                        try
+                        bool suc = or.voidOrderItem(om.OrderItemId.ToString());
+                        if (suc)
                         {
-                            bool suc = or.voidOrderItem(om.OrderItemId.ToString());
-                            if (suc)
-                            {
-                                hide();
-                                DialogResult = DialogResult.OK;
-                                MessageBox.Show("Successfully voided the Order Item", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Unable to void Order", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
+                            hide();
+                            DialogResult = DialogResult.OK;
+                            MessageBox.Show("Successfully voided the Order Item", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Unable to void Order", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }

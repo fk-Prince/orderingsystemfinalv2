@@ -434,31 +434,72 @@ namespace OrderingSystem.Repository.Order
 
         public bool voidOrderItem(string orderItemId)
         {
-            string query = @"
-                  UPDATE order_item SET status = 'Voided' WHERE order_item_id = @order_item_id
-                ";
-
             var db = DatabaseHandler.getInstance();
+            var conn = db.getConnection();
+
             try
             {
-                var conn = db.getConnection();
-                using (var cmd = new MySqlCommand(query, conn))
+                string getOrderIdQuery = @"
+                        SELECT order_id 
+                        FROM order_item 
+                        WHERE order_item_id = @order_item_id
+                    ";
+
+                string orderId = null;
+                using (var cmd = new MySqlCommand(getOrderIdQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@order_item_id", orderItemId);
+                    orderId = (string)cmd.ExecuteScalar();
+                }
+
+                if (orderId == null) return false;
+
+                string voidItemQuery = @"
+                        UPDATE order_item 
+                        SET status = 'Voided' 
+                        WHERE order_item_id = @order_item_id
+                    ";
+                using (var cmd = new MySqlCommand(voidItemQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@order_item_id", orderItemId);
                     cmd.ExecuteNonQuery();
-                    return true;
+                }
+                string c = @"
+                        SELECT COUNT(*) 
+                        FROM order_item 
+                        WHERE order_id = @order_id AND status <> 'Voided'
+                    ";
+
+                int r;
+                using (var cmd = new MySqlCommand(c, conn))
+                {
+                    cmd.Parameters.AddWithValue("@order_id", orderId);
+                    r = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
-            }
-            catch (Exception)
-            {
-                throw;
+                if (r == 0)
+                {
+                    string voidQ = @"
+                            UPDATE orders 
+                            SET status = 'Voided' 
+                            WHERE order_id = @order_id
+                         ";
+
+                    using (var cmd = new MySqlCommand(voidQ, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@order_id", orderId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                return true;
             }
             finally
             {
                 db.closeConnection();
             }
         }
+
 
         public void addQuantityOrder(OrderItemModel om, int value)
         {

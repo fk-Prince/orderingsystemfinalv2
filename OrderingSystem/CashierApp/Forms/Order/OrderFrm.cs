@@ -49,9 +49,10 @@ namespace OrderingSystem.CashierApp.Forms
                 om = orderServices.getOrders(orderId);
                 if (om.OrderItemList.Count > 0)
                     foreach (var order in om.OrderItemList)
-                        table.Rows.Add(om.OrderId, order.PurchaseMenu.MenuName, order.Status, order.PurchaseMenu.getPriceAfterVatWithDiscount().ToString("N2"), order.PurchaseQty, order.getSubtotal().ToString("N2"));
+                        table.Rows.Add(om.OrderId, order.PurchaseMenu.MenuName, order.Status, order.PurchaseMenu.getPriceAfterVatWithDiscount().ToString("N2"),
+                            order.PurchaseQty, order.Status.ToLower() == "voided" ? "0.00" : order.getSubtotal().ToString("N2"));
 
-                double withoutVat = om.OrderItemList.Sum(o => o.PurchaseMenu.MenuPrice * o.PurchaseQty);
+                double withoutVat = om.OrderItemList.Sum(o => o.Status.ToLower() == "voided" ? 0.00 : o.PurchaseMenu.MenuPrice * o.PurchaseQty);
                 double subtotald = om.GetGrossRevenue();
                 double couponRated = om.GetCouponDiscount();
                 double vatd = om.GetVATAmount();
@@ -99,6 +100,11 @@ namespace OrderingSystem.CashierApp.Forms
                 }
                 bool suc = orderServices.isOrderAvailable(om.OrderId);
 
+                if (om.OrderStatus.ToLower() == "voided")
+                {
+                    MessageBox.Show("Cannot Proceed with void Order", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (suc)
                 {
                     PaymentMethod p = new PaymentMethod(orderServices);

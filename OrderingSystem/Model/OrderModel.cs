@@ -39,12 +39,12 @@ namespace OrderingSystem.Model
         }
         public double GetGrossRevenue()
         {
-            return OrderItemList.Sum(item => item.getSubtotal());
+            return OrderItemList.Sum(item => item.Status?.ToLower() == "voided" ? 0.00 : item.getSubtotal());
         }
 
         public double getTotalDiscount()
         {
-            return OrderItemList.Sum(item => item.PurchaseMenu.getPriceAfterDiscount() * item.PurchaseQty) - GetCouponDiscount();
+            return OrderItemList.Sum(item => item.Status?.ToLower() == "voided" ? 0.00 : item.PurchaseMenu.getPriceAfterDiscount() * item.PurchaseQty) - GetCouponDiscount();
         }
         public double getTotalDiscount2()
         {
