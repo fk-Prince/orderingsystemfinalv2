@@ -109,5 +109,12 @@ namespace OrderingSystem.CashierApp.Forms.Menu
             }
         }
 
+        private void qty_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(qty.Text.Trim(), out int q) && q > 0)
+            {
+                im.setServing(q);
+            }
+        }
     }
 }

@@ -92,22 +92,18 @@ namespace OrderingSystem.CashierApp.Components
                     return;
                 }
 
-                var availableObj = dataGrid.Rows[e.RowIndex].Cells["Total Quantity"].Value;
+                var a = dataGrid.Rows[e.RowIndex].Cells["Total Quantity"].Value;
 
-                if (availableObj != null && decimal.TryParse(availableObj.ToString(), out decimal avQty))
+                if (a != null && decimal.TryParse(a.ToString(), out decimal avQty))
                 {
-                    if (qty > avQty)
-                    {
-                        MessageBox.Show(
-                            $"Exceed the available quantity.",
-                            "Quantity Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning
-                        );
-                        e.Cancel = true;
-                    }
+                    qty = qty * this.qty;
                 }
             }
+        }
+        private int qty = 0;
+        public void setServing(int qty)
+        {
+            this.qty = qty;
         }
         private void search_TextChanged(object sender, EventArgs e)
         {
@@ -116,6 +112,11 @@ namespace OrderingSystem.CashierApp.Components
         }
         private void submit(object sender, EventArgs e)
         {
+            if (qty == 0)
+            {
+                MessageBox.Show("Please set the serving quantity first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             ingredientSelected.Clear();
             foreach (DataGridViewRow row in dataGrid.Rows)
             {
@@ -130,6 +131,12 @@ namespace OrderingSystem.CashierApp.Components
                 {
                     if (int.TryParse(row.Cells["Quantity to be Used"].Value?.ToString(), out int quantity) && quantity > 0)
                     {
+                        var a = row.Cells["Total Quantity"].Value;
+                        if (quantity * this.qty > int.Parse(a.ToString()))
+                        {
+                            MessageBox.Show("Exceed the available quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
 
                         string ingredientName = row.Cells["Ingredient Name"].Value?.ToString();
 

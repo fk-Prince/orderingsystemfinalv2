@@ -155,6 +155,7 @@ namespace OrderingSystem.Repository.Ingredients
                     FROM ingredient_stock s
                     INNER JOIN ingredients i ON s.ingredient_id = i.ingredient_id
                     LEFT JOIN serving_ingredients si ON s.ingredient_stock_id = si.ingredient_stock_id
+                    LEFT JOIN menu_serving ms ON si.serving_id = ms.serving_id AND ms.status = 'Ongoing'
                     GROUP BY s.ingredient_stock_id, i.ingredient_name, i.unit, s.current_stock, s.expiry_date, s.created_at
                     ORDER BY s.ingredient_stock_id;
                     ";

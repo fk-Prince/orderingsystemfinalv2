@@ -107,7 +107,7 @@ namespace OrderingSystem.Repo.CashierMenuRepository
             try
             {
                 var db = DatabaseHandler.getInstance();
-                var cmd = new MySqlCommand("SELECT 1 FROM menu_serving WHERE serving_date = @date AND menu_id = @id", db.getConnection());
+                var cmd = new MySqlCommand("SELECT 1 FROM menu_serving WHERE serving_date = @date AND menu_id = @id AND status = 'Ongoing'", db.getConnection());
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.Add("@date", MySqlDbType.Date).Value = date.Date;
                 var reader = cmd.ExecuteReader();

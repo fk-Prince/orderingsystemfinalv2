@@ -135,6 +135,7 @@
             this.qty.SelectedText = "";
             this.qty.Size = new System.Drawing.Size(225, 36);
             this.qty.TabIndex = 75;
+            this.qty.TextChanged += new System.EventHandler(this.qty_TextChanged);
             // 
             // menuPrice
             // 
