@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using OrderingSystem.Model;
 
@@ -9,7 +10,7 @@ namespace OrderingSystem.Repository.Ingredients
         bool saveIngredientByMenu(int menudetail_id, List<IngredientModel> menu, string type);
         bool addIngredient(IngredientModel os);
         List<IngredientModel> getIngredientsOfMenu(MenuDetailModel menu);
-        List<IngredientModel> getIngredients();
+        List<IngredientModel> getIngredients(DateTime now);
         List<IngredientStockModel> getIngredientsStock();
         DataView getIngredientsView();
         bool isIngredientNameExists(string name, int id = 0);
@@ -19,5 +20,6 @@ namespace OrderingSystem.Repository.Ingredients
         bool updateIngredient(int id, string name, string unit);
         List<string> getInventoryReasons(string type);
         List<string> getSuppliers();
+        List<IngredientModel> getIngredients2();
     }
 }

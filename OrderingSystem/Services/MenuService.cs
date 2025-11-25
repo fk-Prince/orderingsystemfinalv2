@@ -12,34 +12,10 @@ namespace OrderingSystem.Services
         {
             this.menuRepository = menuRepository;
         }
-        public List<string> getSizeFlavor(string type)
-        {
-            List<string> s = null;
-            if (type.ToLower() == "size")
 
-                s = menuRepository.getSize();
-            else
-                s = menuRepository.getFlavor();
-
-            return s;
-        }
-        public bool saveMenu(MenuDetailModel md, string type)
+        public bool isServingDateExistsing(int id, DateTime date)
         {
-            if (type.ToLower() == "regular")
-                return menuRepository.createRegularMenu(md);
-            else if (md is MenuPackageModel mp && type.ToLower() == "bundle")
-                return menuRepository.createBundleMenu(mp);
-            else
-                throw new NotSupportedException("Not Supported.");
-        }
-        public bool updateMenu(MenuDetailModel menu, string type)
-        {
-            if (menu is MenuPackageModel mp && type.ToLower() == "bundle")
-                return menuRepository.updatePackageMenu(mp);
-            else if (type.ToLower() == "regular")
-                return menuRepository.updateRegularMenu(menu);
-            else
-                throw new NotSupportedException("Not Supported.");
+            return menuRepository.isServingDateExistsing(id, date);
         }
         public bool isMenuNameExist(string name)
         {
@@ -49,29 +25,27 @@ namespace OrderingSystem.Services
         {
             return menuRepository.getMenu();
         }
-        public List<MenuDetailModel> getMenuDetail()
+        public bool saveNewServing(int id, ServingsModel ee)
         {
-            return menuRepository.getMenuDetail();
+            return menuRepository.createServing(id, ee);
         }
-        public List<MenuDetailModel> getBundled(MenuDetailModel menu)
+
+        public bool saveNewMenu(MenuDetailModel md, bool x)
         {
-            return menuRepository.getBundled(menu);
+            if (x)
+                return menuRepository.saveMenuWithServing(md);
+            else
+                return menuRepository.saveMenu(md);
         }
-        public bool isMenuPackage(MenuDetailModel menu)
+
+        public List<ServingsModel> getServings(int id)
         {
-            return menuRepository.isMenuPackage(menu);
+            return menuRepository.getServings(id);
         }
-        public double getBundlePrice(MenuDetailModel menu)
+
+        public bool cancelServing(int servingId)
         {
-            return menuRepository.getBundlePrice(menu);
-        }
-        public bool newMenuVariant(int id, List<MenuDetailModel> m)
-        {
-            return menuRepository.newMenuVariant(id, m);
-        }
-        public bool updateBundle(int id, List<MenuDetailModel> included)
-        {
-            return menuRepository.updateBundle(id, included);
+            return menuRepository.cancelServing(servingId);
         }
     }
 }

@@ -111,7 +111,7 @@ namespace OrderingSystem
                 {
                     MenuCard card = new MenuCard(menuServicesKiosk, menu);
                     card.Margin = new Padding(20, 40, 20, 0);
-                    card.outOfOrder(menu.MaxOrder <= 0);
+                    card.outOfOrder(menu.servingMenu.LeftQuantity <= 0);
                     card.orderListEvent += (s, e) =>
                     {
                         try
@@ -142,14 +142,14 @@ namespace OrderingSystem
                     var menus = allMenus
                         .Where(m => (id.Count == 0 || id.Contains(m.CategoryId))
                                     && m.CategoryId == catId
-                                    && m.getPriceAfterVatWithDiscount() <= price)
+                                    && m.servingMenu.getPriceAfterVatWithDiscount() <= price)
                         .ToList();
 
                     foreach (var menu in menus)
                     {
                         MenuCard card = new MenuCard(menuServicesKiosk, menu);
                         card.Margin = new Padding(20, 40, 20, 0);
-                        card.outOfOrder(menu.MaxOrder <= 0);
+                        card.outOfOrder(menu.servingMenu.LeftQuantity <= 0);
                         card.orderListEvent += (s, e) =>
                         {
                             cartServices.addMenuToCart(e);
@@ -273,9 +273,7 @@ namespace OrderingSystem
 
                     foreach (var cc in flowCart.Controls.OfType<CartCard>())
                     {
-                        if (cc.menu.PurchaseMenu.SizeName == ee.PurchaseMenu.SizeName &&
-                        cc.menu.PurchaseMenu.FlavorName == ee.PurchaseMenu.FlavorName &&
-                        cc.menu.PurchaseMenu.getPriceAfterVatWithDiscount() == ee.PurchaseMenu.getPriceAfterVatWithDiscount())
+                        if (cc.menu.PurchaseMenu.servingMenu.ServingId == ee.PurchaseMenu.servingMenu.ServingId)
                         {
                             cartServices.addQuantity(cc, ee);
                             displayTotal(this, EventArgs.Empty);
@@ -288,9 +286,7 @@ namespace OrderingSystem
                 {
                     foreach (var cc in flowCart.Controls.OfType<CartCard>())
                     {
-                        if (cc.menu.PurchaseMenu.SizeName == ee.PurchaseMenu.SizeName &&
-                        cc.menu.PurchaseMenu.FlavorName == ee.PurchaseMenu.FlavorName &&
-                        cc.menu.PurchaseMenu.getPriceAfterVatWithDiscount() == ee.PurchaseMenu.getPriceAfterVatWithDiscount())
+                        if (cc.menu.PurchaseMenu.servingMenu.ServingId == ee.PurchaseMenu.servingMenu.ServingId)
                         {
                             cartServices.deductQuantity(cc, ee);
                             displayTotal(this, EventArgs.Empty);
@@ -363,7 +359,7 @@ namespace OrderingSystem
                 displayMenu(allMenus);
 
                 double max = 0;
-                if (allMenus.Count > 0) max = allMenus.Max(ex => ex.getPriceAfterVatWithDiscount());
+                if (allMenus.Count > 0) max = allMenus.Max(ex => ex.servingMenu.getPriceAfterVatWithDiscount());
                 filterSide = new Filter(cats, max);
                 catFlow.Controls.Add(filterSide);
 

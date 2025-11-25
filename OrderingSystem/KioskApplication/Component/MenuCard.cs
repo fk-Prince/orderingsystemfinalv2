@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -12,7 +11,7 @@ namespace OrderingSystem.KioskApplication.Cards
     {
         public readonly MenuDetailModel menu;
         private readonly KioskMenuServices kioskMenuServices;
-        public event EventHandler<List<OrderItemModel>> orderListEvent;
+        public event EventHandler<OrderItemModel> orderListEvent;
 
         public MenuCard(KioskMenuServices kioskMenuServices, MenuDetailModel menu)
         {
@@ -32,35 +31,43 @@ namespace OrderingSystem.KioskApplication.Cards
         }
         private void cardLayout()
         {
-            dPrice.Text = menu.getPriceAfterVat() != menu.getPriceAfterVatWithDiscount()
-                ? menu.getPriceAfterVatWithDiscount().ToString("C", new CultureInfo("en-PH"))
+            dPrice.Text = menu.servingMenu.getPriceAfterVat() != menu.servingMenu.getPriceAfterVatWithDiscount()
+                ? menu.servingMenu.getPriceAfterVatWithDiscount().ToString("C", new CultureInfo("en-PH"))
                 : "0.00";
-            dPrice.Visible = menu.getPriceAfterVatWithDiscount() != menu.getPriceAfterVat();
-            v1.Visible = menu.getPriceAfterVatWithDiscount() != menu.getPriceAfterVat();
-            v2.Visible = menu.getPriceAfterVatWithDiscount() != menu.getPriceAfterVat();
+            dPrice.Visible = menu.servingMenu.getPriceAfterVatWithDiscount() != menu.servingMenu.getPriceAfterVat();
+            v1.Visible = menu.servingMenu.getPriceAfterVatWithDiscount() != menu.servingMenu.getPriceAfterVat();
+            v2.Visible = menu.servingMenu.getPriceAfterVatWithDiscount() != menu.servingMenu.getPriceAfterVat();
 
             sale.Visible = ooo.Visible || (menu.Discount != null && menu.Discount.DiscountId != 0);
-            ooo.Visible = !(menu.MaxOrder <= 0);
+            ooo.Visible = menu.servingMenu.LeftQuantity <= 0;
 
             pp.BorderColor = Color.FromArgb(220, 220, 220);
             pp.BorderThickness = 1;
             pp.BackColor = Color.Transparent;
             pp.FillColor = Color.FromArgb(241, 241, 241);
         }
-        private void menuClicked(object sender, EventArgs e)
-        {
-            PopupOption popup = new PopupOption(kioskMenuServices, menu);
-            popup.orderListEvent += (s, args) => orderListEvent?.Invoke(this, args);
-            DialogResult res = popup.ShowDialog(this);
-            if (res == DialogResult.OK)
-                popup.Hide();
-        }
+
         private void handleClicked(Control c)
         {
-            c.Click += menuClicked;
+            c.Click += clicked;
             foreach (Control cc in c.Controls)
+            {
                 handleClicked(cc);
+            }
         }
+
+        private void clicked(object sender, EventArgs e)
+        {
+            if (menu.servingMenu.LeftQuantity > 0)
+            {
+                menu.servingMenu.LeftQuantity--;
+                OrderItemModel m = new OrderItemModel(1, menu);
+                orderListEvent?.Invoke(this, m);
+            }
+            else
+                MessageBox.Show("No Servings Left", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
         private void hoverEffects(Control c)
         {
             c.MouseEnter += (s, e) =>
@@ -87,7 +94,7 @@ namespace OrderingSystem.KioskApplication.Cards
         private void displayMenu()
         {
             menuName.Text = menu.MenuName;
-            price.Text = menu.getPriceAfterVat().ToString("C", new CultureInfo("en-PH"));
+            price.Text = menu.servingMenu.getPriceAfterVat().ToString("C", new CultureInfo("en-PH"));
             image.Image = menu.MenuImage;
             description.Text = menu.MenuDescription;
         }

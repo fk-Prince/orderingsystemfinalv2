@@ -1,63 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using OrderingSystem.util;
 
 namespace OrderingSystem.Model
 {
-    public class MenuDetailModel : MenuModel
+    public class MenuDetailModel
     {
+        public int MenuId { get; protected set; }
+        public bool isAvailable { get; protected set; }
+        public string MenuName { get; protected set; }
+        public string MenuDescription { get; protected set; }
+        public string CategoryName { get; protected set; }
+        public byte[] MenuImageByte { get; protected set; }
+        public Image MenuImage { get; protected set; }
+        public int CategoryId { get; protected set; }
+        public CategoryModel Category { get; protected set; }
+        public DiscountModel Discount { get; protected set; }
+        public List<MenuDetailModel> MenuVariant { get; protected set; }
         public List<IngredientModel> MenuIngredients { get; protected set; }
-        public string FlavorName { get; protected set; }
-        public string SizeName { get; protected set; }
-        public TimeSpan EstimatedTime { get; protected set; }
-        public int MenuDetailId { get; protected set; }
-        public double MenuPrice { get; protected set; }
-        public int MaxOrder { get; protected set; }
+        public ServingsModel servingMenu { get; protected set; }
 
-        public override bool Equals(object obj)
-        {
-            if (obj is MenuDetailModel menu)
-            {
-                return FlavorName == menu.FlavorName &&
-                       SizeName == menu.SizeName &&
-                       EstimatedTime == menu.EstimatedTime &&
-                       MenuPrice == menu.MenuPrice;
-            }
-            return false;
-        }
 
         public interface IMenuDetailBuilder
         {
             MenuBuilder WithIngredients(List<IngredientModel> ing);
-            MenuBuilder WithVariant(List<MenuDetailModel> m);
-            MenuBuilder WithEstimatedTime(TimeSpan ts);
-            MenuBuilder WithDiscount(DiscountModel ts);
             MenuBuilder isAvailable(bool ts);
             MenuBuilder WithCategory(CategoryModel cat);
             MenuBuilder WithCategoryId(int cat);
             MenuBuilder WithMenuImage(Image image);
             MenuBuilder WithMenuImageByte(byte[] image);
             MenuBuilder WithMenuId(int menuId);
-            MenuBuilder WithMaxOrder(int menuId);
             MenuBuilder WithMenuName(string menuName);
             MenuBuilder WithCategoryName(string n);
-            MenuBuilder WithFlavorName(string menuName);
-            MenuBuilder WithSizeName(string menuName);
             MenuBuilder WithMenuDescription(string menuDescription);
-            MenuBuilder WithMenuDetailId(int lowestMenuDetailId);
-            MenuBuilder WithPrice(double lowestMenuPrice);
+            MenuBuilder withServing(ServingsModel serv);
             MenuDetailModel Build();
         }
         public static MenuBuilder Builder() => new MenuBuilder();
         public double getPriceAfterVat()
         {
-            return TaxHelper.VatCalulator(MenuPrice);
+            return 0;
+            // return TaxHelper.VatCalulator(MenuPrice);
         }
         public double getPriceAfterVatWithDiscount()
         {
-            return TaxHelper.VatCalulator(MenuPrice - (MenuPrice * (Discount == null ? 0 : Discount.Rate)));
+            return 0;
+            //return TaxHelper.VatCalulator(MenuPrice - (MenuPrice * (Discount == null ? 0 : Discount.Rate)));
         }
         public MenuDetailModel Clone()
         {
@@ -65,19 +53,13 @@ namespace OrderingSystem.Model
                 .WithMenuId(MenuId)
                 .WithMenuName(MenuName)
                 .WithMenuDescription(MenuDescription)
-                .WithMenuDetailId(MenuDetailId)
-                .WithPrice(MenuPrice)
                 .WithCategory(Category)
                 .WithCategoryId(CategoryId)
-                .WithFlavorName(FlavorName)
-                .WithSizeName(SizeName)
-                .WithEstimatedTime(EstimatedTime)
                 .WithMenuImage(MenuImage)
                 .WithMenuImageByte(MenuImageByte)
                 .WithIngredients(MenuIngredients != null ? new List<IngredientModel>(MenuIngredients) : null)
                 .WithVariant(MenuVariant != null ? new List<MenuDetailModel>(MenuVariant.Select(v => v.Clone())) : null)
                 .WithCategoryName(CategoryName)
-                .WithMaxOrder(MaxOrder)
                 .isAvailable(isAvailable)
                 .Build();
         }
@@ -92,7 +74,8 @@ namespace OrderingSystem.Model
 
         public double getPriceAfterDiscount()
         {
-            return Math.Round(MenuPrice - (MenuPrice * Discount?.Rate ?? 0), 2);
+            return 0;
+            //return Math.Round(MenuPrice - (MenuPrice * Discount?.Rate ?? 0), 2);
         }
 
         public class MenuBuilder : IMenuDetailBuilder
@@ -113,16 +96,7 @@ namespace OrderingSystem.Model
                 _menuModel.MenuDescription = menuDescription;
                 return this;
             }
-            public MenuBuilder WithMenuDetailId(int lowestMenuDetailId)
-            {
-                _menuModel.MenuDetailId = lowestMenuDetailId;
-                return this;
-            }
-            public MenuBuilder WithPrice(double lowestMenuPrice)
-            {
-                _menuModel.MenuPrice = lowestMenuPrice;
-                return this;
-            }
+
             public MenuDetailModel Build()
             {
                 return _menuModel;
@@ -146,29 +120,9 @@ namespace OrderingSystem.Model
                 return this;
             }
 
-            public MenuBuilder WithMaxOrder(int max)
-            {
-                _menuModel.MaxOrder = max;
-                return this;
-            }
 
-            public MenuBuilder WithFlavorName(string menuName)
-            {
-                _menuModel.FlavorName = menuName;
-                return this;
-            }
 
-            public MenuBuilder WithSizeName(string menuName)
-            {
-                _menuModel.SizeName = menuName;
-                return this;
-            }
 
-            public MenuBuilder WithEstimatedTime(TimeSpan ts)
-            {
-                _menuModel.EstimatedTime = ts;
-                return this;
-            }
 
             public MenuBuilder WithIngredients(List<IngredientModel> ing)
             {
@@ -200,9 +154,9 @@ namespace OrderingSystem.Model
                 return this;
             }
 
-            public MenuBuilder WithDiscount(DiscountModel ts)
+            public MenuBuilder withServing(ServingsModel serv)
             {
-                _menuModel.Discount = ts;
+                _menuModel.servingMenu = serv;
                 return this;
             }
         }

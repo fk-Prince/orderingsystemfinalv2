@@ -60,7 +60,6 @@ namespace OrderingSystem.CashierApp.Forms
             if (SessionStaffData.Role == StaffModel.StaffRole.Cashier)
             {
                 nm.Visible = false;
-                nb.Visible = false;
                 ri.Visible = false;
                 ai.Visible = false;
                 ri.Visible = false;
@@ -121,12 +120,7 @@ namespace OrderingSystem.CashierApp.Forms
             menuIntance.showNewMenu();
 
         }
-        private void bundleMenu(object sender, System.EventArgs e)
-        {
 
-            if (menuIntance == null) return;
-            menuIntance.showBundle();
-        }
 
         private void viewIngredient(object sender, System.EventArgs e)
         {

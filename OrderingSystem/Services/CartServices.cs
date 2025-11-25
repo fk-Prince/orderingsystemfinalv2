@@ -24,29 +24,25 @@ namespace OrderingSystem.KioskApplication.Services
             this.flowCart = flowCart;
             this.orderList = orderList;
         }
-        public void addMenuToCart(List<OrderItemModel> newOrders)
+        public void addMenuToCart(OrderItemModel newOrders)
         {
-
-            foreach (var menu in newOrders)
+            OrderItemModel existingOrder = getOrder(newOrders);
+            if (existingOrder != null)
             {
-                OrderItemModel mm = getOrder(menu);
+                existingOrder.PurchaseQty++;
+                existingOrder.PurchaseMenu.servingMenu.LeftQuantity--;
 
-                if (mm != null)
+                foreach (var i in flowCart.Controls.OfType<CartCard>())
                 {
-                    mm.PurchaseQty++;
-                    foreach (var i in flowCart.Controls.OfType<CartCard>())
-                    {
-                        i.displayPurchasedMenu();
-                    }
+                    i.displayPurchasedMenu();
                 }
-                else
-                {
-                    orderList.Add(menu);
-                    addNewCartCard(menu);
-                }
-                quantityChanged?.Invoke(this, EventArgs.Empty);
             }
-
+            else
+            {
+                orderList.Add(newOrders);
+                addNewCartCard(newOrders);
+            }
+            quantityChanged?.Invoke(this, EventArgs.Empty);
         }
         private void addNewCartCard(OrderItemModel menu)
         {
@@ -62,8 +58,7 @@ namespace OrderingSystem.KioskApplication.Services
             {
                 CartCard cc = sender as CartCard;
                 OrderItemModel order = getOrder(e);
-                int b = menuServices.getMaxOrderRealTime(e.PurchaseMenu.MenuDetailId, orderList);
-
+                int b = order.PurchaseMenu.servingMenu.LeftQuantity;
                 if (b <= 0)
                     throw new MaxOrder("Unable to add more quantity.");
 
@@ -81,6 +76,7 @@ namespace OrderingSystem.KioskApplication.Services
             CartCard cc = sender as CartCard;
             OrderItemModel order = getOrder(e);
             order.PurchaseQty--;
+            order.PurchaseMenu.servingMenu.LeftQuantity++;
             if (order.PurchaseQty <= 0)
             {
                 orderList.Remove(order);
@@ -91,11 +87,7 @@ namespace OrderingSystem.KioskApplication.Services
         }
         public OrderItemModel getOrder(OrderItemModel e)
         {
-            bool package = e.PurchaseMenu is MenuPackageModel;
-            return orderList.FirstOrDefault(o =>
-                o.PurchaseMenu.MenuDetailId == e.PurchaseMenu.MenuDetailId &&
-                o.PurchaseMenu.getPriceAfterVatWithDiscount() == e.PurchaseMenu.getPriceAfterVatWithDiscount() &&
-                (!package || o.PurchaseMenu is MenuPackageModel));
+            return orderList.FirstOrDefault(ex => ex.PurchaseMenu.servingMenu.ServingId == e.PurchaseMenu.servingMenu.ServingId);
         }
         public double calculateSubtotal()
         {

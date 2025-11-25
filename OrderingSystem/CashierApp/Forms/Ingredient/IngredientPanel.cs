@@ -137,7 +137,8 @@ namespace OrderingSystem.CashierApp.Forms.Ingredient
                 {
                     MessageBox.Show("Internal Server Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }; List<IngredientModel> ingredients = ingredientServices.getIngredients();
+            };
+            List<IngredientModel> ingredients = ingredientServices.getIngredients2();
             p.c1.Items.AddRange(ingredients.Select(i => i.IngredientName).ToArray());
             List<string> reas = ingredientServices.getReasons("Add");
             p.c4.Items.AddRange(reas.ToArray());

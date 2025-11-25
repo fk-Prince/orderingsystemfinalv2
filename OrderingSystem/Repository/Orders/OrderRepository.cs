@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows;
 using MySqlConnector;
 using OrderingSystem.DatabaseConnection;
 using OrderingSystem.Model;
@@ -73,41 +74,122 @@ namespace OrderingSystem.Repository.Order
             string orderId = "";
             string couponType = "";
             string orderStatus = "";
+            //            string query = @"
 
+            //                    SELECT 
+            //                        m.*,
+            //                        o.*,
+            //                        oi.*,
+            //                        ms.menu_id,
+            //                        COALESCE(c.rate,0) c_rate,
+            //                        COALESCE(c.coupon_code,'') c_code,
+            //                        COALESCE(d.rate,0) d_rate,
+            //                        COALESCE(c.type,'') c_type,
+            //                        COALESCE(d.discount_id,0) discount_id
+            //                    FROM 
+            //                    orders o 
+            //                    INNER JOIN order_item oi ON oi.order_id = o.order_id 
+            //                    INNER JOIN menu_serving ms ON ms.serving_id = oi.serving_id
+            //                    INNER JOIN menu m ON m.menu_id = ms.menu_id
+            //                    LEFT JOIN order_item_discount oid ON oid.order_item_id = oi.order_item_id
+            //                    lefT JOIN discount d ON d.discount_id = oid.discount_id
+            //                    LEFT JOIN order_coupon oc ON o.order_id = oc.order_id
+            //                    LEFT JOIN coupon c ON c.coupon_code = oc.coupon_code
+            //                    WHERE o.order_id = @order_id
+            //";
+            string query = @"
+    
+                  SELECT 
+                        o.order_id,
+                        o.estimated_max_time,
+                        o.total_amount,
+                        o.status,
+                        o.order_type,
+                        oi.serving_id,
+                        m.menu_name,
+                        m.image,
+                        m.menu_description,
+                        ms.menu_id,
+                        oi.order_item_id,
+                        oi.quantity,
+                         oi.price,
+	                    oi.type,
+                        FLOOR(ms.quantity - SUM(oi.quantity)) AS qty,
+                        COALESCE(c.rate,0) AS c_rate,
+                        COALESCE(c.coupon_code,'') AS c_code,
+                        COALESCE(d.rate,0) AS d_rate,
+                        COALESCE(c.type,'') AS c_type,
+                        COALESCE(d.discount_id,0) AS discount_id
+                    FROM orders o
+                    INNER JOIN order_item oi ON oi.order_id = o.order_id 
+                    INNER JOIN menu_serving ms ON ms.serving_id = oi.serving_id
+                    INNER JOIN menu m ON m.menu_id = ms.menu_id
+                    LEFT JOIN order_item_discount oid ON oid.order_item_id = oi.order_item_id
+                    LEFT JOIN discount d ON d.discount_id = oid.discount_id
+                    LEFT JOIN order_coupon oc ON o.order_id = oc.order_id
+                    LEFT JOIN coupon c ON c.coupon_code = oc.coupon_code
+                    WHERE o.order_id = @order_id
+                    GROUP BY 
+                        oi.serving_id,
+	                    o.order_id,
+                        c_rate,
+                        c_code,
+                        d_rate,
+                        c_type,
+                        discount_id,
+                        o.estimated_max_time,
+                        o.total_amount,
+                        o.status,
+                        o.order_type,
+                        m.menu_name,
+                        m.menu_description,
+                        ms.menu_id,
+                        oi.order_item_id,
+                        oi.quantity,
+                        oi.price,
+	                    oi.type,
+                        m.image
+                
+                    ";
             try
             {
                 var conn = db.getConnection();
-                using (var cmd = new MySqlCommand("p_retrieve_order", conn))
+                using (var cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@p_order_id", order_id);
+                    cmd.Parameters.AddWithValue("@order_id", order_id);
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
 
-                            DiscountModel d = new DiscountModel(reader.GetInt32("discount_id"), reader.GetDouble("rate"));
+                            DiscountModel d = new DiscountModel(reader.GetInt32("discount_id"), reader.GetDouble("d_rate"));
+
+                            ServingsModel sm = ServingsModel.Build()
+                                .withServingId(reader.GetInt32("serving_id"))
+                                .withPrice(reader.GetDouble("price"))
+                                .withQuantity(reader.GetInt32("qty"))
+                                .withLeftQuantity(reader.GetInt32("qty"))
+                                .withDiscount(d)
+                                .Build();
 
                             MenuDetailModel m = MenuDetailModel.Builder()
-                                .WithMenuDetailId(reader.GetInt32("menu_detail_id"))
+                                .WithMenuId(reader.GetInt32("menu_id"))
                                 .WithMenuName(reader.GetString("menu_name"))
-                                .WithFlavorName(reader.GetString("flavor_name"))
-                                .WithSizeName(reader.GetString("size_name"))
-                                .WithPrice(reader.GetDouble("price"))
                                 .WithMenuImage(ImageHelper.GetImageFromBlob(reader, "menu"))
-                                .WithDiscount(d)
+                                .WithMenuDescription(reader.GetString("menu_description"))
+                                .withServing(sm)
                                 .Build();
 
                             OrderItemModel oxm = new OrderItemModel(reader.GetInt32("order_item_id"), reader.GetInt32("quantity"), m);
                             oim.Add(oxm);
-                            oxm.Status = reader.GetString("status");
+                            oxm.Status = reader.GetString("type");
 
                             if (string.IsNullOrEmpty(orderId))
                             {
                                 orderId = reader.GetString("order_id");
-                                orderStatus = reader.GetString("orderstatus");
-                                couponRate = reader.GetDouble("coupon_rate");
-                                couponType = reader.GetString("type");
+                                orderStatus = reader.GetString("status");
+                                couponRate = reader.GetDouble("c_rate");
+                                couponType = reader.GetString("c_type");
                             }
 
                         }
@@ -135,7 +217,7 @@ namespace OrderingSystem.Repository.Order
                 using (var cmd = new MySqlCommand("p_NewOrder", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
+                    Console.WriteLine(order.JsonOrderList());
                     cmd.Parameters.AddWithValue("@p_json_orderList", order.JsonOrderList());
                     if (order.Coupon != null)
                         cmd.Parameters.AddWithValue("@p_coupon_code", order.Coupon.CouponCode);
@@ -146,8 +228,9 @@ namespace OrderingSystem.Repository.Order
                     return true;
                 }
             }
-            catch (MySqlException)
+            catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 throw;
             }
             finally
@@ -431,7 +514,6 @@ namespace OrderingSystem.Repository.Order
             }
             return 0;
         }
-
         public bool voidOrderItem(string orderItemId)
         {
             var db = DatabaseHandler.getInstance();
@@ -439,59 +521,11 @@ namespace OrderingSystem.Repository.Order
 
             try
             {
-                string getOrderIdQuery = @"
-                        SELECT order_id 
-                        FROM order_item 
-                        WHERE order_item_id = @order_item_id
-                    ";
-
-                string orderId = null;
-                using (var cmd = new MySqlCommand(getOrderIdQuery, conn))
+                using (var cmd = new MySqlCommand("p_voidItem", conn))
                 {
-                    cmd.Parameters.AddWithValue("@order_item_id", orderItemId);
-                    orderId = (string)cmd.ExecuteScalar();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@p_order_item_id", orderItemId);
                 }
-
-                if (orderId == null) return false;
-
-                string voidItemQuery = @"
-                        UPDATE order_item 
-                        SET status = 'Voided' 
-                        WHERE order_item_id = @order_item_id
-                    ";
-                using (var cmd = new MySqlCommand(voidItemQuery, conn))
-                {
-                    cmd.Parameters.AddWithValue("@order_item_id", orderItemId);
-                    cmd.ExecuteNonQuery();
-                }
-                string c = @"
-                        SELECT COUNT(*) 
-                        FROM order_item 
-                        WHERE order_id = @order_id AND status <> 'Voided'
-                    ";
-
-                int r;
-                using (var cmd = new MySqlCommand(c, conn))
-                {
-                    cmd.Parameters.AddWithValue("@order_id", orderId);
-                    r = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-
-                if (r == 0)
-                {
-                    string voidQ = @"
-                            UPDATE orders 
-                            SET status = 'Voided' 
-                            WHERE order_id = @order_id
-                         ";
-
-                    using (var cmd = new MySqlCommand(voidQ, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@order_id", orderId);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-
                 return true;
             }
             finally
@@ -499,8 +533,6 @@ namespace OrderingSystem.Repository.Order
                 db.closeConnection();
             }
         }
-
-
         public void addQuantityOrder(OrderItemModel om, int value)
         {
             var db = DatabaseHandler.getInstance();
@@ -524,7 +556,6 @@ namespace OrderingSystem.Repository.Order
                 db.closeConnection();
             }
         }
-
         public List<SpecialDiscount> getSpecialDiscount()
         {
             List<SpecialDiscount> d = new List<SpecialDiscount>();

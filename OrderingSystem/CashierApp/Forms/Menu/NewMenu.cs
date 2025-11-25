@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using OrderingSystem.Exceptions;
 using OrderingSystem.Model;
@@ -15,43 +12,17 @@ namespace OrderingSystem.CashierApp.Forms.Menu
 {
     public partial class NewMenu : Form
     {
-        private List<MenuDetailModel> variantList;
-        private DataTable table;
+
         private MenuService menuService;
         private readonly IngredientServices ingredientServices;
         public event EventHandler menuUpdate;
+        private List<ServingsModel> servingMenu;
         public NewMenu(MenuService menuService, IngredientServices ingredientServices)
         {
             InitializeComponent();
             this.menuService = menuService;
             this.ingredientServices = ingredientServices;
-            variantList = new List<MenuDetailModel>();
-            initTable();
-        }
-        private void initTable()
-        {
-            table = new DataTable();
-            table.Columns.Add("Flavor", typeof(string));
-            table.Columns.Add("Size", typeof(string));
-            table.Columns.Add("Prep-Time", typeof(TimeSpan));
-            table.Columns.Add("Price", typeof(decimal));
-            table.Columns.Add("Ingredients", typeof(string));
-            table.Columns.Add("Action", typeof(Image));
-
-            dataGrid.DataSource = table;
-            dataGrid.AutoGenerateColumns = true;
-
-            DataGridViewImageColumn del = new DataGridViewImageColumn();
-            del.Image = Resources.exit2;
-            del.Name = "Action";
-            del.HeaderText = "Action";
-            del.Width = 20;
-            del.ImageLayout = DataGridViewImageCellLayout.Normal;
-            del.DataPropertyName = "Action";
-
-
-            dataGrid.Columns[5].Width = 50;
-
+            servingMenu = new List<ServingsModel>();
         }
         private void NewMenu_Load(object sender, System.EventArgs e)
         {
@@ -96,54 +67,45 @@ namespace OrderingSystem.CashierApp.Forms.Menu
                 e.Handled = true;
             }
         }
-        private void confirmNewMenu(object sender, System.EventArgs e)
+
+
+        private void exit(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Abort;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
             try
             {
                 if (string.IsNullOrEmpty(menuName.Text.Trim()) ||
                     string.IsNullOrEmpty(menuDescription.Text.Trim()) ||
                     string.IsNullOrEmpty(cmbCat.Text.Trim()))
-                {
                     throw new InvalidInput("Please fill all * fields.");
-                }
-
-                if (variantList.Count <= 0)
-                {
-                    throw new InvalidInput("No Selected Variant");
-                }
 
                 string name = menuName.Text.Trim();
 
                 if (menuService.isMenuNameExist(name))
-                {
                     throw new InvalidInput("Menu Name already exists, try different.");
-                }
 
-                string desc = menuDescription.Text.Trim();
-                string cat = cmbCat.Text.Trim();
-                if (pictureBox.Image == null) pictureBox.Image = Resources.placeholder;
-                byte[] image = ImageHelper.GetImageFromFile(pictureBox.Image);
-
-
-                MenuDetailModel md = MenuDetailModel.Builder()
-                    .WithMenuName(name)
-                    .WithVariant(variantList)
-                    .WithMenuDescription(desc)
-                    .WithMenuImageByte(image)
-                    .WithCategoryName(cat)
-                    .Build();
-
-                bool success = menuService.saveMenu(md, "regular");
-                if (success)
+                DialogResult rs = MessageBox.Show("Do you want to add a serving?", "New Menu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rs == DialogResult.Yes)
                 {
-                    menuUpdate.Invoke(this, EventArgs.Empty);
-                    MessageBox.Show("New menu created successfully.", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
-                        
+                    NewServingsFrm im = new NewServingsFrm(ingredientServices);
+                    im.served += (ss, ee) =>
+                    {
+                        addNewMenu(true, ee);
+                    };
+                    DialogResult rs1 = im.ShowDialog(this);
+                    if (rs1 == DialogResult.Yes)
+                    {
+                        im.Hide();
+                    }
                 }
                 else
-                    MessageBox.Show("Failed to create new menu.", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                {
+                    addNewMenu(false);
+                }
             }
             catch (Exception ex) when (ex is NotSupportedException || ex is InvalidInput)
             {
@@ -154,47 +116,40 @@ namespace OrderingSystem.CashierApp.Forms.Menu
                 MessageBox.Show("Internal Server Error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void VariantPopupButton(object sender, System.EventArgs e)
+        private void addNewMenu(bool x, ServingsModel s = null)
         {
-
-            VariantMenuPopup p = new VariantMenuPopup(variantList, ingredientServices);
-            DialogResult rs = p.ShowDialog(this);
-
-            if (rs == DialogResult.OK)
+            try
             {
-                variantList = p.getVariants();
-                table.Rows.Clear();
-                if (variantList.Count > 0)
-                {
-                    variantButton.Text = "Add Another Variant";
+                string name = menuName.Text.Trim();
+                string desc = menuDescription.Text.Trim();
+                string cat = cmbCat.Text.Trim();
+                if (pictureBox.Image == null) pictureBox.Image = Resources.placeholder;
+                byte[] image = ImageHelper.GetImageFromFile(pictureBox.Image);
 
-                    foreach (var x in variantList)
-                    {
-                        string s = string.Join(", ", x.MenuIngredients.Select(xx => xx.IngredientName));
-                        table.Rows.Add(x.FlavorName, x.SizeName, x.EstimatedTime, x.MenuPrice.ToString("N2"), s);
-                    }
+
+                MenuDetailModel md = MenuDetailModel.Builder()
+                    .WithMenuName(name)
+                    .WithMenuDescription(desc)
+                    .WithMenuImageByte(image)
+                    .WithCategoryName(cat)
+                    .withServing(s)
+                    .Build();
+
+                if (menuService.saveNewMenu(md, x))
+                {
+                    MessageBox.Show("New menu created successfully.", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
                 }
                 else
-                {
-                    variantButton.Text = "Add Variant";
-                }
+                    MessageBox.Show("Failed to create new menu.", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void exit(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Abort;
-        }
-        private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && dataGrid.Columns[e.ColumnIndex] is DataGridViewImageColumn)
+            catch (Exception ex) when (ex is NotSupportedException || ex is InvalidInput)
             {
-                DialogResult result = MessageBox.Show("Are you sure to delete this variant / details?", "Confirm", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    dataGrid.Rows.RemoveAt(e.RowIndex);
-                    variantList.RemoveAt(e.RowIndex);
-                    variantButton.Text = variantList.Count > 0 ? "Add Another Variant" : "Add Variant";
-                }
+                MessageBox.Show(ex.Message, "Menu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Internal Server Error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

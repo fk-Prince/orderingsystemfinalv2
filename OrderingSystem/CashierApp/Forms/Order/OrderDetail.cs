@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 using OrderingSystem.CashierApp.Layout;
@@ -7,8 +6,6 @@ using OrderingSystem.CashierApp.SessionData;
 using OrderingSystem.Exceptions;
 using OrderingSystem.KioskApplication.Services;
 using OrderingSystem.Model;
-using OrderingSystem.Repository;
-using OrderingSystem.Services;
 
 namespace OrderingSystem.CashierApp.Forms.Order
 {
@@ -25,20 +22,13 @@ namespace OrderingSystem.CashierApp.Forms.Order
             this.omm = omm;
             image.Image = om.PurchaseMenu.MenuImage;
             name.Text = om.PurchaseMenu.MenuName;
-            flavor.Text = om.PurchaseMenu.FlavorName;
-            size.Text = om.PurchaseMenu.SizeName;
-            qtyToAdd.Value = om.PurchaseQty;
-            price.Text = om.PurchaseMenu.getPriceAfterVatWithDiscount().ToString("N2", new CultureInfo("en-PH"));
+            price.Text = om.PurchaseMenu.servingMenu.getPriceAfterVatWithDiscount().ToString("N2", new CultureInfo("en-PH"));
             qty.Text = om.PurchaseQty.ToString();
             total.Text = om.getSubtotal().ToString("N2", new CultureInfo("en-PH"));
-
-
             hide();
         }
-
         private void hide()
         {
-
             if (om.Status.ToLower() == "voided")
             {
                 v.Visible = true;
@@ -46,12 +36,14 @@ namespace OrderingSystem.CashierApp.Forms.Order
             else
             {
                 b.Visible = false;
-                qtyToAdd.Visible = false;
+                b1.Visible = false;
+                b2.Visible = false;
             }
 
             if (omm.OrderStatus.ToLower() == "pending")
             {
-                qtyToAdd.Visible = false;
+                b1.Visible = false;
+                b2.Visible = false;
                 if (om.Status.ToLower() == "voided")
                 {
                     v.Visible = true;
@@ -59,17 +51,16 @@ namespace OrderingSystem.CashierApp.Forms.Order
                 }
                 else
                 {
-                    qtyToAdd.Visible = true;
+                    b1.Visible = true;
+                    b2.Visible = true;
                     b.Visible = true;
                 }
             }
         }
-
         private void guna2PictureBox1_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.OK;
         }
-
         private void guna2Button1_Click(object sender, System.EventArgs e)
         {
             bool sucsc = false;
@@ -112,30 +103,44 @@ namespace OrderingSystem.CashierApp.Forms.Order
                 }
             }
         }
-        private void guna2NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
             try
             {
-                List<OrderItemModel> o = new List<OrderItemModel>();
-                o.AddRange(omm.OrderItemList); KioskMenuServices kk = new KioskMenuServices(new KioskMenuRepository(o));
-                int b = kk.getMaxOrderRealTime(om.PurchaseMenu.MenuDetailId, o);
-                if (b <= 0) throw new MaxOrder("Unable to add more quantity.");
-                or.addQuantityOrderItem(om, (int)qtyToAdd.Value);
-                qty.Text = qtyToAdd.Value.ToString();
-                om.PurchaseQty = (int)qtyToAdd.Value;
+                int b = om.PurchaseMenu.servingMenu.LeftQuantity;
+                if (b <= 0)
+                    throw new MaxOrder("Unable to add more quantity.");
+
+                om.PurchaseMenu.servingMenu.LeftQuantity -= 1;
+                or.addQuantityOrderItem(om, om.PurchaseQty += 1);
+                qty.Text = om.PurchaseQty.ToString();
                 total.Text = om.getSubtotal().ToString("N2", new CultureInfo("en-PH"));
             }
             catch (MaxOrder ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                qtyToAdd.Value = (int)qtyToAdd.Value - 1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
+        private void guna2PictureBox3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (om.PurchaseQty <= 1) return;
+                om.PurchaseQty -= 1;
+                qty.Text = om.PurchaseQty.ToString();
+                or.addQuantityOrderItem(om, om.PurchaseQty);
+                total.Text = om.getSubtotal().ToString("N2", new CultureInfo("en-PH"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-
+        }
     }
 }

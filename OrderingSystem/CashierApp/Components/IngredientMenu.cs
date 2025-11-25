@@ -23,100 +23,53 @@ namespace OrderingSystem.CashierApp.Components
             ingredientSelected = new List<IngredientModel>();
         }
 
-        public void getIngredientByMenu(MenuDetailModel variantDetail)
+
+        public void getIngredient(DateTime date)
         {
             try
             {
-                ingredientList = ingredientServices.getIngredientsOfMenu(variantDetail);
+                if (table != null)
+                    table.Rows.Clear();
+                ingredientList = ingredientServices.getIngredients(date);
+                initTable1();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Internal Server Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void hideNotSelected()
-        {
-            view.RowFilter = "Quantity IS NOT NULL AND Quantity <> 0";
-        }
-
-        public void getIngredient()
-        {
-            try
-            {
-                ingredientList = ingredientServices.getIngredients();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Internal Server Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Internal Server Error" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void initTable1()
         {
             table = new DataTable();
-            table.Columns.Add("Ingredient Name");
-            table.Columns.Add("Quantity");
-            table.Columns.Add("Unit");
-            table.Columns.Add("Cost per Unit");
-
-            ingredientList.ForEach(e => table.Rows.Add(e.IngredientName, e.IngredientQuantity, e.IngredientUnit, e.IngredientCostPerUnit.ToString("N2")));
-            view = new DataView(table);
-            dataGrid.DataSource = view;
-            dataGrid.Enabled = false;
-        }
-        public void ingredientSelector(List<IngredientModel> ingredientSelected)
-        {
-            this.ingredientSelected = ingredientSelected;
-
-            foreach (DataGridViewRow row in dataGrid.Rows)
-            {
-                if (row.Cells[3].Value != null && row.Cells[0].Value != null && bool.TryParse(row.Cells[0].Value.ToString(), out bool val))
-                {
-                    string ingredientName = row.Cells["Ingredient Name"].Value?.ToString();
-                    var selectedIngredient = ingredientSelected.Find(x => x.IngredientName == ingredientName);
-                    if (selectedIngredient != null)
-                    {
-                        row.Cells["Select"].Value = true;
-                        row.Cells["Quantity"].Value = selectedIngredient.IngredientQuantity.ToString();
-                    }
-                }
-
-            }
-        }
-        bool x = false;
-        public void initTable2()
-        {
-            table = new DataTable();
             table.Columns.Add("Select", typeof(bool));
             table.Columns.Add("Ingredient Name");
+            table.Columns.Add("Total Quantity");
+            table.Columns.Add("Quantity to be Used");
             table.Columns.Add("Unit");
-            table.Columns.Add("Quantity");
             table.Columns.Add("Cost per Unit");
 
-            ingredientList.ForEach(e => table.Rows.Add(e.IngredientQuantity != 0, e.IngredientName,
-                e.IngredientUnit, e.IngredientQuantity == 0 ? DBNull.Value : (object)e.IngredientQuantity, e.IngredientCostPerUnit.ToString("N2")));
+            ingredientList.ForEach(e => table.Rows.Add(false, e.IngredientName, e.IngredientQuantity, "", e.IngredientUnit, e.IngredientCostPerUnit.ToString("N2")));
             view = new DataView(table);
-            dataGrid.DataSource = view;
 
             DataGridViewCheckBoxColumn check = new DataGridViewCheckBoxColumn();
             check.DataPropertyName = "Select";
 
-            dataGrid.Columns[0].Width = 48;
-            dataGrid.Columns[2].Width = 70;
+            dataGrid.DataSource = view;
             dataGrid.Enabled = true;
-            x = true;
         }
+
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             view.RowFilter = "Quantity >= 0";
             dataGrid.Enabled = true;
             table.Rows.Clear();
             table.Columns.Clear();
-            initTable2();
         }
         private void dataGrid_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dataGrid.Columns[e.ColumnIndex].Name == "Quantity")
+
+
+            if (dataGrid.Columns[e.ColumnIndex].Name == "Quantity to be Used")
             {
                 string input = e.FormattedValue?.ToString().Trim();
 
@@ -129,6 +82,30 @@ namespace OrderingSystem.CashierApp.Components
                 {
                     MessageBox.Show("Invalid Input", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     e.Cancel = true;
+                    return;
+                }
+
+                if (!decimal.TryParse(input, out decimal qty))
+                {
+                    MessageBox.Show("Invalid number format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+
+                var availableObj = dataGrid.Rows[e.RowIndex].Cells["Total Quantity"].Value;
+
+                if (availableObj != null && decimal.TryParse(availableObj.ToString(), out decimal avQty))
+                {
+                    if (qty > avQty)
+                    {
+                        MessageBox.Show(
+                            $"Exceed the available quantity.",
+                            "Quantity Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        e.Cancel = true;
+                    }
                 }
             }
         }
@@ -139,7 +116,6 @@ namespace OrderingSystem.CashierApp.Components
         }
         private void submit(object sender, EventArgs e)
         {
-            if (!x) return;
             ingredientSelected.Clear();
             foreach (DataGridViewRow row in dataGrid.Rows)
             {
@@ -152,7 +128,7 @@ namespace OrderingSystem.CashierApp.Components
 
                 if (check)
                 {
-                    if (int.TryParse(row.Cells["Quantity"].Value?.ToString(), out int quantity) && quantity > 0)
+                    if (int.TryParse(row.Cells["Quantity to be Used"].Value?.ToString(), out int quantity) && quantity > 0)
                     {
 
                         string ingredientName = row.Cells["Ingredient Name"].Value?.ToString();

@@ -15,25 +15,14 @@ namespace OrderingSystem.KioskApplication.Components
             displayPurchasedMenu();
         }
 
-        
-
         public void displayPurchasedMenu()
         {
-
             menuName.Text = menu.PurchaseMenu.MenuName;
-            price.Text = menu.PurchaseMenu.getPriceAfterVatWithDiscount().ToString("N2");
-
-            string text = "";
-            if (menu.PurchaseMenu is MenuPackageModel p) text = "Package";
-            else if (menu.PurchaseMenu.SizeName.ToLower() == menu.PurchaseMenu.FlavorName.ToLower()) text = "Regular";
-            else if (menu.PurchaseMenu.SizeName.ToLower() == "regular" || menu.PurchaseMenu.FlavorName.ToLower() == "regular") text = menu.PurchaseMenu.FlavorName.ToLower() == "regular" ? menu.PurchaseMenu.SizeName : menu.PurchaseMenu.FlavorName;
-            else text = "Flavor: " + menu.PurchaseMenu.FlavorName + " - Size:" + menu.PurchaseMenu.SizeName;
-
+            price.Text = menu.PurchaseMenu.servingMenu.getPriceAfterVatWithDiscount().ToString("N2");
             image.Image = menu.PurchaseMenu.MenuImage;
-            detail.Text = text;
             qty.Text = menu.PurchaseQty.ToString();
             bb.Text = qty.Text;
-            total.Text = (Math.Round(menu.PurchaseMenu.getPriceAfterVatWithDiscount(), 2) * menu.PurchaseQty).ToString("N2");
+            total.Text = (Math.Round(menu.PurchaseMenu.servingMenu.getPriceAfterVatWithDiscount(), 2) * menu.PurchaseQty).ToString("N2");
         }
 
         private void addQuantity(object sender, System.EventArgs e)
@@ -45,6 +34,43 @@ namespace OrderingSystem.KioskApplication.Components
         private void deductQuantity(object sender, System.EventArgs e)
         {
             deductQuantityEvent.Invoke(this, menu);
+            displayPurchasedMenu();
+        }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            string text = bb.Text.Trim();
+            if (!int.TryParse(text, out int qty) || qty < 0)
+                return;
+
+            int maxAvailable = menu.PurchaseMenu.servingMenu.Quantity;
+            int oldQty = menu.PurchaseQty;
+
+            if (qty > maxAvailable)
+                qty = maxAvailable;
+
+            menu.PurchaseQty = qty;
+            menu.PurchaseMenu.servingMenu.LeftQuantity = maxAvailable - qty;
+            displayPurchasedMenu();
+        }
+
+        private void bb_Leave(object sender, EventArgs e)
+        {
+            if (!int.TryParse(bb.Text.Trim(), out int qty) || qty <= 0)
+            {
+                menu.PurchaseQty = 0;
+                menu.PurchaseMenu.servingMenu.LeftQuantity = menu.PurchaseMenu.servingMenu.Quantity;
+
+                var parentPanel = this.Parent as System.Windows.Forms.FlowLayoutPanel;
+                if (parentPanel != null)
+                    parentPanel.Controls.Remove(this);
+
+                deductQuantityEvent?.Invoke(this, menu);
+                return;
+            }
+
+            int maxAvailable = menu.PurchaseMenu.servingMenu.Quantity;
+            menu.PurchaseMenu.servingMenu.LeftQuantity = maxAvailable - menu.PurchaseQty;
             displayPurchasedMenu();
         }
     }

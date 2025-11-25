@@ -136,7 +136,7 @@ namespace OrderingSystem.CashierApp.Forms
                 p3.Visible = true;
                 txt.PlaceholderText = "Search Ingredient";
                 ic.Items.Clear();
-                List<IngredientModel> ind = new IngredientServices(new IngredientRepository()).getIngredients();
+                List<IngredientModel> ind = new IngredientServices(new IngredientRepository()).getIngredients2();
                 ind.ForEach(e => ic.Items.Add(e.IngredientName));
                 return;
             }
@@ -448,6 +448,11 @@ namespace OrderingSystem.CashierApp.Forms
             string supplerFilter = string.IsNullOrEmpty(txt.Text) ? "" : $"[Supplier Name] LIKE '%{txt.Text}%'";
             string finalFilter = string.Join(" AND ", new[] { supplerFilter, dateFilter }.Where(f => !string.IsNullOrEmpty(f)));
             view.RowFilter = finalFilter;
+        }
+
+        private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

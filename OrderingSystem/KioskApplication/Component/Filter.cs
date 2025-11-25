@@ -24,10 +24,21 @@ namespace OrderingSystem.KioskApplication.Component
             catR = new List<MyRadioButton2>();
             this.cat = cat;
 
-            tt.Maximum = ((int)Math.Ceiling(maxPrice));
-            max.Text = ((int)Math.Ceiling(maxPrice)).ToString();
-            tt.Value = ((int)Math.Ceiling(maxPrice));
-            max.Text = tt.Value.ToString();
+            if (maxPrice <= 0)
+            {
+                tt.Minimum = 0;
+                tt.Maximum = 1;
+                tt.Value = 0;
+                max.Text = "0";
+            }
+            else
+            {
+                int ceil = (int)Math.Ceiling(maxPrice);
+                tt.Minimum = 0;
+                tt.Maximum = ceil;
+                tt.Value = ceil;
+                max.Text = ceil.ToString();
+            }
 
             displayCategory();
         }

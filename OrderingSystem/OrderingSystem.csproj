@@ -295,11 +295,11 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CashierApp\Components\BundleMenuPopup.cs">
+    <Compile Include="CashierApp\Components\ServingTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CashierApp\Components\BundleMenuPopup.Designer.cs">
-      <DependentUpon>BundleMenuPopup.cs</DependentUpon>
+    <Compile Include="CashierApp\Components\ServingTable.Designer.cs">
+      <DependentUpon>ServingTable.cs</DependentUpon>
     </Compile>
     <Compile Include="CashierApp\Forms\Category\CategoryCard.cs">
       <SubType>UserControl</SubType>
@@ -414,6 +414,7 @@
       <DependentUpon>OrderTypeFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\InvoiceModel.cs" />
+    <Compile Include="Model\ServingsModel.cs" />
     <Compile Include="Model\SpecialDiscount.cs" />
     <Compile Include="Payment\Types\Payment.cs" />
     <Compile Include="Payment\Other\FeeCalculator.cs" />
@@ -426,23 +427,11 @@
     <Compile Include="Payment\Other\PaymentFactory.cs" />
     <Compile Include="Payment\Types\DebitCardPayment.cs" />
     <Compile Include="CashierApp\SessionData\SessionStaffData.cs" />
-    <Compile Include="CashierApp\Table\PackageTable.cs">
+    <Compile Include="CashierApp\Components\NewServingsFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CashierApp\Table\PackageTable.Designer.cs">
-      <DependentUpon>PackageTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CashierApp\Table\RegularTable.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CashierApp\Table\RegularTable.Designer.cs">
-      <DependentUpon>RegularTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CashierApp\Components\VariantMenuPopup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CashierApp\Components\VariantMenuPopup.Designer.cs">
-      <DependentUpon>VariantMenuPopup.cs</DependentUpon>
+    <Compile Include="CashierApp\Components\NewServingsFrm.Designer.cs">
+      <DependentUpon>NewServingsFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="CashierApp\Components\MenuCard.cs">
       <SubType>UserControl</SubType>
@@ -461,12 +450,6 @@
     </Compile>
     <Compile Include="CashierApp\Forms\Reports\ReportsFrm.Designer.cs">
       <DependentUpon>ReportsFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CashierApp\Forms\Menu\MenuBundleFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CashierApp\Forms\Menu\MenuBundleFrm.Designer.cs">
-      <DependentUpon>MenuBundleFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="CashierApp\Forms\Menu\MenuFrm.cs">
       <SubType>Form</SubType>
@@ -578,7 +561,6 @@
       <DependentUpon>OrderLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="KioskApplication\Interface\ICalculateOrder.cs" />
-    <Compile Include="KioskApplication\Options\FrequentlyOrderedOption.cs" />
     <Compile Include="KioskApplication\Interface\IMenuOptions.cs" />
     <Compile Include="KioskApplication\Interface\IOutOfOrder.cs" />
     <Compile Include="KioskApplication\Interface\ISelectedFrequentlyOrdered.cs" />
@@ -588,45 +570,12 @@
     <Compile Include="KioskApplication\Forms\KioskLayout.Designer.cs">
       <DependentUpon>KioskLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="KioskApplication\Forms\PopupOption.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KioskApplication\Forms\PopupOption.Designer.cs">
-      <DependentUpon>PopupOption.cs</DependentUpon>
-    </Compile>
-    <Compile Include="KioskApplication\Options\PackageOption.cs" />
-    <Compile Include="KioskApplication\Options\RegularOption.cs" />
-    <Compile Include="KioskApplication\Layouts\FlavorLayout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="KioskApplication\Layouts\FlavorLayout.Designer.cs">
-      <DependentUpon>FlavorLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="KioskApplication\Layouts\FrequentlyOrderedLayout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="KioskApplication\Layouts\FrequentlyOrderedLayout.Designer.cs">
-      <DependentUpon>FrequentlyOrderedLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="KioskApplication\Layouts\PackageLayout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="KioskApplication\Layouts\PackageLayout.Designer.cs">
-      <DependentUpon>PackageLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="KioskApplication\Layouts\SizeLayout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="KioskApplication\Layouts\SizeLayout.Designer.cs">
-      <DependentUpon>SizeLayout.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="Model\CouponModel.cs" />
     <Compile Include="Model\DiscountModel.cs" />
     <Compile Include="Model\IngredientModel.cs" />
     <Compile Include="Model\IngredientStockModel.cs" />
     <Compile Include="Model\MenuModel.cs" />
-    <Compile Include="Model\MenuPackageModel.cs" />
     <Compile Include="Model\OrderItemModel.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\StaffModel.cs" />
@@ -670,8 +619,8 @@
     <Compile Include="Services\StaffServices.cs" />
     <Compile Include="util\ImageHelper.cs" />
     <Compile Include="util\TaxHelper.cs" />
-    <EmbeddedResource Include="CashierApp\Components\BundleMenuPopup.resx">
-      <DependentUpon>BundleMenuPopup.cs</DependentUpon>
+    <EmbeddedResource Include="CashierApp\Components\ServingTable.resx">
+      <DependentUpon>ServingTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CashierApp\Forms\Category\CategoryCard.resx">
       <DependentUpon>CategoryCard.cs</DependentUpon>
@@ -724,14 +673,8 @@
     <EmbeddedResource Include="CashierApp\Layout\LoginLayout.resx">
       <DependentUpon>LoginLayout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CashierApp\Table\PackageTable.resx">
-      <DependentUpon>PackageTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CashierApp\Table\RegularTable.resx">
-      <DependentUpon>RegularTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CashierApp\Components\VariantMenuPopup.resx">
-      <DependentUpon>VariantMenuPopup.cs</DependentUpon>
+    <EmbeddedResource Include="CashierApp\Components\NewServingsFrm.resx">
+      <DependentUpon>NewServingsFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CashierApp\Components\MenuCard.resx">
       <DependentUpon>MenuCard.cs</DependentUpon>
@@ -741,9 +684,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CashierApp\Forms\Reports\ReportsFrm.resx">
       <DependentUpon>ReportsFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CashierApp\Forms\Menu\MenuBundleFrm.resx">
-      <DependentUpon>MenuBundleFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CashierApp\Forms\Menu\MenuFrm.resx">
       <DependentUpon>MenuFrm.cs</DependentUpon>
@@ -796,23 +736,8 @@
     <EmbeddedResource Include="KioskApplication\Forms\KioskLayout.resx">
       <DependentUpon>KioskLayout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KioskApplication\Forms\PopupOption.resx">
-      <DependentUpon>PopupOption.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="KioskApplication\Forms\CouponFrm.resx">
       <DependentUpon>CouponFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KioskApplication\Layouts\FlavorLayout.resx">
-      <DependentUpon>FlavorLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KioskApplication\Layouts\FrequentlyOrderedLayout.resx">
-      <DependentUpon>FrequentlyOrderedLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KioskApplication\Layouts\PackageLayout.resx">
-      <DependentUpon>PackageLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KioskApplication\Layouts\SizeLayout.resx">
-      <DependentUpon>SizeLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

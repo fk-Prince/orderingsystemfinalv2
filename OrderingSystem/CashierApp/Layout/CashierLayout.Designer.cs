@@ -54,7 +54,6 @@
             this.b8 = new Guna.UI2.WinForms.Guna2Button();
             this.b4 = new System.Windows.Forms.Panel();
             this.md = new Guna.UI2.WinForms.Guna2Button();
-            this.nb = new Guna.UI2.WinForms.Guna2Button();
             this.nm = new Guna.UI2.WinForms.Guna2Button();
             this.b7 = new Guna.UI2.WinForms.Guna2Button();
             this.b9 = new Guna.UI2.WinForms.Guna2Button();
@@ -442,11 +441,10 @@
             // b4
             // 
             this.b4.Controls.Add(this.md);
-            this.b4.Controls.Add(this.nb);
             this.b4.Controls.Add(this.nm);
             this.b4.Location = new System.Drawing.Point(70, 237);
             this.b4.Name = "b4";
-            this.b4.Size = new System.Drawing.Size(206, 102);
+            this.b4.Size = new System.Drawing.Size(206, 68);
             this.b4.TabIndex = 8;
             this.b4.Visible = false;
             // 
@@ -461,7 +459,7 @@
             this.md.FillColor = System.Drawing.Color.White;
             this.md.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.md.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.md.Location = new System.Drawing.Point(0, 66);
+            this.md.Location = new System.Drawing.Point(0, 33);
             this.md.Name = "md";
             this.md.Size = new System.Drawing.Size(206, 33);
             this.md.TabIndex = 16;
@@ -469,26 +467,6 @@
             this.md.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.md.TextOffset = new System.Drawing.Point(50, 0);
             this.md.Click += new System.EventHandler(this.menuDiscount);
-            // 
-            // nb
-            // 
-            this.nb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.nb.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.nb.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.nb.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.nb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.nb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.nb.FillColor = System.Drawing.Color.White;
-            this.nb.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.nb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.nb.Location = new System.Drawing.Point(0, 33);
-            this.nb.Name = "nb";
-            this.nb.Size = new System.Drawing.Size(206, 33);
-            this.nb.TabIndex = 15;
-            this.nb.Text = "New Bundle";
-            this.nb.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.nb.TextOffset = new System.Drawing.Point(50, 0);
-            this.nb.Click += new System.EventHandler(this.bundleMenu);
             // 
             // nm
             // 
@@ -711,7 +689,6 @@
         private Guna.UI2.WinForms.Guna2Panel mm;
         private Guna.UI2.WinForms.Guna2Button nm;
         private System.Windows.Forms.Panel b4;
-        private Guna.UI2.WinForms.Guna2Button nb;
         private Guna.UI2.WinForms.Guna2Button b3;
         private Guna.UI2.WinForms.Guna2Button b2;
         private Guna.UI2.WinForms.Guna2Button b8;

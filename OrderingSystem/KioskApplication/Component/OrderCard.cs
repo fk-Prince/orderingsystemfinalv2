@@ -32,38 +32,16 @@ namespace OrderingSystem.KioskApplication.Component
         {
             image.Image = om.PurchaseMenu.MenuImage;
             name.Text = om.PurchaseMenu.MenuName;
-            f2.Text = om.PurchaseMenu.FlavorName;
-            s2.Text = om.PurchaseMenu.SizeName;
 
 
-            price.Text = om.PurchaseMenu.getPriceAfterVat().ToString("N2");
-            dPrice.Text = om.PurchaseMenu.getPriceAfterVat() != om.PurchaseMenu.getPriceAfterVatWithDiscount() ? om.PurchaseMenu.getPriceAfterVatWithDiscount().ToString("N2") : "0.00";
-            dPrice.Visible = om.PurchaseMenu.getPriceAfterVatWithDiscount() != om.PurchaseMenu.getPriceAfterVat();
-            v1.Visible = om.PurchaseMenu.getPriceAfterVatWithDiscount() != om.PurchaseMenu.getPriceAfterVat();
-            v2.Visible = om.PurchaseMenu.getPriceAfterVatWithDiscount() != om.PurchaseMenu.getPriceAfterVat();
+            price.Text = om.PurchaseMenu.servingMenu.getPriceAfterVat().ToString("N2");
+            dPrice.Text = om.PurchaseMenu.servingMenu.getPriceAfterVat() != om.PurchaseMenu.servingMenu.getPriceAfterVatWithDiscount()
+                ? om.PurchaseMenu.servingMenu.getPriceAfterVatWithDiscount().ToString("N2") : "0.00";
+            dPrice.Visible = om.PurchaseMenu.servingMenu.getPriceAfterVatWithDiscount() != om.PurchaseMenu.servingMenu.getPriceAfterVat();
+            v1.Visible = om.PurchaseMenu.servingMenu.getPriceAfterVatWithDiscount() != om.PurchaseMenu.servingMenu.getPriceAfterVat();
+            v2.Visible = om.PurchaseMenu.servingMenu.getPriceAfterVatWithDiscount() != om.PurchaseMenu.servingMenu.getPriceAfterVat();
             qty.Text = om.PurchaseQty.ToString();
             total.Text = om.getSubtotal().ToString("N2");
-
-
-            if (om.PurchaseMenu is MenuPackageModel)
-            {
-
-            }
-            else if (om.PurchaseMenu.SizeName == om.PurchaseMenu.FlavorName)
-            {
-                s1.Visible = true;
-                s2.Visible = true;
-                s2.Text = om.PurchaseMenu.SizeName;
-            }
-            else
-            {
-                s1.Visible = true;
-                s2.Visible = true;
-                s2.Text = om.PurchaseMenu.SizeName;
-                f1.Visible = true;
-                f2.Visible = true;
-                f2.Text = om.PurchaseMenu.SizeName;
-            }
         }
     }
 }

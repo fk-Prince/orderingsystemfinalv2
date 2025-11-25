@@ -8,7 +8,6 @@ using OrderingSystem.Repo.CashierMenuRepository;
 using OrderingSystem.Repository.CategoryRepository;
 using OrderingSystem.Repository.Ingredients;
 using OrderingSystem.Services;
-//using OrderingSystem.Repo.CashierMenuRepository;
 
 namespace OrderingSystem.CashierApp.Forms
 {
@@ -45,9 +44,9 @@ namespace OrderingSystem.CashierApp.Forms
             {
                 MessageBox.Show(ex.Message, "Menu Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Internal Server Error.", "Server Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Internal Server Error." + ex.Message, "Server Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void hover(Control c, MenuDetailModel i)
@@ -68,16 +67,7 @@ namespace OrderingSystem.CashierApp.Forms
                 hover(cv, i);
             }
         }
-        public void showBundle()
-        {
-            MenuBundleFrm f = new MenuBundleFrm(menuService, ingredientServices);
-            f.menuUpdate += (s, e) => displayMenu();
-            DialogResult rs = f.ShowDialog(this);
-            if (rs == DialogResult.OK)
-            {
-                f.Hide();
-            }
-        }
+
         public void showNewMenu()
         {
             NewMenu f = new NewMenu(menuService, ingredientServices);

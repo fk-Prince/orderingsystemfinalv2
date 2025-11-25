@@ -119,11 +119,11 @@ namespace OrderingSystem.Receipt
                 e.Graphics.DrawString(a.PurchaseMenu.MenuName, mainFont, Brushes.Black, x, y);
                 y += 15;
                 x += 30;
-                if (!(a.PurchaseMenu is MenuPackageModel))
-                {
-                    string va = a.PurchaseMenu.SizeName?.ToLower().Trim() == a.PurchaseMenu.FlavorName?.ToLower().Trim() ? "( " + a.PurchaseMenu.SizeName + " )" : "( " + a.PurchaseMenu.SizeName + " - " + a.PurchaseMenu.FlavorName + " )";
-                    e.Graphics.DrawString(va, mainFont, Brushes.Black, x, y);
-                }
+                //if (!(a.PurchaseMenu is MenuPackageModel))
+                //{
+                //string va = a.PurchaseMenu.SizeName?.ToLower().Trim() == a.PurchaseMenu.FlavorName?.ToLower().Trim() ? "( " + a.PurchaseMenu.SizeName + " )" : "( " + a.PurchaseMenu.SizeName + " - " + a.PurchaseMenu.FlavorName + " )";
+                //e.Graphics.DrawString(va, mainFont, Brushes.Black, x, y);
+                //}
                 x += 260;
                 e.Graphics.DrawString(a.getSubtotal().ToString("N2"), mainFont, Brushes.Black, x, y);
                 x = 10;

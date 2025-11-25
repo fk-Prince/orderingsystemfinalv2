@@ -96,7 +96,7 @@
             this.dataGrid.ColumnHeadersHeight = 35;
             this.dataGrid.Location = new System.Drawing.Point(13, 87);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(507, 369);
+            this.dataGrid.Size = new System.Drawing.Size(580, 369);
             this.dataGrid.TabIndex = 9;
             this.dataGrid.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGrid_CellValidating);
             // 
@@ -111,7 +111,7 @@
             this.updateButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.updateButton.ForeColor = System.Drawing.Color.White;
-            this.updateButton.Location = new System.Drawing.Point(269, 35);
+            this.updateButton.Location = new System.Drawing.Point(338, 36);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(126, 46);
             this.updateButton.TabIndex = 13;
@@ -130,7 +130,7 @@
             this.confirmButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.confirmButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.confirmButton.ForeColor = System.Drawing.Color.White;
-            this.confirmButton.Location = new System.Drawing.Point(401, 35);
+            this.confirmButton.Location = new System.Drawing.Point(470, 36);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(119, 45);
             this.confirmButton.TabIndex = 15;
@@ -145,9 +145,9 @@
             this.xx.Cursor = System.Windows.Forms.Cursors.Hand;
             this.xx.Image = global::OrderingSystem.Properties.Resources.exit;
             this.xx.ImageRotate = 0F;
-            this.xx.Location = new System.Drawing.Point(497, 4);
+            this.xx.Location = new System.Drawing.Point(562, 3);
             this.xx.Name = "xx";
-            this.xx.Size = new System.Drawing.Size(27, 22);
+            this.xx.Size = new System.Drawing.Size(35, 22);
             this.xx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.xx.TabIndex = 16;
             this.xx.TabStop = false;
@@ -164,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 468);
+            this.ClientSize = new System.Drawing.Size(601, 468);
             this.Controls.Add(this.xx);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.updateButton);

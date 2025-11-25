@@ -17,9 +17,9 @@ namespace OrderingSystem.Services
             this.ingredientRepository = ingredientRepository;
         }
 
-        public List<IngredientModel> getIngredients()
+        public List<IngredientModel> getIngredients(DateTime now)
         {
-            return ingredientRepository.getIngredients();
+            return ingredientRepository.getIngredients(now);
         }
         public DataView getIngredientsView()
         {
@@ -28,11 +28,6 @@ namespace OrderingSystem.Services
         public List<IngredientStockModel> getIngredientStock()
         {
             return ingredientRepository.getIngredientsStock();
-        }
-
-        public List<IngredientModel> getIngredientsOfMenu(MenuDetailModel variantDetail)
-        {
-            return ingredientRepository.getIngredientsOfMenu(variantDetail);
         }
 
         public bool saveIngredientByMenu(int menuId, List<IngredientModel> ingredientSelected, string type)
@@ -139,6 +134,11 @@ namespace OrderingSystem.Services
         public List<string> getSuppliers()
         {
             return ingredientRepository.getSuppliers();
+        }
+
+        public List<IngredientModel> getIngredients2()
+        {
+            return ingredientRepository.getIngredients2();
         }
     }
 }

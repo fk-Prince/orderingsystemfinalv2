@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.bb = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.detail = new System.Windows.Forms.Label();
             this.menuName = new System.Windows.Forms.Label();
             this.image = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.bb = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
@@ -83,18 +83,6 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(400, 171);
             this.guna2Panel1.TabIndex = 0;
-            // 
-            // bb
-            // 
-            this.bb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.bb.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bb.ForeColor = System.Drawing.Color.White;
-            this.bb.Location = new System.Drawing.Point(41, 137);
-            this.bb.Name = "bb";
-            this.bb.Size = new System.Drawing.Size(49, 25);
-            this.bb.TabIndex = 27;
-            this.bb.Text = "0";
-            this.bb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // guna2PictureBox3
             // 
@@ -259,6 +247,30 @@
             this.image.TabIndex = 14;
             this.image.TabStop = false;
             // 
+            // bb
+            // 
+            this.bb.BorderRadius = 5;
+            this.bb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bb.DefaultText = "";
+            this.bb.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.bb.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.bb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.bb.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.bb.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            this.bb.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.bb.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.bb.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.bb.Location = new System.Drawing.Point(37, 135);
+            this.bb.Name = "bb";
+            this.bb.PlaceholderText = "";
+            this.bb.SelectedText = "";
+            this.bb.Size = new System.Drawing.Size(56, 30);
+            this.bb.TabIndex = 27;
+            this.bb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.bb.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
+            this.bb.Leave += new System.EventHandler(this.bb_Leave);
+            // 
             // CartCard
             // 
             this.BackColor = System.Drawing.Color.Transparent;
@@ -277,7 +289,6 @@
         #endregion
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label bb;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private System.Windows.Forms.Label label5;
@@ -291,5 +302,6 @@
         private System.Windows.Forms.Label detail;
         private System.Windows.Forms.Label menuName;
         private Guna.UI2.WinForms.Guna2PictureBox image;
+        private Guna.UI2.WinForms.Guna2TextBox bb;
     }
 }

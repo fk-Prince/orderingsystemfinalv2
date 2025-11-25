@@ -37,23 +37,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.category = new System.Windows.Forms.ComboBox();
             this.catTxt = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
-            this.mm = new Guna.UI2.WinForms.Guna2Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.b1 = new Guna.UI2.WinForms.Guna2Button();
-            this.b2 = new Guna.UI2.WinForms.Guna2Button();
-            this.b3 = new Guna.UI2.WinForms.Guna2Button();
-            this.b4 = new Guna.UI2.WinForms.Guna2Button();
-            this.lPrice = new System.Windows.Forms.Label();
-            this.price = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.cBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.closeButton = new Guna.UI2.WinForms.Guna2PictureBox();
             this.image = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.cBox = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.cbd = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dprice = new Guna.UI2.WinForms.Guna2TextBox();
-            this.l2Price = new System.Windows.Forms.Label();
+            this.mm = new Guna.UI2.WinForms.Guna2Panel();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
@@ -188,34 +181,16 @@
             this.catTxt.Size = new System.Drawing.Size(261, 36);
             this.catTxt.TabIndex = 12;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(13, 307);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 17);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Menu Details";
-            // 
             // ofd
             // 
             this.ofd.FileName = "openFileDialog1";
             // 
-            // mm
-            // 
-            this.mm.Location = new System.Drawing.Point(16, 327);
-            this.mm.Name = "mm";
-            this.mm.Size = new System.Drawing.Size(729, 245);
-            this.mm.TabIndex = 15;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.b1);
-            this.flowLayoutPanel1.Controls.Add(this.b2);
-            this.flowLayoutPanel1.Controls.Add(this.b3);
-            this.flowLayoutPanel1.Controls.Add(this.b4);
+            this.flowLayoutPanel1.Controls.Add(this.guna2Button1);
+            this.flowLayoutPanel1.Controls.Add(this.guna2Button2);
+            this.flowLayoutPanel1.Controls.Add(this.guna2Button3);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(756, 230);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -243,105 +218,87 @@
             this.b1.TextOffset = new System.Drawing.Point(-5, 0);
             this.b1.Click += new System.EventHandler(this.changeMode);
             // 
-            // b2
+            // guna2Button1
             // 
-            this.b2.AutoRoundedCorners = true;
-            this.b2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.b2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.b2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.b2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.b2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.b2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.b2.ForeColor = System.Drawing.Color.White;
-            this.b2.Image = global::OrderingSystem.Properties.Resources.add1;
-            this.b2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.b2.ImageOffset = new System.Drawing.Point(2, 0);
-            this.b2.Location = new System.Drawing.Point(3, 42);
-            this.b2.Name = "b2";
-            this.b2.Size = new System.Drawing.Size(214, 33);
-            this.b2.TabIndex = 2;
-            this.b2.Text = "Add Another Variant";
-            this.b2.Click += new System.EventHandler(this.newVariantButton);
+            this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = global::OrderingSystem.Properties.Resources.add1;
+            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.ImageOffset = new System.Drawing.Point(2, 0);
+            this.guna2Button1.Location = new System.Drawing.Point(3, 42);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(214, 33);
+            this.guna2Button1.TabIndex = 5;
+            this.guna2Button1.Text = "Add New Servings";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
-            // b3
+            // guna2Button2
             // 
-            this.b3.AutoRoundedCorners = true;
-            this.b3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.b3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.b3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.b3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.b3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.b3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.b3.ForeColor = System.Drawing.Color.White;
-            this.b3.Image = global::OrderingSystem.Properties.Resources.update;
-            this.b3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.b3.ImageOffset = new System.Drawing.Point(2, 0);
-            this.b3.Location = new System.Drawing.Point(3, 81);
-            this.b3.Name = "b3";
-            this.b3.Size = new System.Drawing.Size(214, 33);
-            this.b3.TabIndex = 3;
-            this.b3.Text = "Update Bundle";
-            this.b3.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.guna2Button2.AutoRoundedCorners = true;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Image = global::OrderingSystem.Properties.Resources.add1;
+            this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button2.ImageOffset = new System.Drawing.Point(2, 0);
+            this.guna2Button2.Location = new System.Drawing.Point(3, 81);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(214, 33);
+            this.guna2Button2.TabIndex = 6;
+            this.guna2Button2.Text = "View Serving History";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
-            // b4
+            // guna2Button3
             // 
-            this.b4.AutoRoundedCorners = true;
-            this.b4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.b4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.b4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.b4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.b4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.b4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.b4.ForeColor = System.Drawing.Color.White;
-            this.b4.Image = global::OrderingSystem.Properties.Resources.add1;
-            this.b4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.b4.ImageOffset = new System.Drawing.Point(2, 0);
-            this.b4.Location = new System.Drawing.Point(3, 120);
-            this.b4.Name = "b4";
-            this.b4.Size = new System.Drawing.Size(214, 33);
-            this.b4.TabIndex = 4;
-            this.b4.Text = "Additional Ingredients";
-            this.b4.Visible = false;
-            this.b4.Click += new System.EventHandler(this.b4_Click);
+            this.guna2Button3.AutoRoundedCorners = true;
+            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button3.ForeColor = System.Drawing.Color.White;
+            this.guna2Button3.Image = global::OrderingSystem.Properties.Resources.add1;
+            this.guna2Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button3.ImageOffset = new System.Drawing.Point(2, 0);
+            this.guna2Button3.Location = new System.Drawing.Point(3, 120);
+            this.guna2Button3.Name = "guna2Button3";
+            this.guna2Button3.Size = new System.Drawing.Size(214, 33);
+            this.guna2Button3.TabIndex = 7;
+            this.guna2Button3.Text = "View Current Serve";
+            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
-            // lPrice
+            // cBox
             // 
-            this.lPrice.AutoSize = true;
-            this.lPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.lPrice.ForeColor = System.Drawing.Color.Gray;
-            this.lPrice.Location = new System.Drawing.Point(310, 123);
-            this.lPrice.Name = "lPrice";
-            this.lPrice.Size = new System.Drawing.Size(36, 17);
-            this.lPrice.TabIndex = 18;
-            this.lPrice.Text = "Price";
-            this.lPrice.Visible = false;
-            // 
-            // price
-            // 
-            this.price.BackColor = System.Drawing.Color.Transparent;
-            this.price.BorderRadius = 5;
-            this.price.BorderThickness = 0;
-            this.price.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.price.DefaultText = "";
-            this.price.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.price.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.price.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.price.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.price.Enabled = false;
-            this.price.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            this.price.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.price.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.price.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.price.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.price.Location = new System.Drawing.Point(314, 144);
-            this.price.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.price.Name = "price";
-            this.price.PlaceholderText = "";
-            this.price.SelectedText = "";
-            this.price.Size = new System.Drawing.Size(118, 36);
-            this.price.TabIndex = 17;
-            this.price.Visible = false;
-            this.price.TextChanged += new System.EventHandler(this.price_TextChanged);
+            this.cBox.BackColor = System.Drawing.Color.Transparent;
+            this.cBox.BorderRadius = 3;
+            this.cBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBox.Enabled = false;
+            this.cBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cBox.ItemHeight = 20;
+            this.cBox.Items.AddRange(new object[] {
+            "Available",
+            "Not-Available"});
+            this.cBox.Location = new System.Drawing.Point(26, 12);
+            this.cBox.Name = "cBox";
+            this.cBox.Size = new System.Drawing.Size(140, 26);
+            this.cBox.StartIndex = 0;
+            this.cBox.TabIndex = 22;
+            this.cBox.SelectedIndexChanged += new System.EventHandler(this.cBox_SelectedIndexChanged);
             // 
             // closeButton
             // 
@@ -369,111 +326,22 @@
             this.image.TabStop = false;
             this.image.Click += new System.EventHandler(this.ImageButton);
             // 
-            // cBox
+            // mm
             // 
-            this.cBox.BackColor = System.Drawing.Color.Transparent;
-            this.cBox.BorderRadius = 3;
-            this.cBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBox.Enabled = false;
-            this.cBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cBox.ItemHeight = 20;
-            this.cBox.Items.AddRange(new object[] {
-            "Available",
-            "Not-Available"});
-            this.cBox.Location = new System.Drawing.Point(26, 12);
-            this.cBox.Name = "cBox";
-            this.cBox.Size = new System.Drawing.Size(140, 26);
-            this.cBox.StartIndex = 0;
-            this.cBox.TabIndex = 22;
-            this.cBox.SelectedIndexChanged += new System.EventHandler(this.cBox_SelectedIndexChanged);
-            // 
-            // cbd
-            // 
-            this.cbd.BackColor = System.Drawing.Color.Transparent;
-            this.cbd.BorderRadius = 3;
-            this.cbd.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbd.Enabled = false;
-            this.cbd.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbd.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbd.ItemHeight = 20;
-            this.cbd.Location = new System.Drawing.Point(353, 12);
-            this.cbd.Name = "cbd";
-            this.cbd.Size = new System.Drawing.Size(217, 26);
-            this.cbd.TabIndex = 23;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(252, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 17);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "Menu Discount";
-            // 
-            // dprice
-            // 
-            this.dprice.BackColor = System.Drawing.Color.Transparent;
-            this.dprice.BorderRadius = 5;
-            this.dprice.BorderThickness = 0;
-            this.dprice.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.dprice.DefaultText = "";
-            this.dprice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.dprice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.dprice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.dprice.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.dprice.Enabled = false;
-            this.dprice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            this.dprice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.dprice.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dprice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.dprice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.dprice.Location = new System.Drawing.Point(452, 144);
-            this.dprice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dprice.Name = "dprice";
-            this.dprice.PlaceholderText = "";
-            this.dprice.SelectedText = "";
-            this.dprice.Size = new System.Drawing.Size(118, 36);
-            this.dprice.TabIndex = 25;
-            this.dprice.Visible = false;
-            this.dprice.TextChanged += new System.EventHandler(this.dprice_TextChanged);
-            // 
-            // l2Price
-            // 
-            this.l2Price.AutoSize = true;
-            this.l2Price.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.l2Price.ForeColor = System.Drawing.Color.Gray;
-            this.l2Price.Location = new System.Drawing.Point(449, 123);
-            this.l2Price.Name = "l2Price";
-            this.l2Price.Size = new System.Drawing.Size(139, 17);
-            this.l2Price.TabIndex = 26;
-            this.l2Price.Text = "(Price - Discount) * Tax";
-            this.l2Price.Visible = false;
+            this.mm.Location = new System.Drawing.Point(26, 311);
+            this.mm.Name = "mm";
+            this.mm.Size = new System.Drawing.Size(674, 261);
+            this.mm.TabIndex = 28;
             // 
             // MenuInformation
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1012, 600);
-            this.Controls.Add(this.l2Price);
-            this.Controls.Add(this.dprice);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.cbd);
+            this.Controls.Add(this.mm);
             this.Controls.Add(this.cBox);
-            this.Controls.Add(this.lPrice);
-            this.Controls.Add(this.price);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.mm);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.catTxt);
             this.Controls.Add(this.category);
             this.Controls.Add(this.label3);
@@ -498,7 +366,6 @@
 
         private Guna.UI2.WinForms.Guna2PictureBox image;
         private Guna.UI2.WinForms.Guna2Button b1;
-        private Guna.UI2.WinForms.Guna2Button b2;
         private Guna.UI2.WinForms.Guna2TextBox menuName;
         private Guna.UI2.WinForms.Guna2TextBox description;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
@@ -507,19 +374,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox category;
         private Guna.UI2.WinForms.Guna2TextBox catTxt;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.OpenFileDialog ofd;
-        private Guna.UI2.WinForms.Guna2Panel mm;
         public Guna.UI2.WinForms.Guna2PictureBox closeButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Guna.UI2.WinForms.Guna2Button b3;
-        private System.Windows.Forms.Label lPrice;
-        private Guna.UI2.WinForms.Guna2TextBox price;
-        private Guna.UI2.WinForms.Guna2Button b4;
         private Guna.UI2.WinForms.Guna2ComboBox cBox;
-        private Guna.UI2.WinForms.Guna2ComboBox cbd;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label l2Price;
-        private Guna.UI2.WinForms.Guna2TextBox dprice;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Panel mm;
+        private Guna.UI2.WinForms.Guna2Button guna2Button3;
     }
 }
