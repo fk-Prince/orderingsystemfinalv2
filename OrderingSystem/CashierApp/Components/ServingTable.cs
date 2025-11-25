@@ -69,15 +69,15 @@ namespace OrderingSystem.CashierApp.Components
             {
                 int servingId = (int)dataGrid.Rows[e.RowIndex].Cells["serving_id"].Value;
                 var da = dataGrid.Rows[e.RowIndex].Cells["Serving Date"].Value;
-                if (da != null && DateTime.TryParse(da.ToString(), out DateTime d))
-                {
-                    if (d.Date <= DateTime.Now.Date)
-                    {
-                        MessageBox.Show("Cannot cancel serving on the same day or past.",
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
+                //if (da != null && DateTime.TryParse(da.ToString(), out DateTime d))
+                //{
+                //    if (d.Date <= DateTime.Now.Date)
+                //    {
+                //        MessageBox.Show("Cannot cancel serving on the same day or past.",
+                //            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        return;
+                //    }
+                //}
                 var result = MessageBox.Show("Are you sure you want to cancel this serving?",
                     "Confirm Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)

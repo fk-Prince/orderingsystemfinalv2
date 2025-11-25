@@ -17,25 +17,27 @@ namespace OrderingSystem.Repository.Ingredients
             List<IngredientModel> im = new List<IngredientModel>();
             var db = DatabaseHandler.getInstance();
             string query = @"
-                 SELECT 
-                    i.ingredient_id,
-                    i.ingredient_name,
-                    i.unit,
-                    SUM(oss.current_stock) AS quantity,
-                    ROUND(
-                        SUM(COALESCE(oss.batch_cost, 0)) / 
-                        NULLIF(SUM(COALESCE(mi.quantity, 0)), 0),
-                        2
-                    ) AS cost_per_unit
-                FROM ingredients i
-                INNER JOIN ingredient_stock oss 
-                    ON oss.ingredient_id = i.ingredient_id
-                INNER JOIN monitor_inventory mi 
-                    ON mi.ingredient_stock_id = oss.ingredient_stock_id
-                GROUP BY 
-                    i.ingredient_id,
-                    i.ingredient_name,
-                    i.unit;
+               SELECT 
+                i.ingredient_id,
+                i.ingredient_name,
+                i.unit,
+                ROUND(SUM(oss.current_stock), 2) AS quantity,
+                ROUND(
+                    SUM(oss.batch_cost) / NULLIF(SUM(mi.quantity),0),
+                    2
+                ) AS cost_per_unit
+            FROM ingredients i
+            INNER JOIN ingredient_stock oss 
+                ON oss.ingredient_id = i.ingredient_id
+            INNER JOIN monitor_inventory mi 
+                ON mi.ingredient_stock_id = oss.ingredient_stock_id
+            LEFT JOIN serving_ingredients si 
+                ON si.ingredient_stock_id = oss.ingredient_stock_id
+            WHERE oss.expiry_date > NOW()
+            GROUP BY 
+                i.ingredient_id,
+                i.ingredient_name,
+                i.unit;
                         ";
             try
             {
